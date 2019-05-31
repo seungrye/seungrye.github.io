@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on HANDMADE LOG</title>
+    <link>https://handmade.iptime.org/tags/</link>
+    <description>Recent content in Tags on HANDMADE LOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>seungrye@gmail.com (Ahn, Seung-rye)</managingEditor>
+    <webMaster>seungrye@gmail.com (Ahn, Seung-rye)</webMaster>
+    <lastBuildDate>Sat, 01 Jun 2019 06:11:09 +0900</lastBuildDate>
+    
+	<atom:link href="https://handmade.iptime.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hello</title>
+      <link>https://handmade.iptime.org/tags/hello/</link>
+      <pubDate>Sat, 01 Jun 2019 06:11:09 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/hello/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>이제시작</title>
+      <link>https://handmade.iptime.org/tags/%EC%9D%B4%EC%A0%9C%EC%8B%9C%EC%9E%91/</link>
+      <pubDate>Sat, 01 Jun 2019 06:11:09 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/%EC%9D%B4%EC%A0%9C%EC%8B%9C%EC%9E%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>example</title>
+      <link>https://handmade.iptime.org/tags/example/</link>
+      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/example/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>photoswipe</title>
+      <link>https://handmade.iptime.org/tags/photoswipe/</link>
+      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/photoswipe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bigimg</title>
+      <link>https://handmade.iptime.org/tags/bigimg/</link>
+      <pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/bigimg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>math</title>
+      <link>https://handmade.iptime.org/tags/math/</link>
+      <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>code</title>
+      <link>https://handmade.iptime.org/tags/code/</link>
+      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>https://handmade.iptime.org/tags/markdown/</link>
+      <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
