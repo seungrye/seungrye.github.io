@@ -180,12 +180,12 @@ $</code></pre></div>
 
 <p>변수에 문자열을 할당후, println! 을 통해서 포멧된 문자열을 출력하도록 처리.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w"></span><span class="o">-</span><span class="w">    </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">);</span><span class="w">
-</span><span class="w"></span><span class="o">+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&#34;Hello, rust!&#34;</span><span class="p">);</span><span class="w">
-</span><span class="w"></span><span class="o">+</span><span class="w">    </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">hello</span><span class="p">);</span><span class="w">
-</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff"> fn main() {
+<span class="gd">-    println!(&#34;Hello, world!&#34;);
+</span><span class="gd"></span><span class="gi">+    let hello = String::from(&#34;Hello, rust!&#34;);
+</span><span class="gi">+    println!(&#34;{}&#34;, hello);
+</span><span class="gi"></span> }
+</code></pre></div>
 
 <ul>
 <li>ref : <a href="https://doc.rust-lang.org/std/string/struct.String.html">https://doc.rust-lang.org/std/string/struct.String.html</a></li>
@@ -230,6 +230,10 @@ Hello, rust!</code></pre></div>
             <a href="https://handmade.iptime.org/post/2019-06-01-hello/" data-toggle="tooltip" data-placement="top" title="시작">&larr; Previous Post</a>
           </li>
         
+        
+          <li class="next">
+            <a href="https://handmade.iptime.org/post/2019-06-02-git-cahnge-remote-address/" data-toggle="tooltip" data-placement="top" title="Git 의 원격 저장소 주소 변경하기">Next Post &rarr;</a>
+          </li>
         
       </ul>
 

@@ -49,7 +49,7 @@ $
 
 변수에 문자열을 할당후, println! 을 통해서 포멧된 문자열을 출력하도록 처리.
 
-{{<highlight rust>}}
+{{<highlight diff>}}
  fn main() {
 -    println!("Hello, world!");
 +    let hello = String::from("Hello, rust!");
