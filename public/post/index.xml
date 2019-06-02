@@ -7,17 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>seungrye@gmail.com (Ahn, Seung-rye)</managingEditor>
     <webMaster>seungrye@gmail.com (Ahn, Seung-rye)</webMaster>
-    <lastBuildDate>Sat, 01 Jun 2019 06:11:09 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 12:37:17 +0900</lastBuildDate>
     
 	<atom:link href="https://handmade.iptime.org/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Hello Rust</title>
+      <link>https://handmade.iptime.org/post/2019-06-02-hello-rust/</link>
+      <pubDate>Sun, 02 Jun 2019 12:37:17 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/post/2019-06-02-hello-rust/</guid>
+      <description>&lt;p&gt;rust lang를 통해 &amp;lsquo;Hello World&amp;rsquo; 출력하는 예제를 작성해 봅니다.&lt;/p&gt;
+
+&lt;p&gt;인터넷에서 쉽게 찾을수 있는 내용이고, 이미 해봤던 내용이지만,
+정리차원에서 작성합니다.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>시작</title>
-      <link>https://handmade.iptime.org/post/hello/</link>
+      <link>https://handmade.iptime.org/post/2019-06-01-hello/</link>
       <pubDate>Sat, 01 Jun 2019 06:11:09 +0900</pubDate>
       <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
-      <guid>https://handmade.iptime.org/post/hello/</guid>
+      <guid>https://handmade.iptime.org/post/2019-06-01-hello/</guid>
       <description>새로운 시작이네영&amp;hellip; 잘 해 봐야지여.</description>
     </item>
     

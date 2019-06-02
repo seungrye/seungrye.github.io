@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>seungrye@gmail.com (Ahn, Seung-rye)</managingEditor>
     <webMaster>seungrye@gmail.com (Ahn, Seung-rye)</webMaster>
-    <lastBuildDate>Sat, 01 Jun 2019 06:11:09 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 12:37:17 +0900</lastBuildDate>
     
 	<atom:link href="https://handmade.iptime.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cargo</title>
+      <link>https://handmade.iptime.org/tags/cargo/</link>
+      <pubDate>Sun, 02 Jun 2019 12:37:17 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/cargo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>https://handmade.iptime.org/tags/rust/</link>
+      <pubDate>Sun, 02 Jun 2019 12:37:17 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/rust/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>hello</title>

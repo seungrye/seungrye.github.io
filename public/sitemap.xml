@@ -4,25 +4,48 @@
   
   <url>
     <loc>https://handmade.iptime.org/</loc>
-    <lastmod>2019-06-01T06:11:09+09:00</lastmod>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://handmade.iptime.org/categories/</loc>
-    <lastmod>2019-06-01T06:11:09+09:00</lastmod>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://handmade.iptime.org/post/2019-06-02-hello-rust/</loc>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://handmade.iptime.org/post/</loc>
-    <lastmod>2019-06-01T06:11:09+09:00</lastmod>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://handmade.iptime.org/tags/</loc>
-    <lastmod>2019-06-01T06:11:09+09:00</lastmod>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://handmade.iptime.org/tags/cargo/</loc>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://handmade.iptime.org/tags/rust/</loc>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://handmade.iptime.org/categories/studylog/</loc>
+    <lastmod>2019-06-02T12:37:17+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -39,7 +62,7 @@
   </url>
   
   <url>
-    <loc>https://handmade.iptime.org/post/hello/</loc>
+    <loc>https://handmade.iptime.org/post/2019-06-01-hello/</loc>
     <lastmod>2019-06-01T06:11:09+09:00</lastmod>
   </url>
   

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>studylog on HANDMADE LOG</title>
+    <link>https://handmade.iptime.org/categories/studylog/</link>
+    <description>Recent content in studylog on HANDMADE LOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>seungrye@gmail.com (Ahn, Seung-rye)</managingEditor>
+    <webMaster>seungrye@gmail.com (Ahn, Seung-rye)</webMaster>
+    <lastBuildDate>Sun, 02 Jun 2019 12:37:17 +0900</lastBuildDate>
+    
+	<atom:link href="https://handmade.iptime.org/categories/studylog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello Rust</title>
+      <link>https://handmade.iptime.org/post/2019-06-02-hello-rust/</link>
+      <pubDate>Sun, 02 Jun 2019 12:37:17 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/post/2019-06-02-hello-rust/</guid>
+      <description>&lt;p&gt;rust lang를 통해 &amp;lsquo;Hello World&amp;rsquo; 출력하는 예제를 작성해 봅니다.&lt;/p&gt;
+
+&lt;p&gt;인터넷에서 쉽게 찾을수 있는 내용이고, 이미 해봤던 내용이지만,
+정리차원에서 작성합니다.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
