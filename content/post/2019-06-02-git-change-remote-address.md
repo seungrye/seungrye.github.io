@@ -11,7 +11,7 @@ git 의 원격 저장소 주소가 변경되었을떄 대처 방법을 알아 �
 <!--more-->
 
 현재 `git-fetch` 했을때 발생하는 에러
-{{<highlight shell>}}
+{{<highlight bash>}}
 $ git fetch
 fatal: repository 'http://handmade.iptime.org/seungrye/teach-yourself-cpp.git/' not found
 {{</highlight>}}
@@ -19,7 +19,7 @@ fatal: repository 'http://handmade.iptime.org/seungrye/teach-yourself-cpp.git/' 
 ----
 
 현재 repo 의 remote 주소
-{{<highlight shell>}}
+{{<highlight bash>}}
 $ git remote -v
 origin	http://handmade.iptime.org/seungrye/teach-yourself-cpp.git (fetch)
 origin	http://handmade.iptime.org/seungrye/teach-yourself-cpp.git (push)
@@ -28,14 +28,14 @@ origin	http://handmade.iptime.org/seungrye/teach-yourself-cpp.git (push)
 ----
 
 remote 변경
-{{<highlight shell>}}
+{{<highlight bash>}}
 $ git remote set-url origin git@www.enjian.ml:seungrye/teach-yourself-cpp.git 
 {{</highlight>}}
 
 ----
 
 변경된 remote 확인
-{{<highlight shell>}}
+{{<highlight bash>}}
 $ git remote -v
 origin	git@www.enjian.ml:seungrye/teach-yourself-cpp.git (fetch)
 origin	git@www.enjian.ml:seungrye/teach-yourself-cpp.git (push)
@@ -44,7 +44,7 @@ origin	git@www.enjian.ml:seungrye/teach-yourself-cpp.git (push)
 ----
 
 현재 `git-fetch` 했을때 결과
-{{<highlight shell>}}
+{{<highlight bash>}}
 $ git fetch
 remote: Enumerating objects: 28, done.
 remote: Counting objects: 100% (28/28), done.
