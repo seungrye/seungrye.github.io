@@ -4,37 +4,60 @@
   
   <url>
     <loc>https://handmade.iptime.org/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://handmade.iptime.org/categories/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://handmade.iptime.org/post/2019-06-02-git-cahnge-remote-address/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
+    <loc>https://handmade.iptime.org/post/2019-06-02-git-remove-remote-branch/</loc>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://handmade.iptime.org/post/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://handmade.iptime.org/tags/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://handmade.iptime.org/tags/git/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://handmade.iptime.org/tags/git-push/</loc>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://handmade.iptime.org/tags/howto/</loc>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://handmade.iptime.org/categories/howtolog/</loc>
+    <lastmod>2019-06-02T21:35:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://handmade.iptime.org/post/2019-06-02-git-change-remote-address/</loc>
+    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
   </url>
   
   <url>
@@ -45,18 +68,6 @@
   
   <url>
     <loc>https://handmade.iptime.org/tags/git-remote/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://handmade.iptime.org/tags/howto/</loc>
-    <lastmod>2019-06-02T20:21:46+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://handmade.iptime.org/categories/howtolog/</loc>
     <lastmod>2019-06-02T20:21:46+09:00</lastmod>
     <priority>0</priority>
   </url>

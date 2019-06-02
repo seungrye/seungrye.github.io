@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>seungrye@gmail.com (Ahn, Seung-rye)</managingEditor>
     <webMaster>seungrye@gmail.com (Ahn, Seung-rye)</webMaster>
-    <lastBuildDate>Sun, 02 Jun 2019 20:21:46 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 21:35:23 +0900</lastBuildDate>
     
 	<atom:link href="https://handmade.iptime.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,9 +15,27 @@
     <item>
       <title>git</title>
       <link>https://handmade.iptime.org/tags/git/</link>
-      <pubDate>Sun, 02 Jun 2019 20:21:46 +0900</pubDate>
+      <pubDate>Sun, 02 Jun 2019 21:35:23 +0900</pubDate>
       <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
       <guid>https://handmade.iptime.org/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git-push</title>
+      <link>https://handmade.iptime.org/tags/git-push/</link>
+      <pubDate>Sun, 02 Jun 2019 21:35:23 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/git-push/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>howto</title>
+      <link>https://handmade.iptime.org/tags/howto/</link>
+      <pubDate>Sun, 02 Jun 2019 21:35:23 +0900</pubDate>
+      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
+      <guid>https://handmade.iptime.org/tags/howto/</guid>
       <description></description>
     </item>
     
@@ -36,15 +54,6 @@
       <pubDate>Sun, 02 Jun 2019 20:21:46 +0900</pubDate>
       <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
       <guid>https://handmade.iptime.org/tags/git-remote/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>howto</title>
-      <link>https://handmade.iptime.org/tags/howto/</link>
-      <pubDate>Sun, 02 Jun 2019 20:21:46 +0900</pubDate>
-      <author>seungrye@gmail.com (Ahn, Seung-rye)</author>
-      <guid>https://handmade.iptime.org/tags/howto/</guid>
       <description></description>
     </item>
     

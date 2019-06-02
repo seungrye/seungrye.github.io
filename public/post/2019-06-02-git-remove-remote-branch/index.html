@@ -5,20 +5,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>git-remote</title>
-  <meta property="og:title" content="git-remote" />
-  <meta name="twitter:title" content="git-remote" />
+  <title>Git 의 원격 저장소의 브랜치 삭제하기</title>
+  <meta property="og:title" content="Git 의 원격 저장소의 브랜치 삭제하기" />
+  <meta name="twitter:title" content="Git 의 원격 저장소의 브랜치 삭제하기" />
+  <meta name="description" content="git 의 원격 저장소에 있는 branch 를 삭제하는 방법을 알아 봅시다.">
+  <meta property="og:description" content="git 의 원격 저장소에 있는 branch 를 삭제하는 방법을 알아 봅시다.">
+  <meta name="twitter:description" content="git 의 원격 저장소에 있는 branch 를 삭제하는 방법을 알아 봅시다.">
   <meta name="author" content="Ahn, Seung-rye"/>
   <link href='https://handmade.iptime.org/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="https://handmade.iptime.org/img/avatar-icon.png" />
   <meta name="twitter:image" content="https://handmade.iptime.org/img/avatar-icon.png" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="https://handmade.iptime.org/tags/git-remote/" />
+  <meta property="og:url" content="https://handmade.iptime.org/post/2019-06-02-git-remove-remote-branch/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HANDMADE LOG" />
 
   <meta name="generator" content="Hugo 0.55.6" />
-  <link rel="canonical" href="https://handmade.iptime.org/tags/git-remote/" />
+  <link rel="canonical" href="https://handmade.iptime.org/post/2019-06-02-git-remove-remote-branch/" />
   <link rel="alternate" href="https://handmade.iptime.org/index.xml" type="application/rss+xml" title="HANDMADE LOG">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -95,14 +98,33 @@
 
 
     
+  
+  
+  
+
+
+
+
+  
+
   <header class="header-section ">
+    
     <div class="intro-header no-img">
+      
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="page-heading">
-              <h1>#git-remote</h1>
-              <hr class="small">
+            <div class="post-heading">
+              <h1>Git 의 원격 저장소의 브랜치 삭제하기</h1>
+                
+                
+                  <span class="post-meta">
+  Posted on June 2, 2019
+  
+</span>
+
+
+                
             </div>
           </div>
         </div>
@@ -110,51 +132,77 @@
     </div>
   </header>
 
+
     
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>git 의 원격 저장소에 있는 branch 를 삭제하는 방법을 알아 봅시다.</p>
+
+<p>현재 remote 브랜치 목록을 확인해 봅시다.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
+  origin/1-cmake
+  origin/5-asio-read-std-vector-buffer-append
+  origin/HEAD -&gt; origin/master</code></pre></div>
+
+<hr />
+
+<p>remote 브랜치를 삭제합니다.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git push origin --delete <span class="m">5</span>-asio-read-std-vector-buffer-append 
+To www.enjian.ml:seungrye/teach-yourself-cpp.git
+ - <span class="o">[</span>deleted<span class="o">]</span>         <span class="m">5</span>-asio-read-std-vector-buffer-append</code></pre></div>
+
+<hr />
+
+<p>현재 remote 브랜치 목록을 확인해 봅시다.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
+  origin/1-cmake
+  origin/HEAD -&gt; origin/master</code></pre></div>
+      </article>
+
+      <ul class="pager blog-pager">
         
-        <div class="posts-list">
-          
-            <article class="post-preview">
-              <a href="https://handmade.iptime.org/post/2019-06-02-git-change-remote-address/">
-                <h2 class="post-title">Git 의 원격 저장소 주소 변경하기</h2>
-    
-                
-              </a>
-    
-              <p class="post-meta">
-                Posted on June 2, 2019
-              </p>
-              <div class="post-entry">
-                
-                  <p>git 의 원격 저장소 주소가 변경되었을떄 대처 방법을 알아 봅시다.</p>
-                  <a href="https://handmade.iptime.org/post/2019-06-02-git-change-remote-address/" class="post-read-more">[Read More]</a>
-                
-              </div>
-    
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://handmade.iptime.org/tags/git">git</a>&nbsp;
-                  
-                    #<a href="https://handmade.iptime.org/tags/git-fetch">git-fetch</a>&nbsp;
-                  
-                    #<a href="https://handmade.iptime.org/tags/git-remote">git-remote</a>&nbsp;
-                  
-                    #<a href="https://handmade.iptime.org/tags/howto">howto</a>&nbsp;
-                  
-                </span>
-              
-    
-            </article>
-          
-        </div>
+          <li class="previous">
+            <a href="https://handmade.iptime.org/post/2019-06-02-git-change-remote-address/" data-toggle="tooltip" data-placement="top" title="Git 의 원격 저장소 주소 변경하기">&larr; Previous Post</a>
+          </li>
         
-      </div>
+        
+      </ul>
+
+      
+        
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "handmade-iptime-org" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+        
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">
