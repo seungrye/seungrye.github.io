@@ -6,7 +6,7 @@ tags: [git,git-fetch,git-remote,howto]
 draft: false
 ---
 
-git 의 원격 저장소 주소가 변경되었을떄 대처 방법을 알아 봅시다. 
+git 의 원격 저장소 주소가 변경되었을때 대처 방법을 알아 봅시다. 
 
 <!--more-->
 
