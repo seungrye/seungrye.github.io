@@ -18,3 +18,8 @@ pages:
     - public
   only:
   - master
+
+deploy:
+  script:
+  - rm -rf /deploy/public
+  - cp -r public /deploy/public
