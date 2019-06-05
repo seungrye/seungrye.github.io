@@ -1,99 +1,65 @@
-baseurl = "https://handmade.iptime.org/"
-contentdir    = "content"
-layoutdir     = "layouts"
-publishdir    = "public"
+baseURL = "http://handmade.iptime.org/"
+languageCode = "en-us"
 title = "HANDMADE LOG"
-canonifyurls  = true
+theme = "ezhil"
 
-DefaultContentLanguage = "en"
-theme = "beautifulhugo"
-metaDataFormat = "yaml"
+# Enable syntax highlighting.
+#pygmentsstyle = "vs"
 pygmentsUseClasses = true
-pygmentCodeFences = true
+pygmentsCodeFences = true
+pygmentscodefencesguesssyntax = true
+
+# Your Google analytics code.
+#googleAnalytics = "UA-123-45"
+# Your Disqus sortname.
 disqusShortname = "handmade-iptime-org"
-#googleAnalytics = "XXX"
 
-[Params]
-  subtitle = "Life is Strange"
-  logo = "img/avatar-icon.png"
-  favicon = "img/favicon.ico"
-  dateFormat = "January 2, 2006"
-  commit = false
-  rss = true
-  comments = true
-#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+[params]
+	# Blog subtitle which appears below blog title. Supports markdown.
+	subtitle = "Life is Strange"
+	# Number of posts to show in recent posts list (Optional). Defaults to 10.
+	recentPostsCount = 10
+	# Content types which are excluded from recent posts and archive page (Optional). Defaults to ["page"]
+	excludedTypes = ["page"]
+	# Content types which are excludes Disqus comments (Optional). Defaults to ["page"]
+	disableDisqusTypes = ["page"]
+	# If social media links are enabled then enable this to fetch icons from CDN instead of hosted on your site.
+	featherIconsCDN = true
+	rss = true
 
-#[[Params.bigimg]]
-#  src = "img/triangle.jpg"
-#  desc = "Triangle"
-#[[Params.bigimg]]
-#  src = "img/sphere.jpg"
-#  desc = "Sphere"
-#[[Params.bigimg]]
-#  src = "img/hexagon.jpg"
-#  desc = "Hexagon"
-
-[Author]
-  name = "Ahn, Seung-rye"
-  email = "seungrye@gmail.com"
-#  facebook = "username"
-#  googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
-#  gitlab = "username"
-#  github = "username"
-#  twitter = "username"
-#  reddit = "username"
-#  linkedin = "username"
-#  xing = "username"
-#  stackoverflow = "users/XXXXXXX/username"
-#  snapchat = "username"
-#  instagram = "username"
-#  youtube = "user/username" # or channel/channelname
-#  soundcloud = "username"
-#  spotify = "username"
-#  bandcamp = "username"
-#  itchio = "username"
-#  keybase = "username"
-
+# Main menu which appears below site header.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
 
 [[menu.main]]
-    name = "Blog"
-    url = ""
-    weight = 1
+name = "All posts"
+url = "/post/"
+weight = 2
 
 [[menu.main]]
-    name = "About"
-    url = "page/about/"
-    weight = 3
+name = "About"
+url = "/page/about/"
+weight = 3
 
 [[menu.main]]
-	name = "Gitlab"
-	url = "http://www.enjian.ml"
-	weight = 2
+name = "Tags"
+url = "/tags"
+weight = 4
 
-#[[menu.main]]
-#    identifier = "samples"
-#    name = "Samples"
-#    weight = 2
-#
-#[[menu.main]]
-#    parent = "samples"
-#    name = "Big Image Sample"
-#    url = "post/2017-03-07-bigimg-sample"
-#    weight = 1
-#
-#[[menu.main]]
-#    parent = "samples"
-#    name = "Math Sample"
-#    url = "post/2017-03-05-math-sample"
-#    weight = 2
-#
-#[[menu.main]]
-#    parent = "samples"
-#    name = "Code Sample"
-#    url = "post/2016-03-08-code-sample"
-#    weight = 3
+# Social media links which shows up on site header.
+# Uses feather icons for icons. You can [search icon names from here](https://feathericons.com/).
+[[params.social]]
+name = "Repogitory"
+icon = "gitlab"
+url = "https://www.enjian.ml"
 
-[[menu.main]]
-    name = "Tags"
-    url = "tags"
-    weight = 3
+#[[params.social]]
+#name = "Twitter"
+#icon = "twitter"
+#url = "https://twitter.com/gohugoio"
+
+# Enable tags.
+[taxonomies]
+   tag = "tags"

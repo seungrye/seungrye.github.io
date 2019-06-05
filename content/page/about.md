@@ -2,6 +2,7 @@
 title: About me
 subtitle: Why you'd want to hang out with me
 comments: false
+disqus: false
 ---
 
 My name is **The Genius Enji**. I have the following qualities:
