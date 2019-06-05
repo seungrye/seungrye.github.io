@@ -21,6 +21,5 @@ pages:
 
 deploy:
   script:
-  - ls -al /deploy/
   - rm -rf /deploy/public
   - cp -r public /deploy/public
