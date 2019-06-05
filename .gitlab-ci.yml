@@ -13,13 +13,11 @@ test:
 pages:
   script:
   - hugo
+  - rm -rf /deploy/public
+  - cp -r public /deploy/public
   artifacts:
     paths:
     - public
   only:
   - master
 
-deploy:
-  script:
-  - rm -rf /deploy/public
-  - cp -r public /deploy/public
