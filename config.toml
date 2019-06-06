@@ -53,9 +53,9 @@ disqusShortname = "handmade-iptime-org"
 
   # Social Icons
   # Check https://github.com/Track3/hermit#social-icons for more info.
-  [[params.social]]
-    name = "facebook"
-    url = "https://www.facebook.com/seungrye.ahn"
+  #[[params.social]]
+  #  name = "facebook"
+  #  url = "https://www.facebook.com/seungrye.ahn"
 
   [[params.social]]
     name = "gitlab"
@@ -63,7 +63,7 @@ disqusShortname = "handmade-iptime-org"
 
   [[params.social]]
     name = "instagram"
-    url = "https://instagram.com/seungrye"
+    url = "https://instagram.com/_u/seungrye/"
 
 [menu]
 
