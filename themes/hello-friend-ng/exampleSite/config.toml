@@ -1,8 +1,7 @@
-baseURL = "http://handmade.iptime.org/"
-title = "HANDMADE LOG"
+baseURL = "https://example.com"
+title   = "Hello Friend NG"
 
-languageCode = "en-us"
-DefaultContentLanguage="en"
+DefaultContentLanguage = "en"
 
 theme = "hello-friend-ng"
 
@@ -20,8 +19,6 @@ contentDir   = "content"
 dataDir      = "data"
 layoutDir    = "layouts"
 publishDir   = "public"
-
-hasCJKLanguage = true
 
 buildDrafts  = false
 buildFuture  = false
@@ -41,7 +38,7 @@ disableHugoGeneratorInject = false
   posts = "/posts/:year/:month/:title/"
 
 [author]
-  name = "Enji"
+  name = "Jane Doe"
 
 [blackfriday]
   hrefTargetBlank = true
@@ -57,11 +54,11 @@ disableHugoGeneratorInject = false
   dateformNumTime = "2006-01-02 15:04 -0700"
 
   # Metadata mostly used in document's head
-  description = "Homepage and blog by Enji"
-  keywords = "homepage, blog, informatics, development, programming"
+  description = "Nice theme for homepages and blogs"
+  keywords = ""
   images = [""]
 
-  homeSubtitle = "Life is Strange"
+  homeSubtitle = "Hello Friend NG"
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
   # gitUrl = ""
@@ -80,50 +77,44 @@ disableHugoGeneratorInject = false
   defaultTheme = "dark"
   themeColor = "#252627"
 
-[params.logo]
-  logoText = "$ cd /home"
-  logoHomeLink = "/"
+  [params.logo]
+    logoText     = "$ cd /home/"
+    logoHomeLink = "/"
 
-[[params.social]]
-  name = "gitlab"
-  url  = "https://www.enjian.ml/"
+  # Social icons
+  [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/"
+
+  [[params.social]]
+    name = "email"
+    url  = "mailto:nobody@example.com"
+
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/"
+
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/"
+
+[languages]
+  [languages.en]
+    subtitle  = "Hello Friend NG Theme"
+    weight    = 1
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+
+  [languages.fr]
+    subtitle  = "Hello Friend NG Theme"
+    weight    = 2
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
 [menu]
   [[menu.main]]
     identifier = "about"
-    name = "About"
-    url = "/page/about"
+    name       = "About"
+    url        = "about/"
   [[menu.main]]
-    identifier = "Posts"
-    name = "Posts"
-    url = "/posts"
-
-[languages]
-  [languages.en]
-#    title = "HANDMADE LOG"
-    subtitle = "Life is Strange"
-    keywords = ""
-    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
-    readOtherPosts = "Read other posts"
-
-
-    #[languages.en.params.logo]
-    #  logoText = "$ cd /home"
-    #  logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
-
-#	# You can create a language based menu
-#    [languages.en.menu]
-#      [[languages.en.menu.main]]
-#        identifier = "about"
-#        name = "About"
-#        url = "/page/about"
-#      [[languages.en.menu.main]]
-#        identifier = "Posts"
-#        name = "Posts"
-#        url = "/posts"
-
-
+    identifier = "posts"
+    name       = "Posts"
+    url        = "posts/"
