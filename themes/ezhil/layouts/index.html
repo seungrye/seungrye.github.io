@@ -19,6 +19,13 @@
 					<div class="meta">{{ dateFormat "Jan 2, 2006" .Date }}</div>
 					<a class="title" href="{{ .RelPermalink }}">{{.Title}}</a> &mdash;
 					<span class="description">
+						{{ if .Truncated }}                                                                                                                                                                                                                  
+							{{ .Summary | plainify | safeHTML }}                                                                                                                                                                                                                     
+                 		{{ else }}                                                                                                                                                                                                                           
+                   			{{ .Content | plainify | safeHTML }}                                                                                                                                                                                                                     
+                 		{{ end }} 
+
+ <!--
 						{{ if isset .Params "description" }}
 							{{ .Description }}
 						{{ else if gt (len .RawContent) 120 }}
@@ -26,6 +33,7 @@
 						{{ else }}
 							{{ .RawContent }}
 						{{ end }}
+ -->
 					</span>
 				</div>
 				{{- $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) -}}
