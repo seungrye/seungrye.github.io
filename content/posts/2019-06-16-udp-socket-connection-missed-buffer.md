@@ -22,6 +22,7 @@ Of receiver.
 #include <iostream>
 #include <string>
 #include <vector>
+#include <thread>
 #include <cstdint>
 #include <cassert>
 #include <boost/make_shared.hpp>
@@ -116,6 +117,7 @@ Of sender.
 #include <iostream>
 #include <string>
 #include <vector>
+#include <thread>
 #include <cstdint>
 #include <cassert>
 #include <boost/make_shared.hpp>
@@ -206,3 +208,29 @@ And still, got only fist small buffer of string.
 
 So, why is it?? 
 
+In `UNIX Network Programming: The socket networking API` book has clue.
+
+```
+OS BSD-derived systems, when a UDP datagram arrives that is larger than the 
+application's buffer, recvmsg sets the MSG_TRUNC flag in the msg_flags member
+of the msghdr structure (Figure 14.7). All Berkeley-derived implementations 
+that support the msghdr structure with the msg_flags member provide this 
+notification.
+
+Unfortunately, not all implementations handle a larger-than-expected UDP 
+datagram in this fashion. There are three possible scenarios:
+ 1. Discard the excess bytes and return the MSG_TRUNC flag to the application. 
+    This requires that the application call recvmsg to receive the flag.
+ 2. Discard the excess bytes, but do not tell the application.
+ 3. Keep the excess bytes and return them in subsequent read operations on the socket.
+
+ Since there are such variations in how implementations handle datagrams that 
+ are larger than the application's receive buffer, one way to detect the 
+ problem is to always allocate an application buffer that is one byte greater 
+ than the largest datagram the application should ever receive. 
+ If a diagram is ever received whose length equals this buffer, consider it 
+ an error.
+```
+
+So, there are 3 possible scenarios, and the third is not possible. cause I already add subsequent read operation already.
+Then, let's find out `MSG_TRUNC` flag on the `msg_flags` member of `msghdr` structure.
