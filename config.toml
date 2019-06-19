@@ -59,7 +59,7 @@ disqusShortname = "handmade-iptime-org"
 
   [[params.social]]
     name = "gitlab"
-    url = "https://www.enjian.ml/"
+    url = "https://handmade.iptime.org/"
 
   [[params.social]]
     name = "instagram"
