@@ -1,5 +1,5 @@
 ---
-title: "Why My Udp Socket Lost Buffer"
+title: "Why my udp socket lost buffer"
 date: 2019-06-16T00:29:10+09:00
 lastmod: 2019-06-20
 draft: false
@@ -79,7 +79,6 @@ int main(void)
     std::cout<<"Exit"<<std::endl;
     return EXIT_SUCCESS;
 }
-
 
 void on_recv(
     boost::shared_ptr<boost::asio::ip::udp::socket> socket, // local socket
@@ -175,7 +174,6 @@ int main(void)
     std::cout<<"Exit"<<std::endl;
     return EXIT_SUCCESS;
 }
-
 
 void on_sent(
     boost::shared_ptr<boost::asio::ip::udp::endpoint> ep_from, // ep to response
