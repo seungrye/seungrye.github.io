@@ -1,6 +1,7 @@
 ---
 title: "Why My Udp Socket Lost Buffer"
 date: 2019-06-16T00:29:10+09:00
+lastmod: 2019-06-20
 draft: false
 categories: [studylog]
 tags: [c++,boost,socket,udp,network,cpp,asio,boost-asio]
