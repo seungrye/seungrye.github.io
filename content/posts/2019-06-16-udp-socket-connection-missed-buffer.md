@@ -240,7 +240,7 @@ Then, let's find out `MSG_TRUNC` flag on the `msg_flags` that member of `msghdr`
 First of all, what `MSG_TRUNC` value is it??
 
 ```bash
-cat /usr/include/bits/socket.h | grep MSG_TRUNC
+$ cat /usr/include/bits/socket.h | grep MSG_TRUNC
     MSG_TRUNC           = 0x20,
 #define MSG_TRUNC       MSG_TRUNC
 ```
@@ -269,7 +269,7 @@ And I check `msg.msg_flags` after returned of `::recvmsg(s, &msg, flags)`.
 It is 0x20. 
 
 ```lldb
-bt
+(lldb) bt
 * thread #2, name = 'asio_udp_receiv', stop reason = step over
   * frame #0: 0x0000555555564780 asio_udp_receiver_sample1`boost::asio::detail::socket_ops::recvfrom(s=6, bufs=0x00007ffff7a6db10, count=1, flags=0, addr=0x000055555559983c, addrlen=0x00007ffff7a6db00, ec=0x0000555555599880) at socket_ops.ipp:941:18
     frame #1: 0x0000555555564839 asio_udp_receiver_sample1`boost::asio::detail::socket_ops::non_blocking_recvfrom(s=6, bufs=0x00007ffff7a6db10, count=1, flags=0, addr=0x000055555559983c, addrlen=0x00007ffff7a6db00, ec=0x0000555555599880, bytes_transferred=0x0000555555599890) at socket_ops.ipp:1015:50
@@ -290,7 +290,7 @@ bt
     frame #16: 0x00007ffff7e65cd4 libstdc++.so.6`execute_native_thread_routine at thread.cc:80:18
     frame #17: 0x00007ffff7f8857f libpthread.so.0`start_thread + 239
     frame #18: 0x00007ffff7b6ff13 libc.so.6`__GI___clone + 67
-p/x msg.msg_flags
+(lldb) p/x msg.msg_flags
 (int) $8 = 0x00000020
 ```
 
