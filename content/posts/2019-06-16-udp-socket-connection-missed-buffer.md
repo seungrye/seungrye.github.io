@@ -203,7 +203,7 @@ on_recv() received message : HELLO UDP
 
 As you can see, I got only half of buffer compare to original sent buffer. ( Where is the `WORLD` string?? :$ )
 Of course, I set receiving buffer size to very small. but I read buffer repeatedly.
-And still, got only fist small buffer of string.
+And still, got only first small buffer of string.
 
 
 So, why is it?? 
@@ -245,7 +245,7 @@ $ cat /usr/include/bits/socket.h | grep MSG_TRUNC
 #define MSG_TRUNC       MSG_TRUNC
 ```
 
-I found the `msg_flags` on variable on `boost::asio::detail::socket_ops::recvfrom(...)`.
+I found the `msg_flags` variable on `boost::asio::detail::socket_ops::recvfrom(...)`.
 
 ```cpp
 signed_size_type recvfrom(socket_type s, buf* bufs, size_t count,
@@ -266,6 +266,7 @@ signed_size_type recvfrom(socket_type s, buf* bufs, size_t count,
 ```
 
 And I check `msg.msg_flags` after returned of `::recvmsg(s, &msg, flags)`.
+
 It is 0x20. 
 
 ```lldb
