@@ -63,6 +63,7 @@ How about whole function?
 This is not what I want. So sad. :(
 
 How can I fix? Before fix code, I should understand what the regex meaning is.
+
 ref : [greedy-vs-non-greedy](https://wikidocs.net/4309#greedy-vs-non-greedy)
 
 * `.*` : greedy search (return maxmium statisfied length string)
