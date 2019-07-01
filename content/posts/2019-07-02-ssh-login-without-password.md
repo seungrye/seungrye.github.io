@@ -60,7 +60,7 @@ id_rsa.pub                                                                      
 ```shell
 [enji@localhost ~]$ ssh enji@192.168.0.4
 enji@192.168.0.4's password:
-Linux localhost 4.9.0-9-amd64 #1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16) x86_64
+Linux home_server 4.9.0-9-amd64 #1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16) x86_64
 
 The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
@@ -70,15 +70,15 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 No mail.
 Last login: Thu Jun 27 21:42:31 2019 from 192.168.0.1
-enji@localhost:~$ cat id_rsa.pub >> $HOME/.ssh/authorized_keys
-enji@localhost:~$ exit
+enji@home_server:~$ cat id_rsa.pub >> $HOME/.ssh/authorized_keys
+enji@home_server:~$ exit
 ```
 
 ## Connect
 
 ```shell
 [enji@localhost ~]$ ssh enji@192.168.0.4
-Linux localhost 4.9.0-9-amd64 #1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16) x86_64
+Linux home_server 4.9.0-9-amd64 #1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16) x86_64
 
 The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
@@ -88,7 +88,7 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 No mail.
 Last login: Tue Jul  2 02:57:51 2019 from 192.168.0.45
-enji@localhost:~$ exit
+enji@home_server:~$ exit
 ```
 
 Actually, this tip is for me. :P
