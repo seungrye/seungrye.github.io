@@ -115,11 +115,11 @@ Let's found out what the `explicit` keyword doing.
 In, cpprefernce has document about [explicit specifier](https://en.cppreference.com/w/cpp/language/explicit).\
 And it saids as follows (and has example code).
 
-> 1) Specifies that a constructor or conversion frunction is explicit, that is, it cannot be used for implicit conversion and **copy-initialization**.
+> 1) Specifies that a constructor or conversion frunction is explicit, that is, it **cannot be used for** implicit conversion and **copy-initialization**.
 
 What The...
 
-In the [copy initialization](https://en.cppreference.com/w/cpp/language/copy_initialization) has mensioned above sentences.
+In the [copy initialization](https://en.cppreference.com/w/cpp/language/copy_initialization) has advert about above sentences.
 
 > If T is a class type and the cv-unqualified version of the type of _other_ is T or a class derived from T, the **non-explicit constructiors of T are examined** and the best match is selected by overload resolution. The constructor is then called to initialize the object.
 
