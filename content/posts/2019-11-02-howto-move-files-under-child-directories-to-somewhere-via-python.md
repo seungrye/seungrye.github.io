@@ -1,5 +1,5 @@
 ---
-title: "Howto Move Files Under Child Directories to Somewhere via Python"
+title: "Howto move files under child directories to somewhere via Python"
 date: 2019-11-02T02:13:42+09:00
 draft: false
 tags: [python, howto, tip]
@@ -26,7 +26,7 @@ $ pwd
 Manually move file is not a good solution :P
 Do it with python.
 
-```
+```python
 import os
 import glob
 import shutil
