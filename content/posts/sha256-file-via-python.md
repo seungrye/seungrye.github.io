@@ -26,5 +26,5 @@ for filename in glob.iglob(os.path.join('.', '*.rar')):
     print(">>>> hash : {hash}".format(file=filename, hash=sha256_hash.hexdigest()))
 ```
 
-Omittd the detailed description.
+Omitted the detailed description.
 
