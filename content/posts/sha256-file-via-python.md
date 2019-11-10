@@ -1,5 +1,5 @@
 ---
-title: "SHA256 has File via Python"
+title: "SHA256 hash on File via Python"
 date: 2019-11-10T19:34:25+09:00
 categories: [howtolog]
 tags: [python,howto,tip,sha256,hash]
