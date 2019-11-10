@@ -10,7 +10,7 @@ When check hash code of file with python.
 
 <!--more-->
 
-```
+```python
 import glob
 import os
 import hashlib
