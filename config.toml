@@ -58,8 +58,8 @@ disqusShortname = "handmade-iptime-org"
   #  url = "https://www.facebook.com/seungrye.ahn"
 
   [[params.social]]
-    name = "gitlab"
-    url = "https://handmade.iptime.org/"
+    name = "github"
+    url = "https://github.com/seungrye"
 
   [[params.social]]
     name = "instagram"
