@@ -1,4 +1,5 @@
-baseURL = "https://www.enjian.ml/"
+#baseURL = "https://www.enjian.ml/"
+baseURL = "https://handmade.iptime.org"
 
 languageCode = "en-us"
 defaultContentLanguage = "en"
