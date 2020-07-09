@@ -22,8 +22,10 @@ for v in itertools.chain(list_a, list_b, list_c):
 
 * `print` 시 라인끝 처리를 공백(' ') 으로 대체하여 출력하도록 처리함.
 
-```py: print 함수는 다음과 같이 정의되어 있음.
+참 쉽쪙? (*￣3￣)╭
+
+**Note. print 함수는 다음과 같이 정의되어 있음**
+
+```py:
 print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 ```
-
-참 쉽쪙? (*￣3￣)╭
