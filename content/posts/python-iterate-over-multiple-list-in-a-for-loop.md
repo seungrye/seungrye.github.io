@@ -18,7 +18,7 @@ list_b = ['7', '8', '9']
 list_c = ['a', 'b', 'c']
 
 for v in itertools.chain(list_a, list_b, list_c):
-    print(v, end =' ')  # `print` 시 라인끝 처리를 공백(' ') 으로 대체하여 출력.
+    print(v, end =' ')  # 라인끝 처리를 공백(' ') 으로 대체
 ```
 
 
@@ -32,6 +32,6 @@ for v in itertools.chain(list_a, list_b, list_c):
 
 
 ```py:
-# note. print 함수는 다음과 같이 정의되어 있음
+# note. print 함수에 end 파라메터는 다음과 같이 정의되어 있음
 print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 ```
