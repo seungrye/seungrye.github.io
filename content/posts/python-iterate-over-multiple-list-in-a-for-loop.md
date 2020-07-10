@@ -17,15 +17,14 @@ list_a = ['1', '2', '3']
 list_b = ['7', '8', '9']
 list_c = ['a', 'b', 'c']
 for v in itertools.chain(list_a, list_b, list_c):
-    print(v, end =' ')
+    print(v, end =' ')  # `print` 시 라인끝 처리를 공백(' ') 으로 대체하여 출력.
 ```
 
-* `print` 시 라인끝 처리를 공백(' ') 으로 대체하여 출력하도록 처리함.
 
 참 쉽쪙? (*￣3￣)╭
 
-**Note. print 함수는 다음과 같이 정의되어 있음**
 
 ```py:
+# note. print 함수는 다음과 같이 정의되어 있음
 print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 ```
