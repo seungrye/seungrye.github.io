@@ -16,10 +16,17 @@ import itertools
 list_a = ['1', '2', '3']
 list_b = ['7', '8', '9']
 list_c = ['a', 'b', 'c']
+
 for v in itertools.chain(list_a, list_b, list_c):
     print(v, end =' ')  # `print` 시 라인끝 처리를 공백(' ') 으로 대체하여 출력.
 ```
 
+
+출력은 다음과 같습니다.
+
+```
+1 2 3 7 8 9 a b c
+```
 
 참 쉽쪙? (*￣3￣)╭
 
