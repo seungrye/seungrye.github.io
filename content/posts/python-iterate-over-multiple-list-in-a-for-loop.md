@@ -31,7 +31,7 @@ for v in itertools.chain(list_a, list_b, list_c):
 참 쉽쪙? (*￣3￣)╭
 
 
-```py:
+```py
 # note. print 함수에 end 파라메터는 다음과 같이 정의되어 있음
 print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 ```
