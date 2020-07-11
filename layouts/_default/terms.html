@@ -6,14 +6,6 @@
 {{ $data := .Data }}
 <main class="site-main section-inner thin animated fadeIn faster">
 	<h1>{{ .Title }}</h1>
-	<!--
-	{{- if .Content }}
-	<div class="content">
-		{{ .Content }}
-	</div>
-	{{- end }}
-	-->
-
 	<div style="text-align: justify;">
 		{{ range $key, $value := .Data.Terms.Alphabetical }}
 		<a href="{{ $.Site.LanguagePrefix }}/{{ $data.Plural }}/{{ $value.Name | urlize }}"
