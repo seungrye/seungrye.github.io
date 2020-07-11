@@ -1,0 +1,31 @@
+{{ define "header" }}
+{{ partialCached "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+{{ $data := .Data }}
+<main class="site-main section-inner thin animated fadeIn faster">
+	<h1>{{ .Title }}</h1>
+	<!--
+	{{- if .Content }}
+	<div class="content">
+		{{ .Content }}
+	</div>
+	{{- end }}
+	-->
+
+	<div style="text-align: justify;">
+		{{ range $key, $value := .Data.Terms.Alphabetical }}
+		<a href="{{ $.Site.LanguagePrefix }}/{{ $data.Plural }}/{{ $value.Name | urlize }}"
+		   class="tag_enji_font_size_{{ $value.Count }}" 
+		   class="list-group-item">
+			{{ $value.Name }}<sup class="badge">{{ $value.Count }}</sup>
+		</a>
+		{{ end }}
+	</div>
+</main>
+{{ end }}
+
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}

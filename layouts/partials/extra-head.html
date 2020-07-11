@@ -1,0 +1,2 @@
+	{{ $tags_enji_style := resources.Get "scss/tags.enji.scss" | resources.ExecuteAsTemplate "css/tags.enji.css" . | toCSS | minify | fingerprint -}}
+	<link rel="stylesheet" href="{{ $tags_enji_style.Permalink }}" {{ printf "integrity=%q" $tags_enji_style.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous">

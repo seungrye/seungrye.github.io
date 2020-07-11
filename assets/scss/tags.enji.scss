@@ -1,0 +1,10 @@
+@for $i from 2 through 1000 {
+	$size: 1em;
+	@if $i <= 50 { $size: 1em + ( 1 / 50 ) * $i; }
+	@if $i >  50 { $size: 2em; }
+	.tag_enji_font_size_#{$i} { font-size: $size; }
+}
+sup.badge { 
+	font-size: 0.5em; 
+	color: gray;
+}
