@@ -1,5 +1,5 @@
 ---
-title: "Iterate over multiple List in a `for` loop"
+title: "Iterate over multiple list in a `for` loop"
 date: 2020-07-08T11:45:14+09:00
 draft: false
 categories: [studylog]
