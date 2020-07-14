@@ -25,4 +25,4 @@ HackCat:~ Songsangjun$ otool -L /bin/ls
 ```
 
 위 예제는 [s0ngsari](https://s0ngsari.tistory.com/entry/otool-object-tool) 에서 발췌했습니다.
-개인적으로 MacOS 를 사용하고 있지 않아서, 직접 명령을 치고, 출력 내용을 긁어올 수 없었습니다. o(TヘTo)
+개인적으로 MacOS 를 사용하고 있지 않아서, 직접 명령을 쳐서 출력 내용을 긁어올 수 없었습니다. o(TヘTo)
