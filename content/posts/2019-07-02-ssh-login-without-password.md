@@ -1,5 +1,5 @@
 ---
-title: "SSH Login Without Password"
+title: "SSH login without password"
 date: 2019-07-02T02:48:42+09:00
 draft: false
 categories: [studylog]
