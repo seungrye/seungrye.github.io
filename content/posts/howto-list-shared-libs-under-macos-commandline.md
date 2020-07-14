@@ -1,7 +1,7 @@
 ---
 title: "Howto list shared libraries that object file uses under MacOS commandline"
 date: 2020-07-13T19:24:15+09:00
-draft: true
+draft: false
 toc: false
 categories: 
   - studylog
