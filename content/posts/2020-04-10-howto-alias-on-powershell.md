@@ -8,7 +8,7 @@ tags: [powershell, alias, profile]
 
 On Powershell environment, you can use alis as following command pattern.
 
-```powershell
+```cmd
 PS> Set-Alias vi C:\tools\neovim\Neovim\bin\nvim.exe
 ```
 
@@ -20,7 +20,7 @@ If so, how can I automatically applied alias when open new powershell window?
 Is there any run commands file something like bash.rc?
 Yes It is.
 
-```powershell
+```cmd
 PS> $profile
 C:\Users\seung\OneDrive\문서\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 PS> mkdir C:\Users\seung\OneDrive\문서\WindowsPowerShell
@@ -31,7 +31,7 @@ PS> nvim C:\Users\seung\OneDrive\문서\WindowsPowerShell\Microsoft.PowerShell_p
 Then set alias command to something.
 In my case?
 
-```powershell
+```cmd
 PS> Get-Content C:\Users\seung\OneDrive\문서\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 set-alias vi nvim
 ```
@@ -40,7 +40,7 @@ set-alias vi nvim
 It's EASY. isn't it? NO!! it is not easy that much.
 You would get following (similar) error if you open new powershell.
 
-```powershell
+```cmd
 Windows PowerShell
 Copyright (C) Microsoft Corporation. All rights reserved.
 
@@ -61,7 +61,7 @@ PS>
 You should set Security Policy.
 I use following policy
 
-```powershell
+```cmd
 PS> Set-ExecutionPolicy RemoteSigned
 
 실행 규칙 변경

@@ -4,6 +4,7 @@ date: 2020-01-13T23:46:32+09:00
 categories: [howtolog]
 tags: [neovim, nvim, rust, window]
 draft: false
+toc: true
 ---
 
 We need rust, neovim, python. that's it.
@@ -19,7 +20,7 @@ Note. Installing Chocolately guide : https://chocolatey.org/install
 
 I can find neovim package in choco
 
-```
+```cmd
 C:\Windows\system32>choco search neovim
 Chocolatey v0.10.15
 neovim 0.4.3 [Approved]
@@ -34,7 +35,7 @@ Note. neovim via choco will installed in C:\tools\neovim
 
 Then I can get following version information.
 
-```
+```cmd
 C:\Windows\system32>nvim --version
 NVIM v0.5.0-309-g05ea3c199
 Build type: RelWithDebInfo
@@ -57,7 +58,7 @@ neovim can not find proper python path.
 
 I use choco to install python3
 
-```
+```cmd
 C:\Users\seung>choco search python3
 Chocolatey v0.10.15
 python3 3.8.1.20200110 [Approved]
@@ -80,7 +81,7 @@ rustup component add clippy
 Note. it require rust version 1.4.0+
 Note. it requires terminal with Administrator permission.
 
-```
+```cmd
 C:\Windows\system32>cd %HOMEPATH%
 C:\Users\seung>git clone https://github.com/rust-analyzer/rust-analyzer
 Cloning into 'rust-analyzer'...
@@ -105,7 +106,7 @@ Open PowerShell terminal and type following
 
 Note. see https://jdhao.github.io/2018/11/15/neovim_configuration_windows/#install-plugin-manager-vim-plug
 
-```
+```cmd
 PS C:\Users\seung> md ~\AppData\Local\nvim\autoload
 
 
@@ -130,9 +131,9 @@ PS C:\Users\seung>pip install pynvim
 # Setup neovim for rust development
 edit init.vim file on "~\AppData\Local\nvim\init.vim"
 
-Note. following setting is in https://dev.to/drmason13/configure-neovim-for-rust-development-1fjn
+Note. following setting is in [Configure neovim for rust development](https://dev.to/drmason13/configure-neovim-for-rust-development-1fjn)
 
-```
+```vim
 call plug#begin()
 Plug 'neovim/nvim-lsp'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
