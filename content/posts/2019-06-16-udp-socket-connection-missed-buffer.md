@@ -52,9 +52,9 @@ int main(void)
 
     auto socket = boost::make_shared<boost::asio::ip::udp::socket>(
         io_service,
-    boost::asio::ip::udp::endpoint(
-        boost::asio::ip::udp::v4(),
-        port));
+        boost::asio::ip::udp::endpoint(
+            boost::asio::ip::udp::v4(),
+            port));
     assert(socket != nullptr);
 
     auto buffer = boost::make_shared<std::vector<uint8_t>>(10); // 10 byte length
@@ -73,7 +73,6 @@ int main(void)
             boost::asio::placeholders::error,
             boost::asio::placeholders::bytes_transferred));
 
-
     thread->join();
 
     std::cout<<"Exit"<<std::endl;
@@ -89,8 +88,8 @@ void on_recv(
 {
     if (ec)
     {
-            std::cerr<<__func__<<"() error code : "<<ec.message()<<std::endl;
-            return ;
+        std::cerr<<__func__<<"() error code : "<<ec.message()<<std::endl;
+        return ;
     }
 
     std::cout<<__func__<<"() recv "<<bytes_tranferred<<" bytes"<<std::endl;
@@ -167,7 +166,6 @@ int main(void)
            buffer, // prevent to loose reference count
            boost::asio::placeholders::error,
            boost::asio::placeholders::bytes_transferred));
-
 
     thread->join();
 
