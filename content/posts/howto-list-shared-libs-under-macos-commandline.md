@@ -1,5 +1,5 @@
 ---
-title: "Howto list shared libraries that object file uses under MacOS commandline"
+title: "How to list linked shared libraries under MacOS"
 date: 2020-07-13T19:24:15+09:00
 draft: false
 toc: false
@@ -13,7 +13,7 @@ tags:
   - commandline
 ---
 
-MacOS 상에서, 실행파일이 사용하는 라이브러리 목록을 알고 싶을때 다음과 같이 otool 명령을 사용하여 확인할수 있습니다.
+MacOS 상에서, 실행파일이 사용하는 라이브러리 목록을 알고 싶을때 다음과 같이 `otool` 명령을 사용하여 확인할수 있습니다.
 
 ```sh
 HackCat:~ Songsangjun$ otool -L /bin/ls
