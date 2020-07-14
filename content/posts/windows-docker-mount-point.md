@@ -5,15 +5,15 @@ draft: false
 toc: false
 categories:
   - studylog
-      tags:
+tags:
   - tip
   - docker
   - wsl2
   - windows
   - mounts
-      ---
+---
 
-      Windows 10 에서 Docker Desktop 을 사용할때, mount point 를 어떻게 지정해야 하는지 모르겠을때 참고하기 위해 작성합니다.
+Windows 10 에서 Docker Desktop 을 사용할때, mount point 를 어떻게 지정해야 하는지 모르겠을때 참고하기 위해 작성합니다.
 
 
 ![WSL2Integrated](/posts/resources/_gen/images/2020-07-15 000903.png)
