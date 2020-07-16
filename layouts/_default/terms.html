@@ -6,15 +6,30 @@
 {{ $data := .Data }}
 <main class="site-main section-inner thin animated fadeIn faster">
 	<h1>{{ .Title }}</h1>
-	<div style="text-align: justify;">
-		{{ range $key, $value := .Data.Terms.Alphabetical }}
+	<div id="TAGS" style="text-align: justify;">
+        {{ range $key, $value := shuffle ( .Data.Terms.Alphabetical ) }}
 		<a href="{{ $.Site.LanguagePrefix }}/{{ $data.Plural }}/{{ $value.Name | urlize }}"
-		   class="tag_enji_font_size_{{ $value.Count }}" 
-		   class="list-group-item">
-			{{ $value.Name }}<sup class="badge">{{ $value.Count }}</sup>
+		    class="tag-size-{{ $value.Count }}"
+            class="list-group-item">{{ $value.Name }}<sup class="badge">{{ $value.Count }}</sup>
 		</a>
-		{{ end }}
+        {{ end }}
 	</div>
+    <script>
+        // add styles for tag
+        let div_tags = document.getElementById("TAGS");
+        let sups = div_tags.getElementsByTagName('sup');
+        let sizes = [];
+        for (let i = 0; i < sups.length; ++i) {
+            text = sups[i].innerText;
+            if (sizes.indexOf(text) === -1) sizes.push(text);
+        }
+        sizes.forEach((size) => {
+            let style = document.createElement('style');
+            let font_size = (1 + ( 1 / 50 ) * size);
+            style.innerHTML = ".tag-size-"+size+" { font-size: "+font_size+"em; };";
+            document.head.appendChild(style);
+        });
+    </script>
 </main>
 {{ end }}
 
