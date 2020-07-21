@@ -119,5 +119,5 @@ length of dict =>  0
 
 위 내용은 [StackOverflow](https://stackoverflow.com/a/23036575) 내용을 참고하여 작성했습니다.
 
-사실, 나중애 내가 보려고 작성함. (｀ 3)
+사실, 나중애 내가 보려고 작성함. (. ❛ ᴗ ❛.)
 
