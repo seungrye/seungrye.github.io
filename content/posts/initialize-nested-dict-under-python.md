@@ -1,5 +1,5 @@
 ---
-title: "Initialize recursive dict under Python"
+title: "Initialize nested dict under Python"
 date: 2020-07-21T10:37:57+09:00
 authors: ["안승례"]
 
