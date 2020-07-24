@@ -1,7 +1,7 @@
 ---
 title: "Convert nested dict to ordered dict on Python"
 date: 2020-07-23T16:56:10+09:00
-draft: true
+draft: false
 toc: false
 images:
 tags: [collections, OrderedDict, dict, python, tip, code]
@@ -50,4 +50,4 @@ def to_ordereddict(item):
 OrderedDict([('a', 1), ('b', [2, 3, 4]), ('c', OrderedDict([('d', 5)])), ('d', '6789')])
 ```
 
-괜찮죠?
+괜찮죠? (¬‿¬)
