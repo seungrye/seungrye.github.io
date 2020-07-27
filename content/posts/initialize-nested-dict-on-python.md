@@ -54,7 +54,7 @@ Traceback (most recent call last):
 ```
 Key 가 없을 경우, Access 에러가 발생합니다.
 
-PERL 과 유사하게 동작하도록 할수는 없을까영@.@?
+Perl 과 유사하게 동작하도록 할수는 없을까영@.@?
 
 다음과 같이 하면 됩니다.
 
