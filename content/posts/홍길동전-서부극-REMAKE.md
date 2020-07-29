@@ -54,4 +54,5 @@ tags: [홍길동전, 활빈당, scenario, story, twitter, humor]
 
 ----
 
-출처 : [납자루 twitter](https://twitter.com/napjaloo/status/1266208458476384256)
+* 출처 : [납자루 twitter](https://twitter.com/napjaloo/status/1266208458476384256)
+* 원 줄거리 : [Wikipedia 홍길동전](https://ko.wikipedia.org/wiki/%ED%99%8D%EA%B8%B8%EB%8F%99%EC%A0%84)
