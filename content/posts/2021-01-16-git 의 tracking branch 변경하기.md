@@ -39,4 +39,4 @@ tracking branch 변경
 $ git branch master --set-upstream-to origin/main
 {{</highlight>}}
 
-Note. 기억에 의존해 적는거라 중간 과정 (출력 내용) 및 정상 동작시의 (출력) 내용이 빠져있습니다. :(
+Note. 기억에 의존해 적는거라 중간 과정 (출력 내용) 및 git pull 정상 동작시의 (출력) 내용이 빠져있습니다. :(
