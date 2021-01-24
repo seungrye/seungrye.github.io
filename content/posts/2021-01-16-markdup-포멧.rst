@@ -1,0 +1,107 @@
++++
+title = "Markup 포멧들"
+date = "2021-01-24"
+tags = ["markup", "Markdown", "md", "reStructuredText", "rst", "AsciiDoc", "Creole", "Org-Mode", "POD", "RDoc", "Textile"]
+draft = "false"
++++
+
+.. contents:: Table of Contents
+
+Markdown_
+=========
+* write using an easy-to-read, easy-to-write plain text
+* convertable to structurally valid XHTML (or HTML)
+* .md
+
+Application
+-----------
+* Note: People developed these mostly driven by the need for additional features on top of the base syntax
+* Sites like GitHub, Bitbucket, Reddit, Diaspora, Stack Exchange, OpenStreetMap, and SourceForge use variants of Markdown
+
+reStructuredText_
+=================
+* easy-to-read, what-you-see-is-what-you-get plaintext markup syntax
+* for use in Python docstrings and other documentation domains
+* .rst
+
+Application
+-----------
+* Python
+* In July 2016 the `Linux kernel documentation with Sphinx and reStructuredText <https://lwn.net/Articles/692704/>`_
+* `CMake documentation has been converted to reStructuredText in version 3.0 <https://cmake.org/cmake/help/v3.0/release/3.0.0.html>`_
+
+
+Example
+-------
+
+Table of Contents (TOC)
+```````````````````````
+
+.. code-block:: RST
+
+    .. toctree::
+
+
+AsciiDoc_
+=========
+
+MediaWiki_
+==========
+* developed for use on Wikipedia
+
+Application
+-----------
+* `MediaWiki websites <https://en.wikipedia.org/wiki/Category:MediaWiki_websites>`_
+
+Creole_
+=======
+* common wiki markup language to be used across different wikis
+* enabling wiki users to transfer content seamlessly across wikis
+
+Application
+-----------
+* `Many wiki engines <http://www.wikicreole.org/wiki/Engines>`_
+
+Org-mode_
+=========
+* outliner for note-taking and list management
+
+Application
+-----------
+* Emacs editor (todo management)
+* Github / Gitlab
+
+POD_ (Plain Old Document)
+=========================
+* used to document the Perl programming language
+
+Application
+-----------
+* Perl
+
+RDoc_
+=====
+* embedded documentation generator for the Ruby programming language
+
+Application
+-----------
+* Ruby
+
+Textile_
+========
+* used for writing articles, forum posts, readme documentation
+
+Application
+-----------
+* `Various projects <https://en.wikipedia.org/wiki/Textile_(markup_language)#Software_and_services>`_
+
+
+.. _MediaWiki: https://www.mediawiki.org/wiki/MediaWiki
+.. _POD: https://perldoc.perl.org/perlpod
+.. _Markdown: https://daringfireball.net/projects/markdown/
+.. _reStructuredText: https://docutils.readthedocs.io/en/sphinx-docs/ref/rst/introduction.html
+.. _AsciiDoc: https://asciidoc.org/
+.. _Creole: http://www.wikicreole.org/
+.. _Org-mode: https://orgmode.org/
+.. _Textile: https://textile-lang.com/
+.. _RDoc: https://ruby.github.io/rdoc/
