@@ -1,11 +1,16 @@
 +++
-title = "Markup 포멧들"
+title = "Markup Languages"
 date = "2021-01-24"
-tags = ["markup", "Markdown", "md", "reStructuredText", "rst", "AsciiDoc", "Creole", "Org-Mode", "POD", "RDoc", "Textile"]
+tags = ["Markup", "Markdown", "md", "reStructuredText", "rst", "AsciiDoc", "Creole", "Org-Mode", "POD", "RDoc", "Textile"]
 draft = "false"
 +++
 
 .. contents:: Table of Contents
+
+What is Markup Language?
+========================
+마크업 언어(Markup Language)는 문서나 데이터의 구조를 명기하는 언어.
+즉, when the document is processed for display, the markup language is not shown, and is only used to format the text.
 
 Markdown_
 =========
@@ -30,6 +35,13 @@ Application
 * In July 2016 the `Linux kernel documentation with Sphinx and reStructuredText <https://lwn.net/Articles/692704/>`_
 * `CMake documentation has been converted to reStructuredText in version 3.0 <https://cmake.org/cmake/help/v3.0/release/3.0.0.html>`_
 
+Pros
+----
+* 목차를 자동으로 생성해줌
+
+Cons
+----
+* 명시적으로 'new line' 입력을 할 수 없음.
 
 Example
 -------
