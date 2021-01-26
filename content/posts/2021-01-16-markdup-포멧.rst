@@ -1,7 +1,7 @@
 +++
-title = "Markup 포멧들"
+title = "Markup Languages"
 date = "2021-01-24"
-tags = ["markup", "Markdown", "md", "reStructuredText", "rst", "AsciiDoc", "Creole", "Org-Mode", "POD", "RDoc", "Textile"]
+tags = ["Markup", "Markdown", "md", "reStructuredText", "rst", "AsciiDoc", "Creole", "Org-Mode", "POD", "RDoc", "Textile"]
 draft = "false"
 +++
 
@@ -10,11 +10,20 @@ draft = "false"
 
 .. contents:: Table of Contents
 
+What is Markup Language?
+========================
+마크업 언어(Markup Language)는 문서나 데이터의 구조를 명기하는 언어.
+즉, when the document is processed for display, the markup language is not shown, and is only used to format the text.
+
 Markdown_
 =========
 * write using an easy-to-read, easy-to-write plain text
 * convertable to structurally valid XHTML (or HTML)
 * .md
+
+Features
+--------
+* paragraph, line break, heading, italic, bold, link, blockquote, ordered list, unordered list, code block, image, horizontal rule, escape char
 
 Application
 -----------
@@ -27,15 +36,105 @@ reStructuredText_
 * for use in Python docstrings and other documentation domains
 * .rst
 
+Features
+--------
+* paragraph, heading, italic, bold, link, blockquote, ordered list, unordered list, definition list, field list, option list, table, footnote, citation, code block, image, horizontal rule, escape char, table of content
+
 Application
 -----------
 * Python
 * In July 2016 the `Linux kernel documentation with Sphinx and reStructuredText <https://lwn.net/Articles/692704/>`_
 * `CMake documentation has been converted to reStructuredText in version 3.0 <https://cmake.org/cmake/help/v3.0/release/3.0.0.html>`_
 
+Pros
+----
+* 목차를 자동으로 생성해줌
+
+Cons
+----
+* 명시적으로 'new line' 입력을 할 수 없음.
 
 Example
 -------
+
+Definition list
+```````````````
+.. code-block:: RST
+
+    what
+      Definition lists associate a term with a definition.
+
+----
+
+what
+  Definition lists associate a term with a definition.
+
+Field list
+``````````
+.. code-block:: RST
+
+    :Version: 1.0 of 2021/01/25
+    
+----
+
+:Version: 1.0 of 2021/01/25
+
+Option list
+```````````
+.. code-block:: RST
+
+    -b file       options can have arguments and long descriptions
+    --input=file  long options can also have arguments
+    /V            DOS/VMS-style options too              
+
+----
+
+-b file       options can have arguments and long descriptions
+--input=file  long options can also have arguments
+/V            DOS/VMS-style options too              
+
+
+Footnote
+````````
+.. code-block:: RST
+
+    hello world [3]_ is first
+    code for junior programmers.
+
+    .. [3] ``print('Hello world')``
+
+----
+
+hello world [3]_ is first
+code for junior programmers.
+
+.. [3] ``print('Hello world')``
+
+
+Citation
+````````
+.. code-block:: RST
+
+    hello world is first [code]_ for junior programmers.
+
+    .. [code] ``print('Hello world')``
+
+----
+
+hello world is first [code]_ for junior programmers.
+
+.. [code] ``print('Hello world')``
+
+Escape character
+````````````````
+.. code-block:: RST
+
+    \*\*escape\*\* **string**
+    
+----
+
+\*\*escape\*\* **string**
+
 
 Table of Contents (TOC)
 ```````````````````````
