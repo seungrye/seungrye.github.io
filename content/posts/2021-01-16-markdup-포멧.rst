@@ -2,7 +2,7 @@
 title = "Markup Languages"
 date = "2021-01-24"
 tags = ["Markup", "Markdown", "md", "reStructuredText", "rst", "AsciiDoc", "Creole", "Org-Mode", "POD", "RDoc", "Textile"]
-draft = "false"
+draft = "true"
 +++
 
 .. image:: "/img/2021-01-25 091545.png"
@@ -21,12 +21,26 @@ Markdown_
 * convertable to structurally valid XHTML (or HTML)
 * .md
 
+.. _markdown_features:
+
 Features
 --------
-* paragraph, line break, heading, italic, bold, link, blockquote, ordered list, unordered list, code block, image, horizontal rule, escape char
+
+* paragraph
+* line break
+* heading
+* italic
+* bold
+* link
+* blockquote
+* list
+* code block
+* image
+* etc...
 
 Application
 -----------
+
 * Note: People developed these mostly driven by the need for additional features on top of the base syntax
 * Sites like GitHub, Bitbucket, Reddit, Diaspora, Stack Exchange, OpenStreetMap, and SourceForge use variants of Markdown
 
@@ -36,9 +50,31 @@ reStructuredText_
 * for use in Python docstrings and other documentation domains
 * .rst
 
+.. _restructuredtext_features:
+
 Features
 --------
-* paragraph, heading, italic, bold, link, blockquote, ordered list, unordered list, definition list, field list, option list, table, footnote, citation, code block, image, horizontal rule, escape char, table of content
+
+* paragraph
+* heading
+* italic
+* bold
+* link
+* blockquote
+* list
+    * ordered list
+    * unordered list
+    * `definition list <definition-list>`_
+    * field list
+    * option list
+* table [#]_
+* footnote
+* code block
+* image
+* table of content
+* etc..
+
+.. [#] limited. (no row spans, etc..)
 
 Application
 -----------
@@ -53,9 +89,14 @@ Pros
 Cons
 ----
 * 명시적으로 'new line' 입력을 할 수 없음.
+* table 작성이 제한적임
+* 들여쓰기된 내용을 작성할 수 없음.
+    * code inside sub-paragraph
 
 Example
 -------
+
+.. _definition-list:
 
 Definition list
 ```````````````
@@ -74,7 +115,7 @@ Field list
 .. code-block:: RST
 
     :Version: 1.0 of 2021/01/25
-    
+
 ----
 
 :Version: 1.0 of 2021/01/25
@@ -85,13 +126,13 @@ Option list
 
     -b file       options can have arguments and long descriptions
     --input=file  long options can also have arguments
-    /V            DOS/VMS-style options too              
+    /V            DOS/VMS-style options too
 
 ----
 
 -b file       options can have arguments and long descriptions
 --input=file  long options can also have arguments
-/V            DOS/VMS-style options too              
+/V            DOS/VMS-style options too
 
 
 Footnote
@@ -130,7 +171,7 @@ Escape character
 .. code-block:: RST
 
     \*\*escape\*\* **string**
-    
+
 ----
 
 \*\*escape\*\* **string**
