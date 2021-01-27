@@ -158,6 +158,9 @@ int a=1, b=2,c=0;
 
 ----
 
+# Lambda 의 유래 (?)
+* Under construct 💦
+----
 # Functional language
 
 * 함수를 1급 객체로 취급합니다.
@@ -193,3 +196,11 @@ std::functional(int<char,float,void*>) fn = [](char a, float b, void* c)->int{
     printf("%c, %f, %p", a, b, c);
 };
 ```
+
+----
+
+# References
+* [MSDN C++의 람다 식](https://docs.microsoft.com/ko-kr/cpp/cpp/lambda-expressions-in-cpp?view=msvc-160)
+* [MSDN 람다식의 예](https://docs.microsoft.com/ko-kr/cpp/cpp/examples-of-lambda-expressions?view=msvc-160)
+* [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen)
+* [함수형 프로그래밍 요약](https://velog.io/@kyusung/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9A%94%EC%95%BD)
