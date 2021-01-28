@@ -1,5 +1,5 @@
 ---
-title: "C++ 에서 Lambda 와 Functional Language feature"
+title: "C++ 에서 Lambda 와 Functional feature"
 date: 2021-01-27
 draft: false
 toc: false
@@ -58,6 +58,7 @@ void main() {
 * **[x]** : 변수 x 를 값으로 가져옴
 * **[=, &x]** : lambda 함수 외부 변수를 값으로 가져오되, 변수 x 는 참조로 가져옴
 * **[x, &y, &z]** : 변수 x 는 값으로, y, z 는 참조로 가져옴
+
 ----
 
 # Capture Demo
@@ -160,7 +161,9 @@ int a=1, b=2,c=0;
 
 # Lambda 의 유래 (?)
 * Under construct 💦
+
 ----
+
 # Functional language
 
 * 함수를 1급 객체로 취급합니다.
