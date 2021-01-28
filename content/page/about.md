@@ -10,10 +10,5 @@ My name is **The Genius Enji**. I have the following qualities:
 - I'm extremely failure as a programmer
 - I like watching movies on theater
 
-That rug really tied the room together.
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you
-just watch [Game Of Thrones](https://en.wikipedia.org/wiki/Game_of_Thrones) 
-and it will answer **all** your questions.
+### Movies what I like
+* [#jesuislà](https://ko.wikipedia.org/wiki/%EC%95%84%EC%9D%B4%EC%97%A0%ED%9E%88%EC%96%B4_(2019%EB%85%84_%EC%98%81%ED%99%94))
