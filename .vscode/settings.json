@@ -1,4 +1,7 @@
 {
     "restructuredtext.confPath": "",
-    "editor.fontFamily": "Consolas, monospace"
+    "editor.fontFamily": "Consolas, monospace",
+    "editor.formatOnSave": false,
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
 }

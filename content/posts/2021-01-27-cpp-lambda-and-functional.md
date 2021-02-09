@@ -73,14 +73,14 @@ void main() {
 # Capture Demo
 
 ```c++
-    int x(5),y(6),z(7);
-    int* p = &z;
-    [=, x, &y, p](){
-        printf("%d %d %d %d\n", x, y, z, *p);
-        // x=15, z=17;  // call-by-val can not modified
-        y=16, *p=27;    // p point to z
-    }();
+int x(5),y(6),z(7);
+int* p = &z;
+[=, x, &y, p](){
     printf("%d %d %d %d\n", x, y, z, *p);
+    // x=15, z=17;  // call-by-val can not modified
+    y=16, *p=27;    // p point to z
+}();
+printf("%d %d %d %d\n", x, y, z, *p);
 ```
 
 출력
@@ -95,13 +95,13 @@ void main() {
 # Capture Quiz
 
 ```c++
-    int a = 0;
-    int* p = &a;
-    [=, &p](){
-        *p = 1;
-        std::cout<<" inside lambda> a:"<<a<<", p:"<<*p<<std::endl;
-    }();
-    std::cout<<"outside lambda> a:"<<a<<", p:"<<*p<<std::endl;
+int a = 0;
+int* p = &a;
+[=, &p](){
+    *p = 1;
+    std::cout<<" inside lambda> a:"<<a<<", p:"<<*p<<std::endl;
+}();
+std::cout<<"outside lambda> a:"<<a<<", p:"<<*p<<std::endl;
 ```
 
 출력
@@ -186,6 +186,7 @@ int a=1, b=2,c=0;
       ```
         * 상태를 갖음
         * class 선언을 해야 함
+
 ----
 
 # Functor vs Lambda
@@ -266,11 +267,11 @@ std::functional(int<char,float,void*>) fn = [](char a, float b, void* c)->int{
 * **1급 객체 함수**, 고차 함수 (First-class, Higher-order function)
 * 불변 변수 (Immutable)
 
-[comment]: <> ( // https://hackr.io/blog/functional-programming
-    순수 함수 : 상태를 갖지 않음으로, 입력에 대한 출력이 항상 동일함. 따라서, 디버깅, Concurrent application 작성이 쉬움
-    재귀 : for 나 while 같은 loop 가 없음. 따라서 재귀를 통해서 반복된 작업을 수행함.
-    참조 투명성 : 한번 정의된 변수는 작업을 수행하는 과정에서 값이 변경되지 않음. 어느 시점에 확인해도 동일한 값이 유지됨
-    1급 객체, 고차 함수 : 1급 객체 -> 변수처럼 취급되는 함수. 고차 함수 -> 함수를 파라메터로 받거나, 리턴값으로 반환하는 함수
+[comment]: <> ( // https://hackr.io/blog/functional-programming  
+    순수 함수 : 상태를 갖지 않음으로, 입력에 대한 출력이 항상 동일함. 따라서, 디버깅, Concurrent application 작성이 쉬움  
+    재귀 : for 나 while 같은 loop 가 없음. 따라서 재귀를 통해서 반복된 작업을 수행함.  
+    참조 투명성 : 한번 정의된 변수는 작업을 수행하는 과정에서 값이 변경되지 않음. 어느 시점에 확인해도 동일한 값이 유지됨  
+    1급 객체, 고차 함수 : 1급 객체 -> 변수처럼 취급되는 함수. 고차 함수 -> 함수를 파라메터로 받거나, 리턴값으로 반환하는 함수  
     불변 변수 : 한번 초기화되면 더이상 수정 불가
 )
 
