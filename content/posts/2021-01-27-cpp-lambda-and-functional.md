@@ -178,14 +178,14 @@ int a=1, b=2,c=0;
 # (C++ 의) Lambda 란?
 
 * 함수 객체와 동일한 익명함수 이다.
-    * 함수 객체 (functor)
-      ```c++
-        struct Add { int operator()(int a, int b){ return a + b;} };
-        Add adder;
-        std::cout<<adder(1, 2);
-      ```
-        * 상태를 갖음
-        * class 선언을 해야 함
+  * 함수 객체 (functor)
+    ```c++
+      struct Add { int operator()(int a, int b){ return a + b;} };
+      Add adder;
+      std::cout<<adder(1, 2);
+    ```
+    * 상태를 갖음
+    * class 선언을 해야 함
 
 ----
 
