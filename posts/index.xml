@@ -95,11 +95,11 @@ outside lambda&gt; a:?, p:?
 <ul>
 <li>이걸 굳이 설명할 필요가&hellip; (￣ ‘i ￣;)</li>
 </ul>
-<p><img src="./resources/_gen/images/3944540494575102317111-1315200466783997952.jpg" alt="height:400px"></p>
+<p><img src="/posts/resources/_gen/images/3944540494575102317111-1315200466783997952.jpg" alt="height:400px"></p>
 <hr>
 <h1 id="다음장-부터는-뭘-좋아할지-몰라서-다-준비해본-것들임">다음장 부터는 뭘 좋아할지 몰라서 다 준비해본 것들임.</h1>
 <h2 id="두서없음에-주의-">두서없음에 주의 💦</h2>
-<p><img src="./resources/_gen/images/bring_all.png" alt="bg right:40% 80%"></p>
+<p><img src="/posts/resources/_gen/images/bring_all.png" alt="bg right:40% 80%"></p>
 <hr>
 <h1 id="c-의-lambda-란">(C++ 의) Lambda 란?</h1>
 <ul>
@@ -152,7 +152,7 @@ outside lambda&gt; a:?, p:?
 <span class="p">}</span>
 </code></pre></div><hr>
 <h2 id="this-capture-comparison">this capture comparison</h2>
-<p><img src="./resources/_gen/images/capture-this-in-lambda-expression-timeline-of-change.png" alt="height:500px"></p>
+<p><img src="/posts/resources/_gen/images/capture-this-in-lambda-expression-timeline-of-change.png" alt="height:500px"></p>
 <hr>
 <h1 id="lambda-재귀">Lambda 재귀</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">f</span><span class="p">](</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">int</span><span class="p">{</span> <span class="k">return</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">n</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="p">};</span>
