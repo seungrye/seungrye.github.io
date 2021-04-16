@@ -164,14 +164,14 @@ int a=1, b=2,c=0;
 
 * 이걸 굳이 설명할 필요가... (￣ ‘i ￣;)
 
-![height:400px](./resources/_gen/images/3944540494575102317111-1315200466783997952.jpg)
+![height:400px](/posts/resources/_gen/images/3944540494575102317111-1315200466783997952.jpg)
 
 ----
 
 # 다음장 부터는 뭘 좋아할지 몰라서 다 준비해본 것들임.
 ## 두서없음에 주의 💦
 
-![bg right:40% 80%](./resources/_gen/images/bring_all.png)
+![bg right:40% 80%](/posts/resources/_gen/images/bring_all.png)
 
 ----
 
@@ -236,7 +236,7 @@ int main() {
 ---
 
 ## this capture comparison
-![height:500px](./resources/_gen/images/capture-this-in-lambda-expression-timeline-of-change.png)
+![height:500px](/posts/resources/_gen/images/capture-this-in-lambda-expression-timeline-of-change.png)
 
 ---
 
