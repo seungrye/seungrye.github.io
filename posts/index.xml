@@ -34,7 +34,7 @@
 <ul>
 <li><strong>[&amp;]</strong> : lambda 함수 외부 변수를 참조로 가져옴 (call-by-ref)</li>
 <li><strong>[=]</strong> :  lambda 함수 외부 변수를 값으로 가져옴 (call-by-val)</li>
-<li><strong><input checked="" disabled="" type="checkbox"> </strong> : 변수 x 를 값으로 가져옴</li>
+<li><strong>[x]</strong> : 변수 x 를 값으로 가져옴</li>
 <li><strong>[=, &amp;x]</strong> : lambda 함수 외부 변수를 값으로 가져오되, 변수 x 는 참조로 가져옴</li>
 <li><strong>[x, &amp;y, &amp;z]</strong> : 변수 x 는 값으로, y, z 는 참조로 가져옴</li>
 </ul>
