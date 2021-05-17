@@ -1,9 +1,9 @@
 +++
-title: "Async, Await"
-date: "2021-05-16"
-draft: "true"
-categories: [studylog]
-tags: [async,seminar,async,howto]
+title = "Async, Await"
+date = "2021-05-16"
+draft = "true"
+categories = [studylog]
+tags = [async,seminar,async,howto]
 +++
 
 
