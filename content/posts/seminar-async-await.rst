@@ -10,8 +10,9 @@ tags = ["async","seminar","async","howto"]
 .. contents:: Table of Contents
 
 
+*************************
 concurrency / parallelism
-=========================
+*************************
 
 .. image:: ./resources/_gen/images/1_Q_UZeToStz8YY2oQGiUPqw.png
   :width: 640
@@ -20,16 +21,18 @@ concurrency / parallelism
 * concurrency : 동시성
 * parallelism : 병렬성
 
+******
 syntax
-======
+******
 
 asyncronous in JavaScript
--------------------------
+=========================
 
 timeout
-~~~~~~~
+-------
 
-.. code-block::html
+.. code-block:: html
+
     <body>
         <script>
             function async_fn(cb) {
@@ -74,9 +77,10 @@ timeout
     </body>
 
 callback hell
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-.. code-block::JavaScript
+.. code-block:: JavaScript
+
     function do_something1(v, cb) { setTimeout(() => { cb(v+'1'); }, 100); }
     function do_something2(v, cb) { setTimeout(() => { cb(v+'2'); }, 100); }
     function do_something3(v, cb) { setTimeout(() => { cb(v+'3'); }, 100); }
@@ -91,9 +95,10 @@ callback hell
     });
 
 promise
-~~~~~~~
+-------
 
-.. code-block::html
+.. code-block:: html
+
     <body>
         <script>
             'use strict';
@@ -134,9 +139,10 @@ promise
     </body>
 
 chaining instead of callback
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block::JavaScript
+.. code-block:: JavaScript
+
     function do_something1(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'1'); }, 100); }); }
     function do_something2(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'2'); }, 100); }); }
     function do_something3(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'3'); }, 100); }); }
@@ -146,9 +152,10 @@ chaining instead of callback
         .then(/*resolve fn*/(r) => { console.log("after do_something3 "+r); });
 
 async, await
-~~~~~~~~~~~~
+------------
 
-.. code-block:html
+.. code-block:: html
+
     <body>
         <script>
             'use strict';
@@ -193,9 +200,10 @@ async, await
     </body>
 
 synchronous-like
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
-.. code-block::JavaScript
+.. code-block:: JavaScript
+
     // async function return 'new Promise()' object.
     async function sleep(m) { return new Promise(resolve => setTimeout(() => resolve(), m)); }
     async function do_something1(v) { await sleep(100); return v+'1'; }
@@ -212,28 +220,29 @@ synchronous-like
     console.log("what?");
         
 asyncronous in Python
----------------------
+=====================
 
 yield
-~~~~~
+------
 
 async
-~~~~~
+-----
 
 asyncronous in C++
-------------------
+==================
 
 thread
-~~~~~~
+--------
 
 future, promise
-~~~~~~~~~~~~~~~
+---------------
 
 async, await
-~~~~~~~~~~~~
+------------
 
 demo
-----
+^^^^^
 
+******************
 c++ implementation
-==================
+******************
