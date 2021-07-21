@@ -17,9 +17,9 @@ world : PERL
 
 <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>][</span><span class=s1>&#39;world&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=s1>&#39;PYTHON&#39;</span>
 
-<span class=k>print</span><span class=p>(</span><span class=s2>&#34;dict_ : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>)</span>
-<span class=k>print</span><span class=p>(</span><span class=s2>&#34;hello : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>])</span>
-<span class=k>print</span><span class=p>(</span><span class=s2>&#34;world : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>][</span><span class=s1>&#39;world&#39;</span><span class=p>])</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&#34;dict_ : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&#34;hello : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>])</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&#34;world : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>][</span><span class=s1>&#39;world&#39;</span><span class=p>])</span>
 </code></pre></div><p>출력 결과는 다음과 같습니다.</p><div class=highlight><pre class=chroma><code class=language-text data-lang=text>Traceback (most recent call last):
   File &#34;./Playground/file0.py&#34;, line 5, in &lt;module&gt;
       dict_[&#39;hello&#39;][&#39;world&#39;] = &#39;PYTHON&#39;
@@ -34,9 +34,9 @@ world : PERL
 
 <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>][</span><span class=s1>&#39;world&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=s1>&#39;PYTHON&#39;</span>
 
-<span class=k>print</span><span class=p>(</span><span class=s2>&#34;dict_ : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>)</span>
-<span class=k>print</span><span class=p>(</span><span class=s2>&#34;hello : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>])</span>
-<span class=k>print</span><span class=p>(</span><span class=s2>&#34;world : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>][</span><span class=s1>&#39;world&#39;</span><span class=p>])</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&#34;dict_ : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&#34;hello : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>])</span>
+<span class=nb>print</span><span class=p>(</span><span class=s2>&#34;world : &#34;</span><span class=p>,</span> <span class=n>dict_</span><span class=p>[</span><span class=s1>&#39;hello&#39;</span><span class=p>][</span><span class=s1>&#39;world&#39;</span><span class=p>])</span>
 </code></pre></div><p>출력 결과는 다음과 같습니다.</p><div class=highlight><pre class=chroma><code class=language-text data-lang=text>dict_ :  defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;hello&#39;: defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;world&#39;: &#39;PYTHON&#39;})})
 hello :  defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;world&#39;: &#39;PYTHON&#39;})
 world :  PYTHON
@@ -50,17 +50,17 @@ world :  PYTHON
 <span class=n>dict_2</span> <span class=o>=</span> <span class=p>{}</span>  <span class=c1># empty dict</span>
 
 <span class=k>if</span> <span class=s1>&#39;key&#39;</span> <span class=ow>in</span> <span class=n>dict_1</span><span class=p>:</span>
-    <span class=k>print</span><span class=p>(</span><span class=s1>&#39;nested dict has a key&#39;</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;nested dict has a key&#39;</span><span class=p>)</span>
 <span class=k>else</span><span class=p>:</span>
-    <span class=k>print</span><span class=p>(</span><span class=s1>&#39;nested dict has no key&#39;</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;nested dict has no key&#39;</span><span class=p>)</span>
 
 <span class=k>if</span> <span class=s1>&#39;key&#39;</span> <span class=ow>in</span> <span class=n>dict_2</span><span class=p>:</span>
-    <span class=k>print</span><span class=p>(</span><span class=s1>&#39;dict has a key&#39;</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;dict has a key&#39;</span><span class=p>)</span>
 <span class=k>else</span><span class=p>:</span>
-    <span class=k>print</span><span class=p>(</span><span class=s1>&#39;dict has no key&#39;</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;dict has no key&#39;</span><span class=p>)</span>
 
-<span class=k>print</span><span class=p>(</span><span class=s1>&#39;length of nested dict =&gt; &#39;</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>dict_1</span><span class=p>))</span>
-<span class=k>print</span><span class=p>(</span><span class=s1>&#39;length of dict =&gt; &#39;</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>dict_2</span><span class=p>))</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;length of nested dict =&gt; &#39;</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>dict_1</span><span class=p>))</span>
+<span class=nb>print</span><span class=p>(</span><span class=s1>&#39;length of dict =&gt; &#39;</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>dict_2</span><span class=p>))</span>
 </code></pre></div><p>출력 내용은 다음과 같습니다.</p><div class=highlight><pre class=chroma><code class=language-text data-lang=text>nested dict has no key
 dict has no key
 length of nested dict =&gt;  0

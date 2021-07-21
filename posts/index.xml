@@ -485,16 +485,16 @@ origin/main</code></pre></div></p>
 </span><span class="se"></span><span class="s2">def add(a, b):
 </span><span class="s2">    return a + b
 </span><span class="s2">
-</span><span class="s2">print(&#39;2 + 3 =&gt; {}&#39;.format(add(2, 3)))
+</span><span class="s2">print(&#39;2 + 3 =&gt; </span><span class="si">{}</span><span class="s2">&#39;.format(add(2, 3)))
 </span><span class="s2">r = addd(4, 5)
-</span><span class="s2">print(&#39;4 + 5 =&gt; {}&#39;.format(r))
+</span><span class="s2">print(&#39;4 + 5 =&gt; </span><span class="si">{}</span><span class="s2">&#39;.format(r))
 </span><span class="s2">&#34;&#34;&#34;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
-        <span class="k">exec</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">exec</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
 </code></pre></div><p>위 코드를 실행한 결과는 다음과 같습니다.</p>
 <div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">hello world
 2 + 3 =&gt; 5
@@ -519,28 +519,28 @@ NameError: name &#39;addd&#39; is not defined
 </span><span class="se"></span><span class="s2">def add(a, b):
 </span><span class="s2">    return a + b
 </span><span class="s2">
-</span><span class="s2">print(&#39;2 + 3 =&gt; {}&#39;.format(add(2, 3)))
+</span><span class="s2">print(&#39;2 + 3 =&gt; </span><span class="si">{}</span><span class="s2">&#39;.format(add(2, 3)))
 </span><span class="s2">r = addd(4, 5)
-</span><span class="s2">print(&#39;4 + 5 =&gt; {}&#39;.format(r))
+</span><span class="s2">print(&#39;4 + 5 =&gt; </span><span class="si">{}</span><span class="s2">&#39;.format(r))
 </span><span class="s2">&#34;&#34;&#34;</span><span class="p">)</span>
 
-<span class="n">execode</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">execode</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
         <span class="n">execode</span> <span class="o">=</span> <span class="n">code</span>  <span class="c1"># save current running code</span>
-        <span class="k">exec</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">exec</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="n">tbf</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">tbf</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tbf</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="s1">&#39;File </span><span class="se">\&#34;</span><span class="s1">&lt;string&gt;</span><span class="se">\&#34;</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">tbf</span><span class="p">:</span>  <span class="c1"># find `File &#34;&lt;string&gt;&#34;` </span>
         <span class="n">found</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;File &#34;&lt;string&gt;&#34;, line (\d+)&#39;</span><span class="p">,</span> <span class="n">tbf</span><span class="p">)</span>  <span class="c1"># search exception occurred line</span>
-        <span class="k">if</span> <span class="n">found</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">found</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">lineno</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">found</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-            <span class="k">print</span><span class="p">(</span>
+            <span class="nb">print</span><span class="p">(</span>
                 <span class="s2">&#34;&lt;string&gt; =&gt; {{</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">+</span> 
-                <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;{:03d} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">execode</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">lineno</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">lineno</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span> <span class="o">+</span> 
+                <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{:03d}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">execode</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">lineno</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">lineno</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span> <span class="o">+</span> 
                 <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">}}&#34;</span>
             <span class="p">)</span>
 </code></pre></div><p>위와 같이 하면, 다음처럼 예외가 발생한 라인 근처의 코드를 포함하여 출력합니다. :)</p>
@@ -599,8 +599,8 @@ NameError: name &#39;addd&#39; is not defined
 
 <span class="k">class</span> <span class="nc">DefaultOrderedDict</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
     <span class="c1"># Source: http://stackoverflow.com/a/6190500/562769</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_factory</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_factory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
            <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default_factory</span><span class="p">,</span> <span class="n">Callable</span><span class="p">)):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;first argument must be callable&#39;</span><span class="p">)</span>
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
@@ -613,17 +613,17 @@ NameError: name &#39;addd&#39; is not defined
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__missing__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__missing__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">value</span>
 
     <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span><span class="p">,</span>
-        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">args</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">args</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__copy__</span><span class="p">()</span>
@@ -698,9 +698,9 @@ world : PERL
 
 <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PYTHON&#39;</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&#34;dict_ : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&#34;hello : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&#34;world : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;dict_ : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;world : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">])</span>
 </code></pre></div><p>출력 결과는 다음과 같습니다.</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Traceback (most recent call last):
   File &#34;./Playground/file0.py&#34;, line 5, in &lt;module&gt;
@@ -719,9 +719,9 @@ world : PERL
 
 <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PYTHON&#39;</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&#34;dict_ : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&#34;hello : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&#34;world : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;dict_ : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;world : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">])</span>
 </code></pre></div><p>출력 결과는 다음과 같습니다.</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">dict_ :  defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;hello&#39;: defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;world&#39;: &#39;PYTHON&#39;})})
 hello :  defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;world&#39;: &#39;PYTHON&#39;})
@@ -737,17 +737,17 @@ world :  PYTHON
 <span class="n">dict_2</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># empty dict</span>
 
 <span class="k">if</span> <span class="s1">&#39;key&#39;</span> <span class="ow">in</span> <span class="n">dict_1</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;nested dict has a key&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nested dict has a key&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;nested dict has no key&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nested dict has no key&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="s1">&#39;key&#39;</span> <span class="ow">in</span> <span class="n">dict_2</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;dict has a key&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dict has a key&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;dict has no key&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dict has no key&#39;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;length of nested dict =&gt; &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_1</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;length of dict =&gt; &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of nested dict =&gt; &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of dict =&gt; &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_2</span><span class="p">))</span>
 </code></pre></div><p>출력 내용은 다음과 같습니다.</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">nested dict has no key
 dict has no key
@@ -781,12 +781,12 @@ WSL2 integrated 되어 있을때의 설정입니다.</p>
 <span class="n">list_c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">list_a</span><span class="p">,</span> <span class="n">list_b</span><span class="p">,</span> <span class="n">list_c</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>  <span class="c1"># 라인끝 처리를 공백(&#39; &#39;) 으로 대체</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>  <span class="c1"># 라인끝 처리를 공백(&#39; &#39;) 으로 대체</span>
 </code></pre></div><p>출력은 다음과 같습니다.</p>
 <pre><code>1 2 3 7 8 9 a b c
 </code></pre><p>참 쉽쪙? (*￣3￣)╭</p>
 <div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># note. print 함수에 end 파라메터는 다음과 같이 정의되어 있음</span>
-<span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>]]></content></item><item><title>How to replace string with regex on vscode</title><link>https://seungrye.github.io/posts/2020-07-06-howto-replace-string-with-regex-on-vscode/</link><pubDate>Mon, 06 Jul 2020 18:45:00 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-06-howto-replace-string-with-regex-on-vscode/</guid><description>vscode 에서 다음과 같은 문자열을 치환 할때, regex 를 사용해서 치환하는 방법을 알아 봅시다. $self-&amp;gt;{item_name}; =&amp;gt; self.item_name ![ReplaceViaRegex](/posts/resources/_gen/images/2020-07-06 185226.png) () : 그룹. 추후 $1, $2 등의 변수처럼 사용 가능. \w+ : 1글자 이상. $</description><content type="html"><![CDATA[<p>vscode 에서 다음과 같은 문자열을 치환 할때, regex 를 사용해서 치환하는 방법을 알아 봅시다.</p>
 <p><code>$self-&gt;{item_name};</code> =&gt; <code>self.item_name</code></p>
 <!-- raw HTML omitted -->
@@ -1014,12 +1014,12 @@ crying.. cry. so sad.</p>]]></content></item><item><title>SHA256 hash on File vi
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;*.rar&#39;</span><span class="p">)):</span>
     <span class="n">sha256_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;working on {file}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;working on </span><span class="si">{file}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
 	    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&#34;rb&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 	        <span class="k">for</span> <span class="n">byte_block</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">64</span><span class="p">),</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span><span class="p">):</span>
 	            <span class="n">sha256_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">byte_block</span><span class="p">)</span>
 	    
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;&gt;&gt;&gt;&gt; hash : {hash}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="nb">hash</span><span class="o">=</span><span class="n">sha256_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;&gt;&gt;&gt;&gt; hash : </span><span class="si">{hash}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="nb">hash</span><span class="o">=</span><span class="n">sha256_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()))</span>
 </code></pre></div><p>Omitted the detailed description.</p>]]></content></item><item><title>Howto move files under child directories to somewhere via Python</title><link>https://seungrye.github.io/posts/2019-11-02-howto-move-files-under-child-directories-to-somewhere-via-python/</link><pubDate>Sat, 02 Nov 2019 02:13:42 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-11-02-howto-move-files-under-child-directories-to-somewhere-via-python/</guid><description>&lt;p>When I need to move all &lt;code>.zip&lt;/code> files to &lt;code>/sharedfolders&lt;/code>, how should I do?&lt;/p></description><content type="html"><![CDATA[<p>When I need to move all <code>.zip</code> files to <code>/sharedfolders</code>, how should I do?</p>
 <pre><code>/sharedfolders/Archives/A/A.zip
 /sharedfolders/Archives/A/B/AB.zip
@@ -1039,10 +1039,10 @@ Do it with python.</p>
 <span class="kn">import</span> <span class="nn">shutil</span>
 
 <span class="n">path</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;/sharedfolders/Archives&#34;&#34;&#34;</span>
-<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&#34;/**/*.zip&#34;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
-<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-	<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
-	<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">path</span><span class="o">+</span><span class="s2">&#34;/&#34;</span><span class="o">+</span><span class="n">file_name</span><span class="p">)</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&#34;/**/*.zip&#34;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+	<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+	<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">path</span><span class="o">+</span><span class="s2">&#34;/&#34;</span><span class="o">+</span><span class="n">file_name</span><span class="p">)</span>
 </code></pre></div>]]></content></item><item><title>What's the problem on this cpp code?</title><link>https://seungrye.github.io/posts/2019-07-03-copy-constructor-error-on-cpp/</link><pubDate>Wed, 03 Jul 2019 20:49:33 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-07-03-copy-constructor-error-on-cpp/</guid><description>&lt;p>Notice! This post is disaster. meaningless. just waste your time. :(&lt;br>
 &lt;strong>I&amp;rsquo;ve warn you&lt;/strong>.&lt;/p>
 &lt;p>Trying to dig the error on following c++ code.&lt;/p></description><content type="html"><![CDATA[<p>Notice! This post is disaster. meaningless. just waste your time. :(<br>
