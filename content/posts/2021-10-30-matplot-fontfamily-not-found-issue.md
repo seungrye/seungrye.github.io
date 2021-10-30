@@ -51,6 +51,16 @@ $ ls
 fontlist-v330.json fontlist-v330.json_
 ```
 
+### Tip
+참고로 폰트 목록은 다음과 같이 확인할 수 있습니다.
+```python
+from matplotlib import font_manager
+
+manager.fontManager.ttflist:
+for i in font_manager.fontManager.ttflist:
+    print(i.name, i.fname)
+```
+
 ## Ref
 * [Basic pie chart](https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html)
 * https://studioplug.tistory.com/333
