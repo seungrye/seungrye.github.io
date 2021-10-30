@@ -25,6 +25,8 @@ labels = '개구리', '고양이', '강아지', '비둘기'
 sizes = [15, 30, 45, 10]
 explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
+plt.rc('font', family='NanumGothic')
+
 fig1, ax1 = plt.subplots()
 ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
         shadow=True, startangle=90)
