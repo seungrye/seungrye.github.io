@@ -29,6 +29,13 @@ fontlist-v330.json
 $ python3 ~/hello.py
 $ ls
 fontlist-v330.json fontlist-v330.json_
+</code></pre></div><h3 id="tip">Tip</h3>
+<p>참고로 폰트 목록은 다음과 같이 확인할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">font_manager</span>
+
+<span class="n">manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">ttflist</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">ttflist</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">fname</span><span class="p">)</span>
 </code></pre></div><h2 id="ref">Ref</h2>
 <ul>
 <li><a href="https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html">Basic pie chart</a></li>
