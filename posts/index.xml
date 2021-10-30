@@ -1,4 +1,386 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on HANDMADE LOG</title><link>https://seungrye.github.io/posts/</link><description>Recent content in Posts on HANDMADE LOG</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 27 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://seungrye.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 에서 Lambda 와 Functional feature</title><link>https://seungrye.github.io/posts/2021-01-27-cpp-lambda-and-functional/</link><pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate><guid>https://seungrye.github.io/posts/2021-01-27-cpp-lambda-and-functional/</guid><description>목적 람다를 &amp;lsquo;어떻게&amp;rsquo; 쓰는지 에 대해 설명합니다. 람다가 &amp;lsquo;뭔지&amp;rsquo;, &amp;lsquo;어디에&amp;rsquo</description><content type="html"><![CDATA[<h1 id="목적">목적</h1>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on HANDMADE LOG</title><link>https://seungrye.github.io/posts/</link><description>Recent content in Posts on HANDMADE LOG</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 30 Oct 2021 15:25:05 +0000</lastBuildDate><atom:link href="https://seungrye.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Font family not found issue on matplot</title><link>https://seungrye.github.io/posts/2021-10-30-matplot-fontfamily-not-found-issue/</link><pubDate>Sat, 30 Oct 2021 15:25:05 +0000</pubDate><guid>https://seungrye.github.io/posts/2021-10-30-matplot-fontfamily-not-found-issue/</guid><description>파이썬으로 matplot 를 사용할때, 한글 폰트가 다음과 유사한 에러로 정상 출력되지 않는 현상이 발생하는 경우가 있습니다. $ python3 ~/hello.py findfont: Font family [&amp;#39;NanumGothic&amp;#39;] not found. Falling back to DejaVu Sans. /home/seungrye/.local/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py:240: RuntimeWarning: Glyph 49340 missing from current</description><content type="html"><![CDATA[<p>파이썬으로 matplot 를 사용할때, 한글 폰트가 다음과 유사한 에러로 정상 출력되지 않는 현상이 발생하는 경우가 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ python3 ~/hello.py 
+findfont: Font family <span class="o">[</span><span class="s1">&#39;NanumGothic&#39;</span><span class="o">]</span> not found. Falling back to DejaVu Sans.
+/home/seungrye/.local/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py:240: RuntimeWarning: Glyph <span class="m">49340</span> missing from current font.
+  font.set_text<span class="o">(</span>s, 0.0, <span class="nv">flags</span><span class="o">=</span>flags<span class="o">)</span>
+...
+</code></pre></div><p>사용한 코드는 다음과 같습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Pie chart, where the slices will be ordered and plotted counter-clockwise:</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="s1">&#39;개구리&#39;</span><span class="p">,</span> <span class="s1">&#39;고양이&#39;</span><span class="p">,</span> <span class="s1">&#39;강아지&#39;</span><span class="p">,</span> <span class="s1">&#39;비둘기&#39;</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">explode</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># only &#34;explode&#34; the 2nd slice (i.e. &#39;Hogs&#39;)</span>
+
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>  <span class="c1"># Equal aspect ratio ensures that pie is drawn as a circle.</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div><p>이는 matplot 의 font 설정이 적절한 폰트를 찾지 못해 발생하는 현상이며, 제 경우는 python 및 matplot 패키지가 설치된 이후 하나글 폰트를 설치해서, matplot 의 폰트 정보가 갱신되지 않은것이 이유로 보입니다.</p>
+<p>폰트 정보가 담겨있는 파일은 다음의 경로에서 찾을 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">pwd</span>
+/home/seungrye/.cache/matplotlib
+$ ls
+fontlist-v330.json
+</code></pre></div><p>해당 파일을 삭제 (안전을 위해 백업) 후, 코드를 다시 돌려보면 정상적으로 한글이 출력되는것을 확인 할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ mv fontlist-v330.json fontlist-v330.json_
+$ python3 ~/hello.py
+$ ls
+fontlist-v330.json fontlist-v330.json_
+</code></pre></div><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://matplotlib.org/stable/gallery/pie_and_polar_charts/pie_features.html">Basic pie chart</a></li>
+<li><a href="https://studioplug.tistory.com/333">https://studioplug.tistory.com/333</a></li>
+</ul>
+]]></content></item><item><title>Async, Await</title><link>https://seungrye.github.io/posts/seminar-async-await/</link><pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate><guid>https://seungrye.github.io/posts/seminar-async-await/</guid><description>.. contents:: Table of Contents ************************* concurrency / parallelism ************************* .. image:: ./resources/_gen/images/1_Q_UZeToStz8YY2oQGiUPqw.png :width: 640 :alt: concurrency vs parallelism * concurrency : 동시성 * parallelism : 병렬성 ****** syntax ****** asyncronous in JavaScript ========================= timeout ------- .. code-block:: html function async_fn(cb) { var finished = false; var url = 'https://i.imgur.com/82tHC9G.jpeg'; var request = new XMLHttpRequest(); var buffer; setTimeout(function repeat() { (finished)?cb(buffer):setTimeout(repeat, 0) }, 0); request.open('GET', url,</description><content type="html"><![CDATA[
+
+.. contents:: Table of Contents
+
+
+*************************
+concurrency / parallelism
+*************************
+
+.. image:: ./resources/_gen/images/1_Q_UZeToStz8YY2oQGiUPqw.png
+  :width: 640
+  :alt: concurrency vs parallelism
+
+* concurrency : 동시성
+* parallelism : 병렬성
+
+******
+syntax
+******
+
+asyncronous in JavaScript
+=========================
+
+timeout
+-------
+
+.. code-block:: html
+
+    <body>
+        <script>
+            function async_fn(cb) {
+                var finished = false;
+                var url = 'https://i.imgur.com/82tHC9G.jpeg';
+                var request = new XMLHttpRequest();
+                var buffer;
+    
+                setTimeout(function repeat() { (finished)?cb(buffer):setTimeout(repeat, 0) }, 0);
+    
+                request.open('GET', url, false); // 'false' makes the request synchronous
+                request.overrideMimeType('text/plain; charset=x-user-defined');
+                request.send(null);
+                console.log("cur time : "+Date.now() + ", request response with result code : "+request.status);
+
+                var binary = ""
+                for(var i=0;i<request.responseText.length;i++){
+                    binary += String.fromCharCode(request.responseText.charCodeAt(i) & 0xff);
+                }
+                
+                buffer = 'data:image/jpeg;base64,' + btoa(binary);
+
+                finished = true;
+            }
+    
+            $(document).ready(() => {
+                console.log("start time : "+Date.now());
+                async_fn(b => {
+                    console.log("async end : "+Date.now());
+                    var img = document.createElement('img');
+                    img.src = b;
+                    img.style.height="480px";
+                    document.body.appendChild(img);
+                });
+                console.log("cur time : "+Date.now() + ", time 1");
+                console.log("end time : "+Date.now());
+            });
+        </script>
+
+        <h3>messages</h3>
+        <ul class="messages"></ul>
+    </body>
+
+callback hell
+^^^^^^^^^^^^^
+
+.. code-block:: JavaScript
+
+    function do_something1(v, cb) { setTimeout(() => { cb(v+'1'); }, 100); }
+    function do_something2(v, cb) { setTimeout(() => { cb(v+'2'); }, 100); }
+    function do_something3(v, cb) { setTimeout(() => { cb(v+'3'); }, 100); }
+    do_something1('0', (r) => {
+        console.log("cb of do_something1 "+r);
+        do_something2(r, (r) => {
+            console.log("cb of do_something2 "+r);
+            do_something3(r, (r) => {
+                console.log("cb of do_something3 "+r);
+            });
+        });
+    });
+
+promise
+-------
+
+.. code-block:: html
+
+    <body>
+        <script>
+            'use strict';
+            function async_fn() {
+                var url = 'https://i.imgur.com/82tHC9G.jpeg';
+                var request = new XMLHttpRequest();
+
+                request.open('GET', url, false); // 'false' makes the request synchronous
+                request.overrideMimeType('text/plain; charset=x-user-defined');
+                request.send(null);
+                console.log("cur time : "+Date.now() + ", request response with result code : "+request.status);
+
+                var binary = ""
+                for(var i=0;i<request.responseText.length;i++){
+                    binary += String.fromCharCode(request.responseText.charCodeAt(i) & 0xff);
+                }
+                
+                return 'data:image/jpeg;base64,' + btoa(binary);
+            }
+    
+            $(document).ready(() => {
+                console.log("start time : "+Date.now());
+                var asynced = new Promise((resolve, reject) => resolve(async_fn()));
+                asynced.then(b => {
+                    console.log("async end : "+Date.now());
+                    var img = document.createElement('img');
+                    img.src = b;
+                    img.style.height="480px";
+                    document.body.appendChild(img);
+                });
+                console.log("cur time : "+Date.now() + ", time 1");
+                console.log("end time : "+Date.now());
+            });
+        </script>
+
+        <h3>messages</h3>
+        <ul class="messages"></ul>
+    </body>
+
+chaining instead of callback
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: JavaScript
+
+    function do_something1(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'1'); }, 100); }); }
+    function do_something2(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'2'); }, 100); }); }
+    function do_something3(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'3'); }, 100); }); }
+    var promised = do_something1('0');
+    promised.then(/*resolve fn*/(r) => { console.log("after do_something1 "+r); return do_something2(r); })
+        .then(/*resolve fn*/(r) => { console.log("after do_something2 "+r); return do_something3(r); })
+        .then(/*resolve fn*/(r) => { console.log("after do_something3 "+r); });
+
+async, await
+------------
+
+.. code-block:: html
+
+    <body>
+        <script>
+            'use strict';
+            function hxr_img_buff() {
+                return new Promise(resolve => {
+                    var url = 'https://i.imgur.com/82tHC9G.jpeg';
+                    var request = new XMLHttpRequest();
+
+                    request.open('GET', url, false); // 'false' makes the request synchronous
+                    request.overrideMimeType('text/plain; charset=x-user-defined');
+                    request.send(null);
+                    console.log("cur time : "+Date.now() + ", request response with result code : "+request.status);
+
+                    var binary = ""
+                    for(var i=0;i<request.responseText.length;i++){
+                        binary += String.fromCharCode(request.responseText.charCodeAt(i) & 0xff);
+                    }
+                    
+                    resolve('data:image/jpeg;base64,' + btoa(binary));
+                });
+            }
+            
+            async function async_fn() {  // async function can wait promise, it return 'value'
+                var b = await hxr_img_buff();
+                console.log("async end : "+Date.now());
+                var img = document.createElement('img');
+                img.src = b;
+                img.style.height="480px";
+                document.body.appendChild(img);
+            }
+
+            $(document).ready(() => {
+                console.log("start time : "+Date.now());
+                async_fn();
+                console.log("cur time : "+Date.now() + ", time 1");
+                console.log("end time : "+Date.now());
+            });
+        </script>
+
+        <h3>messages</h3>
+        <ul class="messages"></ul>
+    </body>
+
+synchronous-like
+^^^^^^^^^^^^^^^^
+
+.. code-block:: JavaScript
+
+    // async function return 'new Promise()' object.
+    async function sleep(m) { return new Promise(resolve => setTimeout(() => resolve(), m)); }
+    async function do_something1(v) { await sleep(100); return v+'1'; }
+    async function do_something2(v) { await sleep(100); return v+'2'; }
+    async function do_something3(v) { await sleep(100); return v+'3'; }
+    (async function() {
+        var r = await do_something1('0');
+        console.log("after do_something1 "+r);
+        r = await do_something2(r);
+        console.log("after do_something2 "+r);
+        r = await do_something3(r);
+        console.log("after do_something3 "+r);
+    })();
+    console.log("what?");
+        
+asyncronous in Python
+=====================
+
+yield
+------
+
+async
+-----
+
+.. code-block:: Python
+
+    import asyncio
+    
+    async def sleep(m):
+        await asyncio.sleep(m*0.001)
+        
+    async def do_something1(v):
+        await sleep(100)
+        return v+'1'
+        
+    async def do_something2(v):
+        await sleep(100)
+        return v+'2'
+        
+    async def do_something3(v):
+        await sleep(100)
+        return v+'3'
+    
+    async def main():
+        r = wait do_something1('0')
+        print("after do_something1 "+r)
+        r = wait do_something1(r)
+        print("after do_something1 "+r)
+        r = wait do_something1(r)
+        print("after do_something1 "+r)
+        
+    asyncio.run(main())
+
+asyncronous in C++
+==================
+
+thread
+--------
+
+.. code-block:: c++
+
+    #include <iostream>
+    #include <thread>
+    #include <chrono>
+
+    auto async_fn() -> std::thread {
+        std::thread t([]() {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(100ms);
+            std::cout << "Hello";
+        });
+        return t;
+    }
+
+    int main(int argc, char *argv[]) {
+        std::cout << "Hello";
+        auto t = async_fn();
+        std::cout << " C++ ";
+        t.join();
+        return 0;
+    }
+
+future, promise
+---------------
+
+.. code-block:: c++
+
+    #include <iostream>
+    #include <thread>
+    #include <chrono>
+    #include <future>
+
+    auto async_fn(std::promise<std::string> &promise) -> std::thread {
+        std::thread t([&promise]() {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(100ms);
+            promise.set_value("World");
+        });
+        return t;
+    }
+
+    int main(int argc, char *argv[]) {
+        std::cout << "Hello";
+        std::promise<std::string> promise;
+        auto future = promise.get_future();
+        auto t = async_fn(promise);
+        std::cout << " C++ ";
+        future.wait();
+        auto val = future.get();
+        std::cout << val;
+        t.join();
+        return 0;
+    }
+
+async, await
+------------
+
+.. code-block:: c++
+
+    #include <iostream>
+    #include <thread>
+    #include <chrono>
+    #include <future>
+
+    auto async_fn() -> std::future<std::string> {
+        return std::async(std::launch::async, []() -> std::string {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(100ms);
+            return "World";
+        });
+    }
+
+    int main(int argc, char *argv[]) {
+        std::cout << "Hello";
+        auto future = async_fn();
+        std::cout << " C++ ";
+        auto val = future.get();
+        std::cout << val;
+        return 0;
+    }
+
+demo
+^^^^^
+
+******************
+c++ implementation
+******************
+]]></content></item><item><title>C++ 에서 Lambda 와 Functional feature</title><link>https://seungrye.github.io/posts/2021-01-27-cpp-lambda-and-functional/</link><pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate><guid>https://seungrye.github.io/posts/2021-01-27-cpp-lambda-and-functional/</guid><description>목적 람다를 &amp;lsquo;어떻게&amp;rsquo; 쓰는지 에 대해 설명합니다. 람다가 &amp;lsquo;뭔지&amp;rsquo;, &amp;lsquo;어디에&amp;rsquo</description><content type="html"><![CDATA[<h1 id="목적">목적</h1>
 <ul>
 <li>람다를 &lsquo;어떻게&rsquo; 쓰는지 에 대해 설명합니다.</li>
 <li>람다가 &lsquo;뭔지&rsquo;, &lsquo;어디에&rsquo; 쓰는지에 대해 설명하지 않습니다.
@@ -10,7 +392,7 @@
 </ul>
 <hr>
 <h1 id="c-에서-lambda-syntax">C++ 에서 Lambda syntax</h1>
-<pre><code>[=] ( ) mutable -&gt;int { ... }
+<pre tabindex="0"><code>[=] ( ) mutable -&gt;int { ... }
 ——— ——— ——————— ————— ———————
  1   2     3      4      5
 </code></pre><ol>
@@ -22,13 +404,13 @@
 </ol>
 <hr>
 <h2 id="easy-example">E~~~asy Example</h2>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="k">auto</span> <span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="kt">int</span> <span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">int</span><span class="p">{</span> <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span> <span class="p">};</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;1+2:&#34;</span><span class="o">&lt;&lt;</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><p>출력</p>
-<pre><code>1+2:3
+<pre tabindex="0"><code>1+2:3
 </code></pre><hr>
 <h1 id="capture">Capture</h1>
 <ul>
@@ -40,7 +422,7 @@
 </ul>
 <hr>
 <h1 id="capture-demo">Capture Demo</h1>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">x</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="n">z</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="nf">x</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="n">z</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
 <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">z</span><span class="p">;</span>
 <span class="p">[</span><span class="o">=</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">](){</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d %d %d %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
@@ -49,11 +431,11 @@
 </span><span class="c1"></span><span class="p">}();</span>
 <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d %d %d %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
 </code></pre></div><p>출력</p>
-<pre><code>5 6 7 7
+<pre tabindex="0"><code>5 6 7 7
 5 16 27 27
 </code></pre><hr>
 <h1 id="capture-quiz">Capture Quiz</h1>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
 <span class="p">[</span><span class="o">=</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">](){</span>
     <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -61,26 +443,26 @@
 <span class="p">}();</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;outside lambda&gt; a:&#34;</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="s">&#34;, p:&#34;</span><span class="o">&lt;&lt;*</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div><p>출력</p>
-<pre><code> inside lambda&gt; a:?, p:?
+<pre tabindex="0"><code> inside lambda&gt; a:?, p:?
 outside lambda&gt; a:?, p:?
 </code></pre><hr>
 <h1 id="parameter-list">Parameter list</h1>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">pplus</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">pplus</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d+%d=%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="n">pplus</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </code></pre></div><p>출력</p>
-<pre><code>2+3=5
+<pre tabindex="0"><code>2+3=5
 </code></pre><hr>
 <h1 id="mutable-specifier">Mutable specifier</h1>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="p">[</span><span class="o">=</span><span class="p">](){</span><span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;c : &#34;</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}();</span>
 <span class="c1">//출력
 </span><span class="c1">//&gt; error: cannot assign to a variable captured by copy in a non-mutable lambda
 </span><span class="c1">//&gt; [=](){c=a+b; std::cout&lt;&lt;&#34;c : &#34;&lt;&lt;c&lt;&lt;std::endl;}();
 </span><span class="c1">//&gt;       ~^
-</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="p">[</span><span class="o">=</span><span class="p">]()</span> <span class="k">mutable</span> <span class="p">{</span><span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;c : &#34;</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;}();</span>
 <span class="c1">//출력
 </span><span class="c1">//&gt; 3
@@ -89,7 +471,7 @@ outside lambda&gt; a:?, p:?
 <ul>
 <li>💦 Under construct</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++">
 </code></pre></div><hr>
 <h1 id="lambda-body">Lambda body</h1>
 <ul>
@@ -106,7 +488,7 @@ outside lambda&gt; a:?, p:?
 <li>함수 객체와 동일한 익명함수 이다.
 <ul>
 <li>함수 객체 (functor)
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++">  <span class="k">struct</span> <span class="nc">Add</span> <span class="p">{</span> <span class="kt">int</span> <span class="nf">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;}</span> <span class="p">};</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++">  <span class="k">struct</span> <span class="nc">Add</span> <span class="p">{</span> <span class="kt">int</span> <span class="nf">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;}</span> <span class="p">};</span>
   <span class="n">Add</span> <span class="n">adder</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">adder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </code></pre></div><ul>
@@ -119,7 +501,7 @@ outside lambda&gt; a:?, p:?
 </ul>
 <hr>
 <h1 id="functor-vs-lambda">Functor vs Lambda</h1>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">Add</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">Add</span> <span class="p">{</span>
     <span class="k">public</span><span class="o">:</span>
     <span class="kt">int</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
@@ -127,13 +509,13 @@ outside lambda&gt; a:?, p:?
 <span class="p">};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">Add</span><span class="p">()(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </code></pre></div><p><strong>VS</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="p">}(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="p">}(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </code></pre></div><hr>
 <h1 id="this-capture">this capture</h1>
 <ul>
 <li>class member variable 에 접근하기 위해서는 <code>this</code> capture 를 사용</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// include string, memory, vector, algorithm
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// include string, memory, vector, algorithm
 </span><span class="c1"></span>
 <span class="k">struct</span> <span class="nc">Sorted</span> <span class="p">{</span>
     <span class="n">Sorted</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">)</span><span class="o">:</span><span class="n">v_</span><span class="p">(</span><span class="n">v</span><span class="p">){}</span>
@@ -155,7 +537,7 @@ outside lambda&gt; a:?, p:?
 <p><img src="/posts/resources/_gen/images/capture-this-in-lambda-expression-timeline-of-change.png" alt="height:500px"></p>
 <hr>
 <h1 id="lambda-재귀">Lambda 재귀</h1>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">f</span><span class="p">](</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">int</span><span class="p">{</span> <span class="k">return</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">n</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="p">};</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">f</span><span class="p">](</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">int</span><span class="p">{</span> <span class="k">return</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">n</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="p">};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;factorial(5) =&gt; &#34;</span><span class="o">&lt;&lt;</span><span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 5*4*3*2*1=&gt;120
 </span></code></pre></div><ul>
 <li>Lambda 를 재귀로 사용할 경우, 람다 객체 타입이 명시되어야 함
@@ -165,7 +547,7 @@ outside lambda&gt; a:?, p:?
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// std::functional( return_type &lt;params, ..&gt; ) // Example
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// std::functional( return_type &lt;params, ..&gt; ) // Example
 </span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">functional</span><span class="p">(</span><span class="kt">int</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="kt">float</span><span class="p">,</span><span class="kt">void</span><span class="o">*&gt;</span><span class="p">)</span> <span class="n">fn</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="kt">float</span> <span class="n">b</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">c</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">int</span><span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%c, %f, %p&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
 <span class="p">};</span>
@@ -189,7 +571,7 @@ outside lambda&gt; a:?, p:?
 <p>Note. Primitive 변수는 어떤 언어에서나 1급 객체.</p>
 <hr>
 <h2 id="1급-객체-on-c">1급 객체 on C++</h2>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">plus2factory</span> <span class="o">=</span> <span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">plus2factory</span> <span class="o">=</span> <span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span><span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">int</span><span class="p">{</span> <span class="k">return</span> <span class="nf">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="p">};</span>
 <span class="p">};</span>
 
@@ -203,7 +585,7 @@ outside lambda&gt; a:?, p:?
 <ul>
 <li>앞서 예제에서 파라메터와 반환 타입을 <code>auto</code> 로 사용 가능</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">plus2factory</span> <span class="o">=</span> <span class="p">[](</span><span class="k">auto</span> <span class="n">f</span><span class="p">)</span><span class="o">-&gt;</span><span class="k">auto</span><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">plus2factory</span> <span class="o">=</span> <span class="p">[](</span><span class="k">auto</span> <span class="n">f</span><span class="p">)</span><span class="o">-&gt;</span><span class="k">auto</span><span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">int</span><span class="p">{</span> <span class="k">return</span> <span class="nf">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="p">};</span>
 <span class="p">};</span>
 
@@ -218,7 +600,7 @@ outside lambda&gt; a:?, p:?
 <li>일급 객체 함수(first-class functions)의 개념을 이용하여
 스코프(scope)에 묶인 변수를 바인딩 하기 위한 일종의 기술</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">startAt</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">](</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span> <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">;</span> <span class="p">};</span> <span class="p">};</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">auto</span> <span class="n">startAt</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">](</span><span class="kt">int</span> <span class="n">y</span><span class="p">){</span> <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">;</span> <span class="p">};</span> <span class="p">};</span>
 <span class="k">auto</span> <span class="n">closure1</span> <span class="o">=</span> <span class="n">startAt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="k">auto</span> <span class="n">closure2</span> <span class="o">=</span> <span class="n">startAt</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 
@@ -239,27 +621,27 @@ outside lambda&gt; a:?, p:?
 </ul>
 ]]></content></item><item><title>Git 의 Tracking branch 변경하기</title><link>https://seungrye.github.io/posts/2021-01-16-git-%EC%9D%98-tracking-branch-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/</link><pubDate>Sat, 16 Jan 2021 19:08:20 +0900</pubDate><guid>https://seungrye.github.io/posts/2021-01-16-git-%EC%9D%98-tracking-branch-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/</guid><description>&lt;p>git 이 tracking 하는 branch 가 잘못되어 있을때, 수정하는 방법을 알아 봅시다.&lt;/p></description><content type="html"><![CDATA[<p>git 이 tracking 하는 branch 가 잘못되어 있을때, 수정하는 방법을 알아 봅시다.</p>
 <p>현재 <code>git pull</code> 했을때 발생하는 에러
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git pull
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git pull
 Your configuration specifies to merge with the ref <span class="s1">&#39;refs/heads/master&#39;</span>
 from the remote, but no such ref was fetched.</code></pre></div></p>
 <hr>
 <p>현재 working directory repo 의 branch 이름
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git branch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git branch
 * master</code></pre></div></p>
 <hr>
 <p>현재 master 브랜치가 tracking 해야하는 remote repo 의 branch 이름
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
 origin/main</code></pre></div></p>
 <hr>
 <p>tracking branch 변경
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git branch master --set-upstream-to origin/main</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git branch master --set-upstream-to origin/main</code></pre></div></p>
 <p>Note. 기억에 의존해 적는거라 중간 과정 (출력 내용) 및 git pull 정상 동작시의 (출력) 내용이 빠져있습니다. :(</p>]]></content></item><item><title>C++ Error Handling Revisited - Raphael Meyer 보면서 정리</title><link>https://seungrye.github.io/posts/2020-11-14-c++-error-handling-revisited/</link><pubDate>Sat, 14 Nov 2020 00:00:00 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-11-14-c++-error-handling-revisited/</guid><description>&lt;p>C++ 에서 에러 처리를 어떻게 할수 있는지에 대해 알아보는 &lt;a href="https://youtu.be/Ybmomkc48wg">영상&lt;/a>을 보면서 정리(?) 한 내용입니다.&lt;/p>
 &lt;p>영상에서는 haskell 예제를 보여주며 functional 컨셉을 설명하지만, (영어가 짧아 이해가 되지 않아) 단순히 변경되어가는 코드만 정리했습니다.
 몇가지 코드(방법)이 더 있었는데 코드 자체가 이해가 안되서 정리하지 않았습니다.&lt;/p></description><content type="html"><![CDATA[<p>C++ 에서 에러 처리를 어떻게 할수 있는지에 대해 알아보는 <a href="https://youtu.be/Ybmomkc48wg">영상</a>을 보면서 정리(?) 한 내용입니다.</p>
 <p>영상에서는 haskell 예제를 보여주며 functional 컨셉을 설명하지만, (영어가 짧아 이해가 되지 않아) 단순히 변경되어가는 코드만 정리했습니다.
 몇가지 코드(방법)이 더 있었는데 코드 자체가 이해가 안되서 정리하지 않았습니다.</p>
 <p>C/C++ 에서 일반적인 예외 처리는 다음과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">bool</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="n">Moisture</span> <span class="o">&amp;</span><span class="n">moisture</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">bool</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="n">Moisture</span> <span class="o">&amp;</span><span class="n">moisture</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="kt">bool</span> <span class="n">Pump</span><span class="o">::</span><span class="n">pump</span><span class="p">(</span><span class="n">Volume</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="kt">bool</span> <span class="n">WateringSystem</span><span class="o">::</span><span class="n">water</span><span class="p">(</span><span class="n">Volume</span><span class="o">&amp;</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">Moisture</span> <span class="n">moisture</span><span class="p">;</span>
@@ -276,7 +658,7 @@ origin/main</code></pre></div></p>
   <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>이를 좀더 보기 편하게 정리하면 다음과 같이 쓸 수 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">bool</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="n">Moisture</span><span class="o">&amp;</span> <span class="n">moisture</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">bool</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="n">Moisture</span><span class="o">&amp;</span> <span class="n">moisture</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="kt">bool</span> <span class="n">Pump</span><span class="o">::</span><span class="n">pump</span><span class="p">(</span><span class="n">Volume</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="kt">bool</span> <span class="n">WateringSystem</span><span class="o">::</span><span class="n">water</span><span class="p">(</span><span class="n">Volume</span><span class="o">&amp;</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">Moisture</span> <span class="n">moisture</span><span class="p">;</span>
@@ -296,7 +678,7 @@ origin/main</code></pre></div></p>
   <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>C++17 에 포함된 std::optional 을 쓰면 다음과 같이 할 수 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Moisture</span><span class="o">&gt;</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Moisture</span><span class="o">&gt;</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">monostate</span><span class="o">&gt;</span> <span class="n">Pump</span><span class="o">::</span><span class="n">pump</span><span class="p">(</span><span class="n">Volume</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Volume</span><span class="o">&gt;</span> <span class="n">WateringSystem</span><span class="o">::</span><span class="n">water</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">auto</span> <span class="k">const</span> <span class="n">moisture</span> <span class="o">=</span> <span class="n">moisture_sensor</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
@@ -318,7 +700,7 @@ origin/main</code></pre></div></p>
   <span class="k">return</span> <span class="n">amount</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>std::variant 을 사용해서 에러 객체를 반환할수 있도록 개선할 수 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">Moisture</span><span class="p">,</span> <span class="n">Error</span><span class="o">&gt;</span> <span class="n">MoistureSencor</span><span class="o">::</span><span class="n">read</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">Moisture</span><span class="p">,</span> <span class="n">Error</span><span class="o">&gt;</span> <span class="n">MoistureSencor</span><span class="o">::</span><span class="n">read</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">monostate</span><span class="p">,</span> <span class="n">Error</span><span class="o">&gt;</span> <span class="n">Pump</span><span class="o">::</span><span class="n">pump</span><span class="p">(</span><span class="n">Volume</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">Volume</span><span class="p">,</span> <span class="n">Error</span><span class="o">&gt;</span> <span class="n">WateringSystem</span><span class="o">::</span><span class="n">water</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">auto</span> <span class="k">const</span> <span class="n">moisture</span> <span class="o">=</span> <span class="n">mosture_sensor</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
@@ -341,7 +723,7 @@ origin/main</code></pre></div></p>
 <span class="p">}</span>
 </code></pre></div><p>물론 C++ 이 제공하는 예외처리를 사용할 수 있습니다.
 하지만, try catch 가 마치 goto 와 같이 느껴져서 좋아하지 않는 사람도 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">Moisture</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="n">Moisture</span> <span class="n">MoistureSensor</span><span class="o">::</span><span class="n">read</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="kt">void</span> <span class="n">Pump</span><span class="o">::</span><span class="n">pump</span><span class="p">(</span><span class="n">Volume</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
 <span class="n">Volume</span> <span class="n">WateringSystem</span><span class="o">::</span><span class="n">water</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -359,7 +741,7 @@ origin/main</code></pre></div></p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>RUST (rust-lang) 에서의 방법은 다음과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cm">/*
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="cm">/*
 </span><span class="cm">enum Result&lt;T, E&gt; {
 </span><span class="cm">  Ok(T),
 </span><span class="cm">  Err(E),
@@ -394,7 +776,7 @@ origin/main</code></pre></div></p>
 </span><span class="cm">   */</span><span class="w">
 </span><span class="w"></span><span class="p">}</span><span class="w">
 </span></code></pre></div><p>C++ 에서 RUST 와 유사한 방법을 사용해보면 다음과 같이 할 수 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">OkType</span><span class="p">,</span> <span class="k">typename</span> <span class="n">ErrType</span><span class="o">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">OkType</span><span class="p">,</span> <span class="k">typename</span> <span class="n">ErrType</span><span class="o">&gt;</span>
 <span class="k">class</span> <span class="nc">Result</span>
 <span class="p">{</span>
   <span class="k">public</span><span class="o">:</span>
@@ -471,7 +853,7 @@ origin/main</code></pre></div></p>
 </code></pre></div><p>Use <strong>value types</strong> to write code that is <em>expressive</em> and clearly <em>communicates</em> its <em>intent</em>.
 라고 합니다.</p>]]></content></item><item><title>Show code of exception occurred when call exec on python</title><link>https://seungrye.github.io/posts/2020-08-04-show_code_of_exception_occurred_when_call_exec_on_python/</link><pubDate>Tue, 04 Aug 2020 15:29:30 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-08-04-show_code_of_exception_occurred_when_call_exec_on_python/</guid><description>python 에서 exec 함수를 통해 임의의 코드를 수행시킬때, 예외가 발생했다면, 예외가 발생한 부분을 정확히 알고 싶을때 어떻게 할 수 있을까요@.@? 다음과 같이 traceback 을 서식화</description><content type="html"><![CDATA[<p>python 에서 <code>exec</code> 함수를 통해 임의의 코드를 수행시킬때, 예외가 발생했다면, 예외가 발생한 부분을 정확히 알고 싶을때 어떻게 할 수 있을까요@.@?</p>
 <p>다음과 같이 traceback 을 서식화 하여 출력할때, <code>File &quot;&lt;string&gt;&quot;, line 4</code> 처럼 출력되어서 정확한 위치를 알기 귀찮습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">traceback</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">traceback</span>
 
 <span class="n">codes</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -496,7 +878,7 @@ origin/main</code></pre></div></p>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
 </code></pre></div><p>위 코드를 실행한 결과는 다음과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">hello world
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">hello world
 2 + 3 =&gt; 5
 Traceback (most recent call last):
   File &#34;&lt;stdin&gt;&#34;, line 3, in &lt;module&gt;
@@ -505,7 +887,7 @@ NameError: name &#39;addd&#39; is not defined
 </code></pre></div><p>코드가 짧을 경우, 문제가 발생한 부분을 짚어내기 어렵지 않지만, 수십, 수백라인의 코드를 <code>exec</code> 호출을 통해서 실행중 예외가 발생한 경우 문제가 발생한 코드를 찾아내는것은 쉽지 않을 수 있습니다.</p>
 <p>이를 쉽게 처리하기 위해서, <code>code</code> 에서 문제가 발생한 라인의 코드를 추출하면 됩니다.</p>
 <p>말을 길게 했지만, 단순히 다음과 같이 처리하면 됩니다. :P</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">traceback</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">traceback</span>
 
 <span class="n">codes</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -544,7 +926,7 @@ NameError: name &#39;addd&#39; is not defined
                 <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">}}&#34;</span>
             <span class="p">)</span>
 </code></pre></div><p>위와 같이 하면, 다음처럼 예외가 발생한 라인 근처의 코드를 포함하여 출력합니다. :)</p>
-<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">hello world
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt">hello world
 2 + 3 =&gt; 5
 Traceback (most recent call last):
   File &#34;&lt;stdin&gt;&#34;, line 4, in &lt;module&gt;
@@ -591,11 +973,11 @@ NameError: name &#39;addd&#39; is not defined
 </ul>
 ]]></content></item><item><title>NestedDefaultOrderedDict on Python</title><link>https://seungrye.github.io/posts/2020-07-28-nesteddefaultordereddict-on-python/</link><pubDate>Tue, 28 Jul 2020 13:53:25 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-28-nesteddefaultordereddict-on-python/</guid><description>python 3.7 부터는 dict 의 order 가 보장되지만, 낮은 버전의 python 에서는 order 이 보장되지 않을 수 있습니다. (3.5 에서는 order 가 보장되지 않음. OrderedDict 를 사용해야 함.) 그리고, 다음과 같이 nested</description><content type="html"><![CDATA[<p><a href="https://mail.python.org/pipermail/python-dev/2017-December/151283.html">python 3.7 부터는 dict 의 order 가 보장</a>되지만, 낮은 버전의 python 에서는 order 이 보장되지 않을 수 있습니다. (3.5 에서는 order 가 보장되지 않음. OrderedDict 를 사용해야 함.)</p>
 <p>그리고, 다음과 같이 nested dict 를 초기화 하기위해서는 <code>nested = lambda: collections.defaultdict(nested)</code> 와 같은 선언 해야 했습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># a = []</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="c1"># a = []</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">nested</span><span class="p">()</span>
 <span class="n">a</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;c&#39;</span>
 </code></pre></div><p>nested dict 같은 초기화도 되면서, OrderedDict 처럼 order 보장이 되는 dict 구현체는 없나? 같은 필요가 생기면서 찾다보니 <a href="https://stackoverflow.com/questions/6190331/how-to-implement-an-ordered-default-dict">stackoverflow 답변</a>중 구현체가 있어서 기록겸 내용을 남겨둡니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">Callable</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">Callable</span>
 
 <span class="k">class</span> <span class="nc">DefaultOrderedDict</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
     <span class="c1"># Source: http://stackoverflow.com/a/6190500/562769</span>
@@ -643,11 +1025,11 @@ NameError: name &#39;addd&#39; is not defined
 <span class="k">def</span> <span class="nf">NestedDict</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">DefaultOrderedDict</span><span class="p">(</span><span class="n">NestedDict</span><span class="p">)</span>
 </code></pre></div><p>사용법은 생각했던 대로, 다음과 같이 쓰면 됩니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">a</span> <span class="o">=</span> <span class="n">NestedDict</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">a</span> <span class="o">=</span> <span class="n">NestedDict</span><span class="p">()</span>
 <span class="n">a</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;c&#39;</span>
 </code></pre></div><p>참..쉽죠@.@?</p>
 ]]></content></item><item><title>Convert nested dict to ordered dict on Python</title><link>https://seungrye.github.io/posts/2020-07-23-convert-nested-dict-to-ordereddict-on-python/</link><pubDate>Thu, 23 Jul 2020 16:56:10 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-23-convert-nested-dict-to-ordereddict-on-python/</guid><description>다음과 같이 충첩된 dict 가 있다고 할때, dict_ = { &amp;#39;a&amp;#39;: 1, &amp;#39;b&amp;#39;: [2, 3, 4], &amp;#39;c&amp;#39;: { &amp;#39;d&amp;#39;: 5 }, &amp;#39;d&amp;#39;: &amp;#39;6789&amp;#39; } ordered dict 로 변환하기 위해서는 다음과 같이 재귀 함수를 만들어서 변환할 수 있다. from collections import OrderedDict def</description><content type="html"><![CDATA[<p>다음과 같이 충첩된 dict 가 있다고 할때,</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">dict_</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="n">dict_</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
     <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span>
@@ -656,7 +1038,7 @@ NameError: name &#39;addd&#39; is not defined
     <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="s1">&#39;6789&#39;</span>
 <span class="p">}</span>
 </code></pre></div><p>ordered dict 로 변환하기 위해서는 다음과 같이 재귀 함수를 만들어서 변환할 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="k">def</span> <span class="nf">to_ordereddict</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
     <span class="n">od</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
@@ -666,7 +1048,7 @@ NameError: name &#39;addd&#39; is not defined
                     <span class="n">od</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
     <span class="k">return</span> <span class="n">od</span>
 </code></pre></div><p>결과는 다음과 같다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="o">&gt;&gt;&gt;</span> <span class="n">dict_</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="o">&gt;&gt;&gt;</span> <span class="n">dict_</span> <span class="o">=</span> <span class="p">{</span>
 <span class="o">...</span>     <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="o">...</span>     <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
 <span class="o">...</span>     <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span>
@@ -678,7 +1060,7 @@ NameError: name &#39;addd&#39; is not defined
 <span class="o">&gt;&gt;&gt;</span> <span class="n">odict_</span>
 <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;6789&#39;</span><span class="p">)])</span>
 </code></pre></div><p>괜찮죠? (¬‿¬)</p>
-]]></content></item><item><title>Initialize nested dict on Python</title><link>https://seungrye.github.io/posts/2020-07-21-initialize-nested-dict-on-python/</link><pubDate>Tue, 21 Jul 2020 10:37:57 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-21-initialize-nested-dict-on-python/</guid><description>#!/usr/bin/perl my %dict_ = (); $dict-&amp;gt;{&amp;#39;hello&amp;#39;}-&amp;gt;{&amp;#39;world&amp;#39;} = &amp;#39;PERL&amp;#39;; print &amp;#34;dict_ : $dict \n&amp;#34;; print &amp;#34;hello : $dict-&amp;gt;{&amp;#39;hello&amp;#39;} \n&amp;#34;; print &amp;#34;world : $dict-&amp;gt;{&amp;#39;hello&amp;#39;}-&amp;gt;{&amp;#39;world&amp;#39;} \n&amp;#34;; 출력 결과는 다음과 같습니다. dict_ : HASH(0x5587f28af740) hello : HASH(0x5587f28c7530) world : PERL 파이썬에서 동일하게 코드를 구성하면 어떻게 동작할까영@</description><content type="html"><![CDATA[<div class="highlight"><pre class="chroma"><code class="language-perl" data-lang="perl"><span class="ch">#!/usr/bin/perl</span>
+]]></content></item><item><title>Initialize nested dict on Python</title><link>https://seungrye.github.io/posts/2020-07-21-initialize-nested-dict-on-python/</link><pubDate>Tue, 21 Jul 2020 10:37:57 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-21-initialize-nested-dict-on-python/</guid><description>#!/usr/bin/perl my %dict_ = (); $dict-&amp;gt;{&amp;#39;hello&amp;#39;}-&amp;gt;{&amp;#39;world&amp;#39;} = &amp;#39;PERL&amp;#39;; print &amp;#34;dict_ : $dict \n&amp;#34;; print &amp;#34;hello : $dict-&amp;gt;{&amp;#39;hello&amp;#39;} \n&amp;#34;; print &amp;#34;world : $dict-&amp;gt;{&amp;#39;hello&amp;#39;}-&amp;gt;{&amp;#39;world&amp;#39;} \n&amp;#34;; 출력 결과는 다음과 같습니다. dict_ : HASH(0x5587f28af740) hello : HASH(0x5587f28c7530) world : PERL 파이썬에서 동일하게 코드를 구성하면 어떻게 동작할까영@</description><content type="html"><![CDATA[<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-perl" data-lang="perl"><span class="ch">#!/usr/bin/perl</span>
 
 <span class="k">my</span> <span class="nv">%dict_</span> <span class="o">=</span> <span class="p">();</span>
 
@@ -688,11 +1070,11 @@ NameError: name &#39;addd&#39; is not defined
 <span class="k">print</span> <span class="s">&#34;hello : $dict-&gt;{&#39;hello&#39;} \n&#34;</span><span class="p">;</span>
 <span class="k">print</span> <span class="s">&#34;world : $dict-&gt;{&#39;hello&#39;}-&gt;{&#39;world&#39;} \n&#34;</span><span class="p">;</span>
 </code></pre></div><p>출력 결과는 다음과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">dict_ : HASH(0x5587f28af740) 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">dict_ : HASH(0x5587f28af740) 
 hello : HASH(0x5587f28c7530) 
 world : PERL 
 </code></pre></div><p>파이썬에서 동일하게 코드를 구성하면 어떻게 동작할까영@.@?</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
 
 <span class="n">dict_</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -702,14 +1084,14 @@ world : PERL
 <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;world : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">])</span>
 </code></pre></div><p>출력 결과는 다음과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">Traceback (most recent call last):
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Traceback (most recent call last):
   File &#34;./Playground/file0.py&#34;, line 5, in &lt;module&gt;
       dict_[&#39;hello&#39;][&#39;world&#39;] = &#39;PYTHON&#39;
       KeyError: &#39;hello&#39;
 </code></pre></div><p>Key 가 없을 경우, Access 에러가 발생합니다.</p>
 <p>Perl 과 유사하게 동작하도록 할수는 없을까영@.@?</p>
 <p>다음과 같이 하면 됩니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
@@ -723,11 +1105,11 @@ world : PERL
 <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;hello : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;world : &#34;</span><span class="p">,</span> <span class="n">dict_</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">][</span><span class="s1">&#39;world&#39;</span><span class="p">])</span>
 </code></pre></div><p>출력 결과는 다음과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">dict_ :  defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;hello&#39;: defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;world&#39;: &#39;PYTHON&#39;})})
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">dict_ :  defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;hello&#39;: defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;world&#39;: &#39;PYTHON&#39;})})
 hello :  defaultdict(&lt;function &lt;lambda&gt; at 0x7f311f8851f0&gt;, {&#39;world&#39;: &#39;PYTHON&#39;})
 world :  PYTHON
 </code></pre></div><p>Key check 나 length check 는 일반적인 dictionary 사용과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
@@ -749,7 +1131,7 @@ world :  PYTHON
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of nested dict =&gt; &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of dict =&gt; &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_2</span><span class="p">))</span>
 </code></pre></div><p>출력 내용은 다음과 같습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">nested dict has no key
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">nested dict has no key
 dict has no key
 length of nested dict =&gt;  0
 length of dict =&gt;  0
@@ -763,7 +1145,7 @@ WSL2 integrated 되어 있을때의 설정입니다.</p>
 <p>Note. Windows container 이거나, WSL2 가 not integrated 일때는 mount point 가 달라져야 할 수 있습니다.</p>
 <p>캡쳐된 이미지만 봐도 충분히 알수 있을것 입니다. ( ͡~ ͜ʖ ͡°)</p>
 ]]></content></item><item><title>How to list linked shared libraries under MacOS</title><link>https://seungrye.github.io/posts/2020-07-13-howto-list-shared-libs-under-macos-commandline/</link><pubDate>Mon, 13 Jul 2020 19:24:15 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-13-howto-list-shared-libs-under-macos-commandline/</guid><description>MacOS 상에서, 실행파일이 사용하는 라이브러리 목록을 알고 싶을때 다음과 같이 otool 명령을 사용하여 확인할수 있습니다. HackCat:~ Songsangjun$ otool -L /bin/ls /bin/ls: /usr/lib/libutil.dylib (compatibility version 1.0.0, current version 1.0.0) /usr/lib/libncurses.5.4.dylib (compatibility version 5.4.0, current version 5.4.0) /usr/lib/libSystem.B.dylib</description><content type="html"><![CDATA[<p>MacOS 상에서, 실행파일이 사용하는 라이브러리 목록을 알고 싶을때 다음과 같이 <code>otool</code> 명령을 사용하여 확인할수 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">HackCat:~ Songsangjun$ otool -L /bin/ls
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">HackCat:~ Songsangjun$ otool -L /bin/ls
 
 /bin/ls:
 /usr/lib/libutil.dylib <span class="o">(</span>compatibility version 1.0.0, current version 1.0.0<span class="o">)</span>
@@ -772,7 +1154,7 @@ WSL2 integrated 되어 있을때의 설정입니다.</p>
 </code></pre></div><p>위 예제는 <a href="https://s0ngsari.tistory.com/entry/otool-object-tool">s0ngsari</a> 에서 발췌했습니다.
 개인적으로 MacOS 를 사용하고 있지 않아서, 직접 명령을 쳐서 출력 내용을 긁어올 수 없었습니다. o(TヘTo)</p>
 ]]></content></item><item><title>Iterate over multiple list in a `for` loop</title><link>https://seungrye.github.io/posts/2020-07-08-python-iterate-over-multiple-list-in-a-for-loop/</link><pubDate>Wed, 08 Jul 2020 11:45:14 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-08-python-iterate-over-multiple-list-in-a-for-loop/</guid><description>python (python 3) 에서 다수의 list 가 있을때, 이 list 들을 한번의 loop 로 모두 순회하려면 다음과 같이 itertools 를 사용하면 됩니다. #!/usr/bin/python3 import itertools list_a = [&amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;] list_b = [&amp;#39;7&amp;#39;, &amp;#39;8&amp;#39;, &amp;#39;9&amp;#39;] list_c = [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;] for v in itertools.chain(list_a, list_b, list_c): print(v,</description><content type="html"><![CDATA[<p><code>python</code> (python 3) 에서 다수의 list 가 있을때, 이 list 들을 한번의 loop 로 모두 순회하려면 다음과 같이 <code>itertools</code> 를 사용하면 됩니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="ch">#!/usr/bin/python3</span>
 
 <span class="kn">import</span> <span class="nn">itertools</span>
 
@@ -783,9 +1165,9 @@ WSL2 integrated 되어 있을때의 설정입니다.</p>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">list_a</span><span class="p">,</span> <span class="n">list_b</span><span class="p">,</span> <span class="n">list_c</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>  <span class="c1"># 라인끝 처리를 공백(&#39; &#39;) 으로 대체</span>
 </code></pre></div><p>출력은 다음과 같습니다.</p>
-<pre><code>1 2 3 7 8 9 a b c
+<pre tabindex="0"><code>1 2 3 7 8 9 a b c
 </code></pre><p>참 쉽쪙? (*￣3￣)╭</p>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># note. print 함수에 end 파라메터는 다음과 같이 정의되어 있음</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="c1"># note. print 함수에 end 파라메터는 다음과 같이 정의되어 있음</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>]]></content></item><item><title>How to replace string with regex on vscode</title><link>https://seungrye.github.io/posts/2020-07-06-howto-replace-string-with-regex-on-vscode/</link><pubDate>Mon, 06 Jul 2020 18:45:00 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-07-06-howto-replace-string-with-regex-on-vscode/</guid><description>vscode 에서 다음과 같은 문자열을 치환 할때, regex 를 사용해서 치환하는 방법을 알아 봅시다. $self-&amp;gt;{item_name}; =&amp;gt; self.item_name ![ReplaceViaRegex](/posts/resources/_gen/images/2020-07-06 185226.png) () : 그룹. 추후 $1, $2 등의 변수처럼 사용 가능. \w+ : 1글자 이상. $</description><content type="html"><![CDATA[<p>vscode 에서 다음과 같은 문자열을 치환 할때, regex 를 사용해서 치환하는 방법을 알아 봅시다.</p>
 <p><code>$self-&gt;{item_name};</code> =&gt; <code>self.item_name</code></p>
@@ -798,22 +1180,22 @@ WSL2 integrated 되어 있을때의 설정입니다.</p>
 </ul>
 <p>참&hellip;쉽죠? o(<em>￣▽￣</em>)ブ</p>
 ]]></content></item><item><title>How to alias neovim to vi on powershell</title><link>https://seungrye.github.io/posts/2020-04-10-howto-alias-on-powershell/</link><pubDate>Fri, 10 Apr 2020 16:37:11 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-04-10-howto-alias-on-powershell/</guid><description>On Powershell environment, you can use alis as following command pattern. PS&amp;gt; Set-Alias vi C:\tools\neovim\Neovim\bin\nvim.exe If so, how can I automatically applied alias when open new powershell window? Is there any run commands file something like bash.rc? Yes It is. PS&amp;gt; $profile C:\Users\seung\OneDrive\문서\W</description><content type="html"><![CDATA[<p>On Powershell environment, you can use alis as following command pattern.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> Set-Alias vi C:\tools\neovim\Neovim\bin\nvim.exe
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> Set-Alias vi C:\tools\neovim\Neovim\bin\nvim.exe
 </code></pre></div><p>If so, how can I automatically applied alias when open new powershell window?</p>
 <!-- raw HTML omitted -->
 <p>Is there any run commands file something like bash.rc?
 Yes It is.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> $profile
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> $profile
 C<span class="p">:</span><span class="nl">\Users\seung\OneDrive\문서\WindowsPowerShell\Microsoft.PowerShell_profile.ps1</span>
 PS<span class="p">&gt;</span> mkdir C:\Users\seung\OneDrive\문서\WindowsPowerShell
 PS<span class="p">&gt;</span> nvim C:\Users\seung\OneDrive\문서\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 </code></pre></div><p>Then set alias command to something.
 In my case?</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> Get-Content C:\Users\seung\OneDrive\문서\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> Get-Content C:\Users\seung\OneDrive\문서\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 set-alias vi nvim
 </code></pre></div><p>It&rsquo;s EASY. isn&rsquo;t it? NO!! it is not easy that much.
 You would get following (similar) error if you open new powershell.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">Windows PowerShell
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">Windows PowerShell
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 새로운 크로스 플랫폼 PowerShell 사용 https://aka.ms/pscore6
@@ -829,7 +1211,7 @@ file.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Executi
 PS&gt;
 </code></pre></div><p>You should set Security Policy.
 I use following policy</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> Set-ExecutionPolicy RemoteSigned
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS<span class="p">&gt;</span> Set-ExecutionPolicy RemoteSigned
 
 실행 규칙 변경
 실행 정책은 신뢰하지 않는 스크립트로부터 사용자를 보호합니다. 실행 정책을 변경하면 about_Execution_Policies 도움말
@@ -847,7 +1229,7 @@ I use following policy</p>
 <p>End. seriously :)</p>
 ]]></content></item><item><title>How to merge branch to trunk</title><link>https://seungrye.github.io/posts/2020-03-28-howto-merge-svn-branch-to-trunk/</link><pubDate>Sat, 28 Mar 2020 12:34:57 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-03-28-howto-merge-svn-branch-to-trunk/</guid><description>To merge branch to trunk, remember following command.
 &amp;gt; svn switch http://trunk_url &amp;gt; svn merge http:://branch_url &amp;gt; svn commit -m &amp;#34;blah blah...&amp;#34; Change current workspace to trunk. Merge branch&amp;rsquo;s changelog to current workspace (trunk). Commit it with some commit message.</description><content type="html"><![CDATA[<p>To merge branch to trunk, remember following command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd"><span class="p">&gt;</span> svn switch http://trunk_url
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="p">&gt;</span> svn switch http://trunk_url
 <span class="p">&gt;</span> svn merge http:://branch_url
 <span class="p">&gt;</span> svn commit -m <span class="s2">&#34;blah blah...&#34;</span>
 </code></pre></div><!-- raw HTML omitted -->
@@ -858,14 +1240,14 @@ I use following policy</p>
 </ol>
 ]]></content></item><item><title>How to checkout branch from remote</title><link>https://seungrye.github.io/posts/2020-03-28-howto-checkout-git-branch-from-remote/</link><pubDate>Sat, 28 Mar 2020 12:30:34 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-03-28-howto-checkout-git-branch-from-remote/</guid><description>To checkout branch from remote repo, just remember following command
 &amp;gt; git checkout -r origin/remote_branch_name</description><content type="html"><![CDATA[<p>To checkout branch from remote repo, just remember following command</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">&gt; git checkout -r origin/remote_branch_name
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">&gt; git checkout -r origin/remote_branch_name
 </code></pre></div>]]></content></item><item><title>How to setup neovim for rust on windows</title><link>https://seungrye.github.io/posts/2020-01-13-how-to-setup-neovim-for-rust-on-windows/</link><pubDate>Mon, 13 Jan 2020 23:46:32 +0900</pubDate><guid>https://seungrye.github.io/posts/2020-01-13-how-to-setup-neovim-for-rust-on-windows/</guid><description>&lt;p>We need rust, neovim, python. that&amp;rsquo;s it.&lt;/p></description><content type="html"><![CDATA[<p>We need rust, neovim, python. that&rsquo;s it.</p>
 <p>First of all.</p>
 <h1 id="install-neovim">Install neovim.</h1>
 <p>I use chocolately.</p>
 <p>Note. Installing Chocolately guide : <a href="https://chocolatey.org/install">https://chocolatey.org/install</a></p>
 <p>I can find neovim package in choco</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Windows\system32</span><span class="c1">&gt;choco search neovim</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Windows\system32</span><span class="c1">&gt;choco search neovim</span>
 Chocolatey v0.10.15
 neovim 0.4.3 [Approved]
 1 packages found.
@@ -874,7 +1256,7 @@ C<span class="p">:</span><span class="nl">\Users\seung</span><span class="c1">&g
 I just install 0.4.3 version via choco then overwrite archived neovim 0.5.0 package (nvim-win64.zip) located in <a href="https://github.com/neovim/neovim/releases">https://github.com/neovim/neovim/releases</a></p>
 <p>Note. neovim via choco will installed in C:\tools\neovim</p>
 <p>Then I can get following version information.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Windows\system32</span><span class="c1">&gt;nvim --version</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Windows\system32</span><span class="c1">&gt;nvim --version</span>
 NVIM v0.5.0-309-g05ea3c199
 Build type: RelWithDebInfo
 LuaJIT 2.1.0-beta3
@@ -892,7 +1274,7 @@ Run :checkhealth for more info
 <p>Do not install python via window store.
 neovim can not find proper python path.</p>
 <p>I use choco to install python3</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Users\seung</span><span class="c1">&gt;choco search python3</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Users\seung</span><span class="c1">&gt;choco search python3</span>
 Chocolatey v0.10.15
 python3 3.8.1.20200110 [Approved]
 ...
@@ -901,13 +1283,13 @@ python3 3.8.1.20200110 [Approved]
 C<span class="p">:</span><span class="nl">\Users\seung</span><span class="c1">&gt;choco install python3 -y</span>
 </code></pre></div><h1 id="install-rust">Install rust</h1>
 <p>Install the rust (<a href="https://www.rust-lang.org/tools/install">https://www.rust-lang.org/tools/install</a>) and some packages</p>
-<pre><code>rustup update
+<pre tabindex="0"><code>rustup update
 rustup component add rustfmt
 rustup component add clippy
 </code></pre><h1 id="build-and-install-rust-analyzer">Build and install <code>rust-analyzer</code></h1>
 <p>Note. it require rust version 1.4.0+
 Note. it requires terminal with Administrator permission.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Windows\system32</span><span class="c1">&gt;cd %HOMEPATH%</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Windows\system32</span><span class="c1">&gt;cd %HOMEPATH%</span>
 C<span class="p">:</span><span class="nl">\Users\seung</span><span class="c1">&gt;git clone https://github.com/rust-analyzer/rust-analyzer</span>
 Cloning into &#39;rust-analyzer&#39;...
 remote: Enumerating objects: 22, done.
@@ -926,7 +1308,7 @@ rust-analyzer 875352b
 </code></pre></div><h1 id="install-nvim-plugin-vim-plug">Install nvim plugin <code>vim-plug</code></h1>
 <p>Open PowerShell terminal and type following</p>
 <p>Note. see <a href="https://jdhao.github.io/2018/11/15/neovim_configuration_windows/#install-plugin-manager-vim-plug">https://jdhao.github.io/2018/11/15/neovim_configuration_windows/#install-plugin-manager-vim-plug</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\seung<span class="p">&gt;</span> md ~\AppData\Local\nvim\autoload
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\seung<span class="p">&gt;</span> md ~\AppData\Local\nvim\autoload
 
 
     디렉터리: C:\Users\seung\AppData\Local\nvim
@@ -948,7 +1330,7 @@ PS C:\Users\seung<span class="p">&gt;</span>pip install pynvim
 </code></pre></div><h1 id="setup-neovim-for-rust-development">Setup neovim for rust development</h1>
 <p>edit init.vim file on &ldquo;~\AppData\Local\nvim\init.vim&rdquo;</p>
 <p>Note. following setting is in <a href="https://dev.to/drmason13/configure-neovim-for-rust-development-1fjn">Configure neovim for rust development</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="nx">call</span> <span class="nx">plug</span>#<span class="nx">begin</span><span class="p">()</span><span class="err">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="nx">call</span> <span class="nx">plug</span>#<span class="nx">begin</span><span class="p">()</span><span class="err">
 </span><span class="err"></span><span class="nx">Plug</span> <span class="s1">&#39;neovim/nvim-lsp&#39;</span><span class="err">
 </span><span class="err"></span><span class="nx">Plug</span> <span class="s1">&#39;Shougo/deoplete.nvim&#39;</span><span class="p">,</span> { <span class="s1">&#39;do&#39;</span>: <span class="s1">&#39;:UpdateRemotePlugins&#39;</span> }<span class="err">
 </span><span class="err"></span><span class="nx">Plug</span> <span class="s1">&#39;Shougo/deoplete-lsp&#39;</span><span class="err">
@@ -981,16 +1363,16 @@ PS C:\Users\seung<span class="p">&gt;</span>pip install pynvim
 </span><span class="err">
 </span><span class="err"></span><span class="nx">nnoremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">c</span> :<span class="p">!</span><span class="nx">cargo</span> <span class="nx">clippy</span><span class="err">
 </span></code></pre></div><p><strong>Important.</strong> I just combind the contents of the Internet, the source of each sections are included in the text.</p>]]></content></item><item><title>How to fix prevent repeating 'local master browser' log</title><link>https://seungrye.github.io/posts/2019-12-30-fix-nmbd-local-master-warning/</link><pubDate>Mon, 30 Dec 2019 21:20:32 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-12-30-fix-nmbd-local-master-warning/</guid><description>&lt;p>How to fix repeating following log on syslog?&lt;/p></description><content type="html"><![CDATA[<p>How to fix repeating following log on syslog?</p>
-<pre><code>Dec 31 06:05:34 handmade-omv5 nmbd[9739]: [2019/12/31 06:05:34.797089,  0] ../source3/nmbd/nmbd_become_lmb.c:397(become_local_master_stage2)
+<pre tabindex="0"><code>Dec 31 06:05:34 handmade-omv5 nmbd[9739]: [2019/12/31 06:05:34.797089,  0] ../source3/nmbd/nmbd_become_lmb.c:397(become_local_master_stage2)
 Dec 31 06:05:34 handmade-omv5 nmbd[9739]:   *****
 Dec 31 06:05:34 handmade-omv5 nmbd[9739]:   
 Dec 31 06:05:34 handmade-omv5 nmbd[9739]:   Samba name server HANDMADE-OMV5 is now a local master browser for workgroup WORKGROUP on subnet 169.254.45.94
 Dec 31 06:05:34 handmade-omv5 nmbd[9739]:   
 Dec 31 06:05:34 handmade-omv5 nmbd[9739]:   *****
 </code></pre><p>Add following line to global on /etc/samba/smb.conf</p>
-<pre><code>local master = no
+<pre tabindex="0"><code>local master = no
 </code></pre><p>The configuration file should following.</p>
-<pre><code>$ head /etc/samba/smb.conf
+<pre tabindex="0"><code>$ head /etc/samba/smb.conf
 #======================= Global Settings =======================
 [global]
 workgroup = WORKGROUP
@@ -1007,7 +1389,7 @@ That&rsquo;s stupid.</p>
 <p>I dont know sentimental emotion as I get older.</p>
 <p>But time to time. I feel crying.
 crying.. cry. so sad.</p>]]></content></item><item><title>SHA256 hash on File via Python</title><link>https://seungrye.github.io/posts/2019-11-10-sha256-file-via-python/</link><pubDate>Sun, 10 Nov 2019 19:34:25 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-11-10-sha256-file-via-python/</guid><description>&lt;p>When check hash code of file with python.&lt;/p></description><content type="html"><![CDATA[<p>When check hash code of file with python.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
 
@@ -1021,7 +1403,7 @@ crying.. cry. so sad.</p>]]></content></item><item><title>SHA256 hash on File vi
 	    
     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;&gt;&gt;&gt;&gt; hash : </span><span class="si">{hash}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="nb">hash</span><span class="o">=</span><span class="n">sha256_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()))</span>
 </code></pre></div><p>Omitted the detailed description.</p>]]></content></item><item><title>Howto move files under child directories to somewhere via Python</title><link>https://seungrye.github.io/posts/2019-11-02-howto-move-files-under-child-directories-to-somewhere-via-python/</link><pubDate>Sat, 02 Nov 2019 02:13:42 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-11-02-howto-move-files-under-child-directories-to-somewhere-via-python/</guid><description>&lt;p>When I need to move all &lt;code>.zip&lt;/code> files to &lt;code>/sharedfolders&lt;/code>, how should I do?&lt;/p></description><content type="html"><![CDATA[<p>When I need to move all <code>.zip</code> files to <code>/sharedfolders</code>, how should I do?</p>
-<pre><code>/sharedfolders/Archives/A/A.zip
+<pre tabindex="0"><code>/sharedfolders/Archives/A/A.zip
 /sharedfolders/Archives/A/B/AB.zip
 /sharedfolders/Archives/B/B.zip
 /sharedfolders/Archives/A/C/C.zip
@@ -1034,7 +1416,7 @@ $ pwd
 /sharedfolders
 </code></pre><p>Manually move file is not a good solution :P
 Do it with python.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 
@@ -1048,7 +1430,7 @@ Do it with python.</p>
 &lt;p>Trying to dig the error on following c++ code.&lt;/p></description><content type="html"><![CDATA[<p>Notice! This post is disaster. meaningless. just waste your time. :(<br>
 <strong>I&rsquo;ve warn you</strong>.</p>
 <p>Trying to dig the error on following c++ code.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp"></span>
 <span class="k">struct</span> <span class="nc">NoImplicitCopy</span> <span class="p">{</span>
 	<span class="n">NoImplicitCopy</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
@@ -1080,7 +1462,7 @@ Do it with python.</p>
 Even if I read the <code>Explicit copy-constructor</code> web page. :(</p>
 <p>What a dumb head and dumber my intelligence.<br>
 Anyway&hellip; the error message is like followings.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enjian@localhost build<span class="o">]</span>$ g++ main.cpp
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enjian@localhost build<span class="o">]</span>$ g++ main.cpp
 main.cpp: In <span class="k">function</span> ‘NoImplicitCopy foo<span class="o">()</span>’:
 main.cpp:11:9: error: no matching <span class="k">function</span> <span class="k">for</span> call to ‘NoImplicitCopy::NoImplicitCopy<span class="o">(</span>NoImplicitCopy<span class="p">&amp;</span><span class="o">)</span>’
    <span class="m">11</span> <span class="p">|</span>  <span class="k">return</span> n<span class="p">;</span>
@@ -1105,13 +1487,13 @@ main.cpp:14:25: note:   initializing argument <span class="m">1</span> of ‘voi
 <p>&hellip;few days later&hellip;</p>
 <p>Figure out the source of error message. But still don&rsquo;t know the reason. :(<br>
 To compile, just remove <code>explicit</code> keyword. but why? why?? why???</p>
-<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff"> struct NoImplicitCopy {
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"> struct NoImplicitCopy {
         NoImplicitCopy() = default;
 <span class="gd">-       explicit NoImplicitCopy(const NoImplicitCopy&amp; ) = default;
 </span><span class="gd"></span><span class="gi">+       NoImplicitCopy(NoImplicitCopy&amp;) = default;
 </span><span class="gi"></span> };
 </code></pre></div><p>The result is.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enjian@localhost build<span class="o">]</span>$ g++ main.cpp
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enjian@localhost build<span class="o">]</span>$ g++ main.cpp
 <span class="o">[</span>enjian@localhost build<span class="o">]</span>$
 </code></pre></div><p>Let&rsquo;s found out what the <code>explicit</code> keyword doing.</p>
 <p><del>And, I found the similar questions on stackoverflow.</del>\</p>
@@ -1155,7 +1537,7 @@ That&rsquo;s very annoying. :(</p>
 <li>connect it.</li>
 </ol>
 <h2 id="generate-ssh-key">Generate ssh key.</h2>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ ssh-keygen
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key <span class="o">(</span>/home/enji/.ssh/id_rsa<span class="o">)</span>:
 Created directory <span class="s1">&#39;/home/enji/.ssh&#39;</span>.
@@ -1179,11 +1561,11 @@ The key<span class="err">&#39;</span>s randomart image is:
 +----<span class="o">[</span>SHA256<span class="o">]</span>-----+
 <span class="o">[</span>enji@localhost ~<span class="o">]</span>$
 </code></pre></div><h2 id="copy-to-remote-pc">Copy to remote pc</h2>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ scp <span class="nv">$HOME</span>/.ssh/id_rsa.pub enji@192.168.0.4:id_rsa.pub
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ scp <span class="nv">$HOME</span>/.ssh/id_rsa.pub enji@192.168.0.4:id_rsa.pub
 enji@192.168.0.4<span class="err">&#39;</span>s password:
 id_rsa.pub                                                                                    100%  <span class="m">408</span>    46.9KB/s   00:00
 </code></pre></div><h2 id="append-to-authorized_keys">Append to <code>authorized_keys</code></h2>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ ssh enji@192.168.0.4
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ ssh enji@192.168.0.4
 enji@192.168.0.4<span class="err">&#39;</span>s password:
 Linux home_server 4.9.0-9-amd64 <span class="c1">#1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16) x86_64</span>
 
@@ -1198,7 +1580,7 @@ Last login: Thu Jun <span class="m">27</span> 21:42:31 <span class="m">2019</spa
 enji@home_server:~$ cat id_rsa.pub &gt;&gt; <span class="nv">$HOME</span>/.ssh/authorized_keys
 enji@home_server:~$ <span class="nb">exit</span>
 </code></pre></div><h2 id="connect">Connect</h2>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ ssh enji@192.168.0.4
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>enji@localhost ~<span class="o">]</span>$ ssh enji@192.168.0.4
 Linux home_server 4.9.0-9-amd64 <span class="c1">#1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16) x86_64</span>
 
 The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
@@ -1212,7 +1594,7 @@ Last login: Tue Jul  <span class="m">2</span> 02:57:51 <span class="m">2019</spa
 enji@home_server:~$ <span class="nb">exit</span>
 </code></pre></div><p>Actually, this tip is for me. :P</p>]]></content></item><item><title>Python regex contents in curly braces</title><link>https://seungrye.github.io/posts/2019-06-20-python-regex-contents-in-curly-braces/</link><pubDate>Thu, 20 Jun 2019 23:18:49 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-06-20-python-regex-contents-in-curly-braces/</guid><description>&lt;p>When I want to extract contents between curly braces using python+regex.&lt;/p></description><content type="html"><![CDATA[<p>When I want to extract contents between curly braces using python+regex.</p>
 <p>The content is following.</p>
-<pre><code>void on_sent(
+<pre tabindex="0"><code>void on_sent(
     boost::shared_ptr&lt;boost::asio::ip::udp::endpoint&gt; ep_from, // ep to response
     boost::shared_ptr&lt;std::vector&lt;uint8_t&gt;&gt; buffer,
     boost::system::error_code const&amp; ec,
@@ -1227,7 +1609,7 @@ enji@home_server:~$ <span class="nb">exit</span>
     std::cout&lt;&lt;__func__&lt;&lt;&quot;() sent &quot;&lt;&lt;bytes_tranferred&lt;&lt;&quot; bytes&quot;&lt;&lt;std::endl;
 }
 </code></pre><p>When I extract content between <code>if (ec) { ... }</code> I should use following code.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">re</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">contents</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;void on_sent(
 </span><span class="s2">... boost::shared_ptr&lt;boost::asio::ip::udp::endpoint&gt; ep_from, // ep to response
 </span><span class="s2">...     boost::shared_ptr&lt;std::vector&lt;uint8_t&gt;&gt; buffer,
@@ -1246,7 +1628,7 @@ enji@home_server:~$ <span class="nb">exit</span>
 <span class="p">[</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        std::cerr&lt;&lt;__func__&lt;&lt;&#34;() error code : &#34;&lt;&lt;ec.message()&lt;&lt;std::endl;</span><span class="se">\n</span><span class="s1">        return ;</span><span class="se">\n</span><span class="s1">    &#39;</span><span class="p">]</span>
 </code></pre></div><p>Note. I don&rsquo;t know this is right answer. (maybe not :P ) but, anyway It works.</p>
 <p>How about whole function?</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;on_sent.*?\{(.*?)\}&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;on_sent.*?\{(.*?)\}&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
 <span class="p">[</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">    if (ec)</span><span class="se">\n</span><span class="s1">    {</span><span class="se">\n</span><span class="s1">        std::cerr&lt;&lt;__func__&lt;&lt;&#34;() error code : &#34;&lt;&lt;ec.message()&lt;&lt;std::endl;</span><span class="se">\n</span><span class="s1">        return ;</span><span class="se">\n</span><span class="s1">    &#39;</span><span class="p">]</span>
 </code></pre></div><p>This is not what I want. So sad. :(</p>
 <p>How can I fix? Before fix code, I should understand what the regex meaning is.</p>
@@ -1256,14 +1638,14 @@ enji@home_server:~$ <span class="nb">exit</span>
 <li><code>.*?</code> : non-greedy search (return minimum satistfied length string)</li>
 </ul>
 <p>Oh, Then the problem could resolve easily.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;on_sent.*?\{(.*)\}&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;on_sent.*?\{(.*)\}&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
 <span class="p">[</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">    if (ec)</span><span class="se">\n</span><span class="s1">    {</span><span class="se">\n</span><span class="s1">        std::cerr&lt;&lt;__func__&lt;&lt;&#34;() error code : &#34;&lt;&lt;ec.message()&lt;&lt;std::endl;</span><span class="se">\n</span><span class="s1">        return ;</span><span class="se">\n</span><span class="s1">    }</span><span class="se">\n\n</span><span class="s1">    std::cout&lt;&lt;__func__&lt;&lt;&#34;() sent &#34;&lt;&lt;bytes_tranferred&lt;&lt;&#34; bytes&#34;&lt;&lt;std::endl;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
 </code></pre></div><p>What an easy!</p>]]></content></item><item><title>No default toolchain configured error when run rustc</title><link>https://seungrye.github.io/posts/2019-06-17-no-default-toolchain-configured-on-rls/</link><pubDate>Mon, 17 Jun 2019 20:33:49 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-06-17-no-default-toolchain-configured-on-rls/</guid><description>&lt;p>How to fix the &lt;code>error: no default toolchain configured&lt;/code> error on rust.&lt;/p></description><content type="html"><![CDATA[<p>How to fix the <code>error: no default toolchain configured</code> error on rust.</p>
 <p>I got following error when run rls or rustc</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ rustc
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rustc
 error: no default toolchain configured
 </code></pre></div><p>The answer is fairly simple. just instll stable and set default. that&rsquo;s it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ rustup install stable
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ rustup install stable
 info: syncing channel updates <span class="k">for</span> <span class="s1">&#39;stable-x86_64-unknown-linux-gnu&#39;</span>
 info: latest update on 2019-05-23, rust version 1.35.0 <span class="o">(</span>3c235d560 2019-05-20<span class="o">)</span>
 info: downloading component <span class="s1">&#39;rustc&#39;</span>
@@ -1301,7 +1683,7 @@ Options:
 <p>Warning. I use heavyly broken english. I let you know. :P</p>
 <p>I use following code.</p>
 <p>Of receiver.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp">
@@ -1390,7 +1772,7 @@ Options:
             <span class="n">boost</span><span class="o">::</span><span class="n">asio</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">bytes_transferred</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div><p>Of sender.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
 </span><span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp">
@@ -1465,7 +1847,7 @@ Options:
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">__func__</span><span class="o">&lt;&lt;</span><span class="s">&#34;() sent &#34;</span><span class="o">&lt;&lt;</span><span class="n">bytes_tranferred</span><span class="o">&lt;&lt;</span><span class="s">&#34; bytes&#34;</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>And, I got following result.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ ./asio_udp_receiver_sample
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ ./asio_udp_receiver_sample
 Enter
 on_recv<span class="o">()</span> recv <span class="m">10</span> bytes
 on_recv<span class="o">()</span> received message : HELLO UDP 
@@ -1474,7 +1856,7 @@ Of course, I set receiving buffer size to very small. but I read buffer repeated
 And still, got only first small buffer of string.</p>
 <p>So, why is it??</p>
 <p>In <code>UNIX Network Programming: The socket networking API</code> book has clue.</p>
-<pre><code>OS BSD-derived systems, when a UDP datagram arrives that is larger than the 
+<pre tabindex="0"><code>OS BSD-derived systems, when a UDP datagram arrives that is larger than the 
 application's buffer, recvmsg sets the MSG_TRUNC flag in the msg_flags member
 of the msghdr structure (Figure 14.7). All Berkeley-derived implementations 
 that support the msghdr structure with the msg_flags member provide this 
@@ -1497,11 +1879,11 @@ datagram in this fashion. There are three possible scenarios:
 cause I already add subsequent read operation, but still has issue.</p>
 <p>Then, let&rsquo;s find out <code>MSG_TRUNC</code> flag on the <code>msg_flags</code> that member of <code>msghdr</code> structure.</p>
 <p>First of all, what <code>MSG_TRUNC</code> value is it??</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat /usr/include/bits/socket.h <span class="p">|</span> grep MSG_TRUNC
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ cat /usr/include/bits/socket.h <span class="p">|</span> grep MSG_TRUNC
     <span class="nv">MSG_TRUNC</span>           <span class="o">=</span> 0x20,
 <span class="c1">#define MSG_TRUNC       MSG_TRUNC</span>
 </code></pre></div><p>I found the <code>msg_flags</code> variable on <code>boost::asio::detail::socket_ops::recvfrom(...)</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">signed_size_type</span> <span class="nf">recvfrom</span><span class="p">(</span><span class="n">socket_type</span> <span class="n">s</span><span class="p">,</span> <span class="n">buf</span><span class="o">*</span> <span class="n">bufs</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">,</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">signed_size_type</span> <span class="nf">recvfrom</span><span class="p">(</span><span class="n">socket_type</span> <span class="n">s</span><span class="p">,</span> <span class="n">buf</span><span class="o">*</span> <span class="n">bufs</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">,</span>
     <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> <span class="n">socket_addr_type</span><span class="o">*</span> <span class="n">addr</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">*</span> <span class="n">addrlen</span><span class="p">,</span>
     <span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1518,7 +1900,7 @@ cause I already add subsequent read operation, but still has issue.</p>
   <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 </code></pre></div><p>And I check <code>msg.msg_flags</code> after returned of <code>::recvmsg(s, &amp;msg, flags)</code>.</p>
 <p>It is 0x20.</p>
-<pre><code class="language-lldb" data-lang="lldb">(lldb) bt
+<pre tabindex="0"><code class="language-lldb" data-lang="lldb">(lldb) bt
 * thread #2, name = 'asio_udp_receiv', stop reason = step over
   * frame #0: 0x0000555555564780 asio_udp_receiver_sample1`boost::asio::detail::socket_ops::recvfrom(s=6, bufs=0x00007ffff7a6db10, count=1, flags=0, addr=0x000055555559983c, addrlen=0x00007ffff7a6db00, ec=0x0000555555599880) at socket_ops.ipp:941:18
     frame #1: 0x0000555555564839 asio_udp_receiver_sample1`boost::asio::detail::socket_ops::non_blocking_recvfrom(s=6, bufs=0x00007ffff7a6db10, count=1, flags=0, addr=0x000055555559983c, addrlen=0x00007ffff7a6db00, ec=0x0000555555599880, bytes_transferred=0x0000555555599890) at socket_ops.ipp:1015:50
@@ -1546,7 +1928,7 @@ cause I already add subsequent read operation, but still has issue.</p>
 &lt;p>근데, 이미 Popup Menu 저장소에 샘플 코드가 포함되어 있음.. ㅎ;&lt;/p></description><content type="html"><![CDATA[<p>Flutter 앱에서 깔끔한 <a href="https://github.com/chinabrant/popup_menu">Popup Menu 라이브러리</a> 를 사용해서 팝업을 띄우는 예제를 작성해 본다.</p>
 <p>근데, 이미 Popup Menu 저장소에 샘플 코드가 포함되어 있음.. ㅎ;</p>
 <p>플러터 프로젝트 어떻게 만드는지 모르면, Flutter 는 <a href="https://flutter.dev/docs/get-started/test-drive#create-app">여기</a>를 참고해서 작성하자.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">popup_menu_prj$ tree
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">popup_menu_prj$ tree
 .
 ├── README.md
 ├── android
@@ -1560,13 +1942,13 @@ cause I already add subsequent read operation, but still has issue.</p>
 <!-- raw HTML omitted -->
 <h3 id="add-dependency">Add Dependency</h3>
 <p><code>pubspec.yaml</code> 파일에 <a href="https://pub.dev/packages/popup_menu#-installing-tab-">popup_menu 의존성 추가</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">dependencies:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">dependencies:
 <span class="gi">+  popup_menu: ^1.0.1
 </span></code></pre></div><h3 id="소스에-popup-menu-관련-코드-추가">소스에 Popup Menu 관련 코드 추가.</h3>
 <p>샘플을 만들떄 diff 를 남겨둔게 없어서, 기억에 의존해서 적은것임.
 따라서, 실제 diff 포멧과는 다름 :P</p>
 <p>Note. 소스코드 라인이 너무 길어지는거 같아서&hellip; 불필요한 라인은 줄여서 적음.</p>
-<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">import &#39;package:flutter/material.dart&#39;;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">import &#39;package:flutter/material.dart&#39;;
 <span class="gi">+ import &#39;package:popup_menu/popup_menu.dart&#39;;
 </span><span class="gi"></span>...
 
@@ -1614,39 +1996,39 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
 <p><code>customPopupMenu</code> 에서는 팝업 메뉴에 추가될 메뉴 아이템을 만들고, 핸들러를 등록 (<code>onClickMenu:</code> , <code>onDismiss:</code>) 후 메뉴를 보여 (<code>.show</code>) 줍니다.</p>
 <p>간단하죠?</p>]]></content></item><item><title>Git 의 원격 저장소의 브랜치 삭제하기</title><link>https://seungrye.github.io/posts/2019-06-02-git-remove-remote-branch/</link><pubDate>Sun, 02 Jun 2019 21:35:23 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-06-02-git-remove-remote-branch/</guid><description>&lt;p>git 의 원격 저장소에 있는 branch 를 삭제하는 방법을 알아 봅시다.&lt;/p></description><content type="html"><![CDATA[<p>git 의 원격 저장소에 있는 branch 를 삭제하는 방법을 알아 봅시다.</p>
 <p>현재 remote 브랜치 목록을 확인해 봅시다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
   origin/1-cmake
   origin/5-asio-read-std-vector-buffer-append
   origin/HEAD -&gt; origin/master</code></pre></div>
 <hr>
 <p>remote 브랜치를 삭제합니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git push origin --delete 5-asio-read-std-vector-buffer-append 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git push origin --delete 5-asio-read-std-vector-buffer-append 
 To www.enjian.ml:seungrye/teach-yourself-cpp.git
  - <span class="o">[</span>deleted<span class="o">]</span>         5-asio-read-std-vector-buffer-append</code></pre></div>
 <hr>
 <p>현재 remote 브랜치 목록을 확인해 봅시다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git branch -r
   origin/1-cmake
   origin/HEAD -&gt; origin/master</code></pre></div>]]></content></item><item><title>Git 의 원격 저장소 주소 변경하기</title><link>https://seungrye.github.io/posts/2019-06-02-git-change-remote-address/</link><pubDate>Sun, 02 Jun 2019 20:21:46 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-06-02-git-change-remote-address/</guid><description>&lt;p>git 의 원격 저장소 주소가 변경되었을때 대처 방법을 알아 봅시다.&lt;/p></description><content type="html"><![CDATA[<p>git 의 원격 저장소 주소가 변경되었을때 대처 방법을 알아 봅시다.</p>
 <p>현재 <code>git-fetch</code> 했을때 발생하는 에러
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git fetch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git fetch
 fatal: repository <span class="s1">&#39;http://handmade.iptime.org/seungrye/teach-yourself-cpp.git/&#39;</span> not found</code></pre></div></p>
 <hr>
 <p>현재 repo 의 remote 주소
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git remote -v
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git remote -v
 origin	http://handmade.iptime.org/seungrye/teach-yourself-cpp.git <span class="o">(</span>fetch<span class="o">)</span>
 origin	http://handmade.iptime.org/seungrye/teach-yourself-cpp.git <span class="o">(</span>push<span class="o">)</span></code></pre></div></p>
 <hr>
 <p>remote 변경
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git remote set-url origin git@www.enjian.ml:seungrye/teach-yourself-cpp.git </code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git remote set-url origin git@www.enjian.ml:seungrye/teach-yourself-cpp.git </code></pre></div></p>
 <hr>
 <p>변경된 remote 확인
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git remote -v
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git remote -v
 origin	git@www.enjian.ml:seungrye/teach-yourself-cpp.git <span class="o">(</span>fetch<span class="o">)</span>
 origin	git@www.enjian.ml:seungrye/teach-yourself-cpp.git <span class="o">(</span>push<span class="o">)</span></code></pre></div></p>
 <hr>
 <p>현재 <code>git-fetch</code> 했을때 결과
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git fetch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git fetch
 remote: Enumerating objects: 28, <span class="k">done</span>.
 remote: Counting objects: 100% <span class="o">(</span>28/28<span class="o">)</span>, <span class="k">done</span>.
 remote: Compressing objects: 100% <span class="o">(</span>17/17<span class="o">)</span>, <span class="k">done</span>.
@@ -1659,7 +2041,7 @@ www.enjian.ml:seungrye/teach-yourself-cpp URL에서
 <p>인터넷에서 쉽게 찾을수 있는 내용이고, 이미 해봤던 내용이지만,
 정리차원에서 작성합니다.</p>
 <h3 id="cargo-를-통해서-프로젝트-생성">Cargo 를 통해서 프로젝트 생성</h3>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ cargo new hello_rust
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cargo new hello_rust
     Created binary <span class="o">(</span>application<span class="o">)</span> <span class="sb">`</span>hello_rust<span class="sb">`</span> package
 
 $ ls
@@ -1686,7 +2068,7 @@ $</code></pre></div>
 <hr>
 <h3 id="코드-수정">코드 수정</h3>
 <p>변수에 문자열을 할당후, println! 을 통해서 포멧된 문자열을 출력하도록 처리.</p>
-<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff"> fn main() {
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"> fn main() {
 <span class="gd">-    println!(&#34;Hello, world!&#34;);
 </span><span class="gd"></span><span class="gi">+    let hello = String::from(&#34;Hello, rust!&#34;);
 </span><span class="gi">+    println!(&#34;{}&#34;, hello);
@@ -1699,7 +2081,7 @@ $</code></pre></div>
 <h3 id="빌드">빌드</h3>
 <p>의존성 문제등을 확인하는 <code>cargo-check</code> 를 통해서 문제가 없는지 먼저 확인합니다.
 이는 <code>cargo-build</code> 보다 훨씬 빠르게 명령이 완료되기 때문제 권장됩니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ cargo check
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cargo check
     Checking hello_rust v0.1.0 <span class="o">(</span>/tmp/hello_rust<span class="o">)</span>
     Finished dev <span class="o">[</span>unoptimized + debuginfo<span class="o">]</span> target<span class="o">(</span>s<span class="o">)</span> in 0.16s
 
@@ -1710,7 +2092,7 @@ $ cargo build
 <h3 id="실행">실행</h3>
 <p><code>cargo-run</code> 을 통해서 빌드 및 실행해 볼수 있습니다.
 혹은 빌드된 output 파일을 직접 실행해 볼수도 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ cargo run
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cargo run
     Finished dev <span class="o">[</span>unoptimized + debuginfo<span class="o">]</span> target<span class="o">(</span>s<span class="o">)</span> in 0.02s
      Running <span class="sb">`</span>target/debug/hello_rust<span class="sb">`</span>
 Hello, rust!
@@ -1721,17 +2103,17 @@ $ ./target/debug/hello_rust
 Hello, rust!</code></pre></div>]]></content></item><item><title>시작</title><link>https://seungrye.github.io/posts/2019-06-01-hello/</link><pubDate>Sat, 01 Jun 2019 06:11:09 +0900</pubDate><guid>https://seungrye.github.io/posts/2019-06-01-hello/</guid><description>새로운 시작이네영&amp;hellip; 잘 해 봐야지여.</description><content type="html">&lt;p>새로운 시작이네영&amp;hellip;
 잘 해 봐야지여.&lt;/p></content></item><item><title>Big Image Sample</title><link>https://seungrye.github.io/posts/2017-03-07-bigimg-sample/</link><pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate><guid>https://seungrye.github.io/posts/2017-03-07-bigimg-sample/</guid><description>&lt;p>The image banners at the top of the page are refered to as &amp;ldquo;bigimg&amp;rdquo; in this theme. They are optional, and one more more can be specified. If more than one is specified, the images rotate every 10 seconds. In the front matter, bigimgs are specified using an array of hashes.&lt;/p></description><content type="html"><![CDATA[<p>The image banners at the top of the page are refered to as &ldquo;bigimg&rdquo; in this theme. They are optional, and one more more can be specified. If more than one is specified, the images rotate every 10 seconds. In the front matter, bigimgs are specified using an array of hashes.</p>
 <p>A single bigimg can be specified in the front matter by the following YAML:</p>
-<pre><code>bigimg: [{src: &quot;/img/triangle.jpg&quot;, desc: &quot;Triangle&quot;}]
+<pre tabindex="0"><code>bigimg: [{src: &quot;/img/triangle.jpg&quot;, desc: &quot;Triangle&quot;}]
 </code></pre><p>Multiple bigimgs can be specified in the front matter by the following YAML:</p>
-<pre><code>bigimg: [{src: &quot;/img/triangle.jpg&quot;, desc: &quot;Triangle&quot;}, 
+<pre tabindex="0"><code>bigimg: [{src: &quot;/img/triangle.jpg&quot;, desc: &quot;Triangle&quot;}, 
          {src: &quot;/img/sphere.jpg&quot;, desc: &quot;Sphere&quot;}, 
          {src: &quot;/img/hexagon.jpg&quot;, desc: &quot;Hexagon&quot;}]
 </code></pre><p>Also note that the description field is optional, and images could instead be specified by:</p>
-<pre><code>bigimg: [{src: &quot;/img/triangle.jpg&quot;}, 
+<pre tabindex="0"><code>bigimg: [{src: &quot;/img/triangle.jpg&quot;}, 
          {src: &quot;/img/sphere.jpg&quot;}, 
          {src: &quot;/img/hexagon.jpg&quot;}]
 </code></pre><p>The above YAML array of hashes were written in &ldquo;flow&rdquo; style. However when generating a new page or post with <code>hugo new post/mypost.md</code>, hugo may interpret the archetype for bigimg in the default YAML style. Defining multiple bigimg&rsquo;s complete with descriptions in this style would be specified by:</p>
-<pre><code>bigimg: 
+<pre tabindex="0"><code>bigimg: 
 - {src: &quot;/img/triangle.jpg&quot;, desc: &quot;Triangle&quot;}
 - {src: &quot;/img/sphere.jpg&quot;, desc: &quot;Sphere&quot;}
 - {src: &quot;/img/hexagon.jpg&quot;, desc: &quot;Hexagon&quot;}
@@ -1746,14 +2128,14 @@ $$</p>
 <p>Additional details can be found on <a href="https://github.com/Khan/KaTeX">GitHub</a> or on the <a href="http://tiddlywiki.com/plugins/tiddlywiki/katex/">Wiki</a>.</p>
 <h3 id="example-1">Example 1</h3>
 <p>If the text between $$ contains newlines it will rendered in display mode:</p>
-<pre><code>$$
+<pre tabindex="0"><code>$$
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 $$
 </code></pre><p>$$
 f(x) = \int_{-\infty}^\infty\hat f(\xi),e^{2 \pi i \xi x},d\xi
 $$</p>
 <h3 id="example-2">Example 2</h3>
-<pre><code>$$
+<pre tabindex="0"><code>$$
 \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }
 $$
 </code></pre><p>​​$$
@@ -1761,27 +2143,27 @@ $$
 $$
 ​​</p>
 <h3 id="example-3">Example 3</h3>
-<pre><code>$$
+<pre tabindex="0"><code>$$
 1 +  \frac{q^2}{(1-q)}+\frac{q^6}{(1-q)(1-q^2)}+\cdots = \prod_{j=0}^{\infty}\frac{1}{(1-q^{5j+2})(1-q^{5j+3})}, \quad\quad \text{for }\lvert q\rvert&lt;1.
 $$
 </code></pre><p>$$
 1 +  \frac{q^2}{(1-q)}+\frac{q^6}{(1-q)(1-q^2)}+\cdots = \prod_{j=0}^{\infty}\frac{1}{(1-q^{5j+2})(1-q^{5j+3})}, \quad\quad \text{for }\lvert q\rvert&lt;1.
 $$</p>]]></content></item><item><title>Code Sample</title><link>https://seungrye.github.io/posts/2016-03-08-code-sample/</link><pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate><guid>https://seungrye.github.io/posts/2016-03-08-code-sample/</guid><description>&lt;p>The following are two code samples using syntax highlighting.&lt;/p></description><content type="html"><![CDATA[<p>The following are two code samples using syntax highlighting.</p>
 <p>The following is a code sample using triple backticks ( ``` ) code fencing provided in Hugo. This is client side highlighting and does not require any special installation.</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
     <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
     <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
     <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
 </span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="c1">// &#34;+&#34; means combine into a string
 </span></code></pre></div><p>The following is a code sample using the &ldquo;highlight&rdquo; shortcode provided in Hugo. This is server side highlighting and requires Python and Pygments to be installed.</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
     <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
     <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
     <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
 </span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="c1">// &#34;+&#34; means combine into a string
 </span></code></pre></div>
 <p>And here is the same code with line numbers:</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="ln">1</span>    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="ln">1</span>    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
 <span class="ln">2</span>    <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
 <span class="ln">3</span>    <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
 <span class="ln">4</span>    <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
@@ -1831,7 +2213,7 @@ Number Next number Previous number Five Six Four Ten Eleven Nine Seven Eight Six
 <p>How about a yummy crepe?</p>
 <p><img src="http://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg" alt="Crepe"></p>
 <p>Here&rsquo;s a code chunk with syntax highlighting:</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nx">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>

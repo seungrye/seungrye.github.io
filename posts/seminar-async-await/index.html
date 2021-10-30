@@ -1,0 +1,278 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=theme-color content="#494f5c">
+<meta name=msapplication-TileColor content="#494f5c">
+<meta itemprop=name content="Async, Await">
+<meta itemprop=description content=".. contents:: Table of Contents ************************* concurrency / parallelism ************************* .. image:: ./resources/_gen/images/1_Q_UZeToStz8YY2oQGiUPqw.png :width: 640 :alt: concurrency vs parallelism * concurrency : 동시성 * parallelism : 병렬성 ****** syntax ****** asyncronous in JavaScript ========================= timeout ------- .. code-block:: html function async_fn(cb) { var finished = false; var url = 'https://i.imgur.com/82tHC9G.jpeg'; var request = new XMLHttpRequest(); var buffer; setTimeout(function repeat() { (finished)?cb(buffer):setTimeout(repeat, 0) }, 0); request.open('GET', url,"><meta itemprop=datePublished content="2021-05-16T00:00:00+00:00">
+<meta itemprop=dateModified content="2021-05-16T00:00:00+00:00">
+<meta itemprop=wordCount content="691">
+<meta itemprop=keywords content="async,seminar,async,howto,"><meta property="og:title" content="Async, Await">
+<meta property="og:description" content=".. contents:: Table of Contents ************************* concurrency / parallelism ************************* .. image:: ./resources/_gen/images/1_Q_UZeToStz8YY2oQGiUPqw.png :width: 640 :alt: concurrency vs parallelism * concurrency : 동시성 * parallelism : 병렬성 ****** syntax ****** asyncronous in JavaScript ========================= timeout ------- .. code-block:: html function async_fn(cb) { var finished = false; var url = 'https://i.imgur.com/82tHC9G.jpeg'; var request = new XMLHttpRequest(); var buffer; setTimeout(function repeat() { (finished)?cb(buffer):setTimeout(repeat, 0) }, 0); request.open('GET', url,">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://seungrye.github.io/posts/seminar-async-await/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-05-16T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-05-16T00:00:00+00:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Async, Await">
+<meta name=twitter:description content=".. contents:: Table of Contents ************************* concurrency / parallelism ************************* .. image:: ./resources/_gen/images/1_Q_UZeToStz8YY2oQGiUPqw.png :width: 640 :alt: concurrency vs parallelism * concurrency : 동시성 * parallelism : 병렬성 ****** syntax ****** asyncronous in JavaScript ========================= timeout ------- .. code-block:: html function async_fn(cb) { var finished = false; var url = 'https://i.imgur.com/82tHC9G.jpeg'; var request = new XMLHttpRequest(); var buffer; setTimeout(function repeat() { (finished)?cb(buffer):setTimeout(repeat, 0) }, 0); request.open('GET', url,">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<link rel=mask-icon href=/safari-pinned-tab.svg color>
+<link rel="shortcut icon" href=/favicon.ico>
+<title>Async, Await</title>
+<link rel=stylesheet href=https://seungrye.github.io/css/style.min.01f62fff7ba9e2888ea91c3cd0097e6a3f65d5d14863514fb3886453cca80599.css integrity="sha256-AfYv/3up4oiOqRw80Al+aj9l1dFIY1FPs4hkU8yoBZk=" crossorigin=anonymous>
+<link rel=stylesheet href=https://seungrye.github.io/css/tags.enji.min.47cbe1fce31495308f57e52b2bbcd9ede34060354313246f4e0331d7c4ece651.css integrity="sha256-R8vh/OMUlTCPV+UrK7zZ7eNAYDVDEyRvTgMx18Ts5lE=" crossorigin=anonymous>
+</head>
+<body id=page>
+<header id=site-header class="animated slideInUp">
+<div class="hdr-wrapper section-inner">
+<div class=hdr-left>
+<div class=site-branding>
+<a href=https://seungrye.github.io/>HANDMADE LOG</a>
+</div>
+<nav class="site-nav hide-in-mobile">
+<a href=https://seungrye.github.io/posts/>Posts</a>
+<a href=https://seungrye.github.io/page/about/>About</a>
+</nav>
+</div>
+<div class="hdr-right hdr-icons">
+<span class="hdr-social hide-in-mobile"><a href=https://github.com/seungrye target=_blank rel="noopener me" title=Github><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a><a href=https://instagram.com/_u/seungrye/ target=_blank rel="noopener me" title=Instagram><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a></span><button id=menu-btn class=hdr-btn title=Menu><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div>
+</div>
+</header>
+<div id=mobile-menu class="animated fast">
+<ul>
+<li><a href=https://seungrye.github.io/posts/>Posts</a></li>
+<li><a href=https://seungrye.github.io/page/about/>About</a></li>
+</ul>
+</div>
+<main class="site-main section-inner animated fadeIn faster">
+<article class=thin>
+<header class=post-header>
+<div class=post-meta><span>May 16, 2021</span></div>
+<h1>Async, Await</h1>
+</header>
+<div class=content>
+.. contents:: Table of Contents
+*************************
+concurrency / parallelism
+*************************
+.. image:: ./resources/_gen/images/1_Q_UZeToStz8YY2oQGiUPqw.png
+:width: 640
+:alt: concurrency vs parallelism
+* concurrency : 동시성
+* parallelism : 병렬성
+******
+syntax
+******
+asyncronous in JavaScript
+=========================
+timeout
+-------
+.. code-block:: html
+<body>
+<script>function async_fn(g){var c=!1,f='https://i.imgur.com/82tHC9G.jpeg',a=new XMLHttpRequest,d,e,b;setTimeout(function a(){c?g(d):setTimeout(a,0)},0),a.open('GET',f,!1),a.overrideMimeType('text/plain; charset=x-user-defined'),a.send(null),console.log("cur time : "+Date.now()+", request response with result code : "+a.status),e="";for(b=0;b<a.responseText.length;b++)e+=String.fromCharCode(a.responseText.charCodeAt(b)&255);d='data:image/jpeg;base64,'+btoa(e),c=!0}$(document).ready(()=>{console.log("start time : "+Date.now()),async_fn(b=>{console.log("async end : "+Date.now());var a=document.createElement('img');a.src=b,a.style.height="480px",document.body.appendChild(a)}),console.log("cur time : "+Date.now()+", time 1"),console.log("end time : "+Date.now())})</script>
+<h3>messages</h3>
+<ul class=messages></ul>
+</body>
+callback hell
+^^^^^^^^^^^^^
+.. code-block:: JavaScript
+function do_something1(v, cb) { setTimeout(() => { cb(v+'1'); }, 100); }
+function do_something2(v, cb) { setTimeout(() => { cb(v+'2'); }, 100); }
+function do_something3(v, cb) { setTimeout(() => { cb(v+'3'); }, 100); }
+do_something1('0', (r) => {
+console.log("cb of do_something1 "+r);
+do_something2(r, (r) => {
+console.log("cb of do_something2 "+r);
+do_something3(r, (r) => {
+console.log("cb of do_something3 "+r);
+});
+});
+});
+promise
+-------
+.. code-block:: html
+<body>
+<script>'use strict';function async_fn(){var d='https://i.imgur.com/82tHC9G.jpeg',a=new XMLHttpRequest,c,b;a.open('GET',d,!1),a.overrideMimeType('text/plain; charset=x-user-defined'),a.send(null),console.log("cur time : "+Date.now()+", request response with result code : "+a.status),c="";for(b=0;b<a.responseText.length;b++)c+=String.fromCharCode(a.responseText.charCodeAt(b)&255);return'data:image/jpeg;base64,'+btoa(c)}$(document).ready(()=>{console.log("start time : "+Date.now());var a=new Promise((a,b)=>a(async_fn()));a.then(b=>{console.log("async end : "+Date.now());var a=document.createElement('img');a.src=b,a.style.height="480px",document.body.appendChild(a)}),console.log("cur time : "+Date.now()+", time 1"),console.log("end time : "+Date.now())})</script>
+<h3>messages</h3>
+<ul class=messages></ul>
+</body>
+chaining instead of callback
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: JavaScript
+function do_something1(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'1'); }, 100); }); }
+function do_something2(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'2'); }, 100); }); }
+function do_something3(v) { return new Promise(resolve => { setTimeout(() => { resolve(v+'3'); }, 100); }); }
+var promised = do_something1('0');
+promised.then(/*resolve fn*/(r) => { console.log("after do_something1 "+r); return do_something2(r); })
+.then(/*resolve fn*/(r) => { console.log("after do_something2 "+r); return do_something3(r); })
+.then(/*resolve fn*/(r) => { console.log("after do_something3 "+r); });
+async, await
+------------
+.. code-block:: html
+<body>
+<script>'use strict';function hxr_img_buff(){return new Promise(d=>{var e='https://i.imgur.com/82tHC9G.jpeg',a=new XMLHttpRequest,c,b;a.open('GET',e,!1),a.overrideMimeType('text/plain; charset=x-user-defined'),a.send(null),console.log("cur time : "+Date.now()+", request response with result code : "+a.status),c="";for(b=0;b<a.responseText.length;b++)c+=String.fromCharCode(a.responseText.charCodeAt(b)&255);d('data:image/jpeg;base64,'+btoa(c))})}async function async_fn(){var b=await hxr_img_buff(),a;console.log("async end : "+Date.now()),a=document.createElement('img'),a.src=b,a.style.height="480px",document.body.appendChild(a)}$(document).ready(()=>{console.log("start time : "+Date.now()),async_fn(),console.log("cur time : "+Date.now()+", time 1"),console.log("end time : "+Date.now())})</script>
+<h3>messages</h3>
+<ul class=messages></ul>
+</body>
+synchronous-like
+^^^^^^^^^^^^^^^^
+.. code-block:: JavaScript
+// async function return 'new Promise()' object.
+async function sleep(m) { return new Promise(resolve => setTimeout(() => resolve(), m)); }
+async function do_something1(v) { await sleep(100); return v+'1'; }
+async function do_something2(v) { await sleep(100); return v+'2'; }
+async function do_something3(v) { await sleep(100); return v+'3'; }
+(async function() {
+var r = await do_something1('0');
+console.log("after do_something1 "+r);
+r = await do_something2(r);
+console.log("after do_something2 "+r);
+r = await do_something3(r);
+console.log("after do_something3 "+r);
+})();
+console.log("what?");
+asyncronous in Python
+=====================
+yield
+------
+async
+-----
+.. code-block:: Python
+import asyncio
+async def sleep(m):
+await asyncio.sleep(m*0.001)
+async def do_something1(v):
+await sleep(100)
+return v+'1'
+async def do_something2(v):
+await sleep(100)
+return v+'2'
+async def do_something3(v):
+await sleep(100)
+return v+'3'
+async def main():
+r = wait do_something1('0')
+print("after do_something1 "+r)
+r = wait do_something1(r)
+print("after do_something1 "+r)
+r = wait do_something1(r)
+print("after do_something1 "+r)
+asyncio.run(main())
+asyncronous in C++
+==================
+thread
+--------
+.. code-block:: c++
+#include <iostream>
+#include <thread>
+#include <chrono>
+auto async_fn() -> std::thread {
+std::thread t([]() {
+using namespace std::chrono_literals;
+std::this_thread::sleep_for(100ms);
+std::cout << "Hello";
+});
+return t;
+}
+int main(int argc, char *argv[]) {
+std::cout << "Hello";
+auto t = async_fn();
+std::cout << " C++ ";
+t.join();
+return 0;
+}
+future, promise
+---------------
+.. code-block:: c++
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <future>
+auto async_fn(std::promise<std::string> &promise) -> std::thread {
+       std::thread t([&promise]() {
+            using namespace std::chrono_literals;
+std::this_thread::sleep_for(100ms);
+promise.set_value("World");
+});
+return t;
+}
+int main(int argc, char *argv[]) {
+std::cout << "Hello";
+std::promise<std::string> promise;
+auto future = promise.get_future();
+auto t = async_fn(promise);
+std::cout << " C++ ";
+future.wait();
+auto val = future.get();
+std::cout << val;
+t.join();
+return 0;
+}
+async, await
+------------
+.. code-block:: c++
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <future>
+auto async_fn() -> std::future<std::string> {
+return std::async(std::launch::async, []() -> std::string {
+using namespace std::chrono_literals;
+std::this_thread::sleep_for(100ms);
+return "World";
+});
+}
+int main(int argc, char *argv[]) {
+std::cout << "Hello";
+auto future = async_fn();
+std::cout << " C++ ";
+auto val = future.get();
+std::cout << val;
+return 0;
+}
+demo
+^^^^^
+******************
+c++ implementation
+******************
+</div>
+<hr class=post-end>
+<footer class=post-info>
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://seungrye.github.io/tags/async>async</a></span><span class=tag><a href=https://seungrye.github.io/tags/seminar>seminar</a></span><span class=tag><a href=https://seungrye.github.io/tags/async>async</a></span><span class=tag><a href=https://seungrye.github.io/tags/howto>howto</a></span>
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>691 Words</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-05-16 00:00 +0000</p>
+</footer>
+</article>
+<div class="post-nav thin">
+<a class=next-post href=https://seungrye.github.io/posts/2021-10-30-matplot-fontfamily-not-found-issue/>
+<span class=post-nav-label><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>&nbsp;Newer</span><br><span>Font family not found issue on matplot</span>
+</a>
+<a class=prev-post href=https://seungrye.github.io/posts/2021-01-27-cpp-lambda-and-functional/>
+<span class=post-nav-label>Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span><br><span>C++ 에서 Lambda 와 Functional feature</span>
+</a>
+</div>
+<div id=comments class=thin>
+<div id=disqus_thread></div>
+<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//handmade-iptime-org.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
+</main>
+<footer id=site-footer class="section-inner thin animated fadeIn faster">
+<p>&copy; 2021 <a href=https://seungrye.github.io/>Enji Ahn</a> &#183; <a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></p>
+<p>
+Made with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> &#183; Theme <a href=https://github.com/Track3/hermit target=_blank rel=noopener>Hermit</a> &#183; <a href=https://seungrye.github.io/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a>
+</p>
+</footer>
+<script src=https://seungrye.github.io/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin=anonymous></script>
+</body>
+</html>
