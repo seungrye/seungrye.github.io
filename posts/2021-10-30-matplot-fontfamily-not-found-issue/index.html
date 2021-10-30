@@ -8,7 +8,7 @@
 <meta itemprop=name content="Font family not found issue on matplot">
 <meta itemprop=description content="파이썬으로 matplot 를 사용할때, 한글 폰트가 다음과 유사한 에러로 정상 출력되지 않는 현상이 발생하는 경우가 있습니다. $ python3 ~/hello.py findfont: Font family ['NanumGothic'] not found. Falling back to DejaVu Sans. /home/seungrye/.local/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py:240: RuntimeWarning: Glyph 49340 missing from current"><meta itemprop=datePublished content="2021-10-30T15:25:05+00:00">
 <meta itemprop=dateModified content="2021-10-30T15:25:05+00:00">
-<meta itemprop=wordCount content="416">
+<meta itemprop=wordCount content="418">
 <meta itemprop=keywords content="tip,python,matplot,font,"><meta property="og:title" content="Font family not found issue on matplot">
 <meta property="og:description" content="파이썬으로 matplot 를 사용할때, 한글 폰트가 다음과 유사한 에러로 정상 출력되지 않는 현상이 발생하는 경우가 있습니다. $ python3 ~/hello.py findfont: Font family ['NanumGothic'] not found. Falling back to DejaVu Sans. /home/seungrye/.local/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py:240: RuntimeWarning: Glyph 49340 missing from current">
 <meta property="og:type" content="article">
@@ -72,6 +72,8 @@ findfont: Font family <span class=o>[</span><span class=s1>&#39;NanumGothic&#39;
 <span class=n>sizes</span> <span class=o>=</span> <span class=p>[</span><span class=mi>15</span><span class=p>,</span> <span class=mi>30</span><span class=p>,</span> <span class=mi>45</span><span class=p>,</span> <span class=mi>10</span><span class=p>]</span>
 <span class=n>explode</span> <span class=o>=</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mf>0.1</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>  <span class=c1># only &#34;explode&#34; the 2nd slice (i.e. &#39;Hogs&#39;)</span>
 
+<span class=n>plt</span><span class=o>.</span><span class=n>rc</span><span class=p>(</span><span class=s1>&#39;font&#39;</span><span class=p>,</span> <span class=n>family</span><span class=o>=</span><span class=s1>&#39;NanumGothic&#39;</span><span class=p>)</span>
+
 <span class=n>fig1</span><span class=p>,</span> <span class=n>ax1</span> <span class=o>=</span> <span class=n>plt</span><span class=o>.</span><span class=n>subplots</span><span class=p>()</span>
 <span class=n>ax1</span><span class=o>.</span><span class=n>pie</span><span class=p>(</span><span class=n>sizes</span><span class=p>,</span> <span class=n>explode</span><span class=o>=</span><span class=n>explode</span><span class=p>,</span> <span class=n>labels</span><span class=o>=</span><span class=n>labels</span><span class=p>,</span> <span class=n>autopct</span><span class=o>=</span><span class=s1>&#39;</span><span class=si>%1.1f%%</span><span class=s1>&#39;</span><span class=p>,</span>
         <span class=n>shadow</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>startangle</span><span class=o>=</span><span class=mi>90</span><span class=p>)</span>
@@ -107,7 +109,7 @@ fontlist-v330.json fontlist-v330.json_
 <p>
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://seungrye.github.io/tags/tip>tip</a></span><span class=tag><a href=https://seungrye.github.io/tags/python>python</a></span><span class=tag><a href=https://seungrye.github.io/tags/matplot>matplot</a></span><span class=tag><a href=https://seungrye.github.io/tags/font>font</a></span>
 </p>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>416 Words</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>418 Words</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-10-30 15:25 +0000</p>
 </footer>
 </article>
