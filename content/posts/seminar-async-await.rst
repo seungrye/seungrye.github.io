@@ -1,7 +1,7 @@
 +++
 title = "Async, Await"
 date = "2021-05-16"
-draft = "true"
+draft = "false"
 categories = ["studylog"]
 tags = ["async","seminar","async","howto"]
 +++
@@ -228,17 +228,122 @@ yield
 async
 -----
 
+.. code-block:: Python
+
+    import asyncio
+    
+    async def sleep(m):
+        await asyncio.sleep(m*0.001)
+        
+    async def do_something1(v):
+        await sleep(100)
+        return v+'1'
+        
+    async def do_something2(v):
+        await sleep(100)
+        return v+'2'
+        
+    async def do_something3(v):
+        await sleep(100)
+        return v+'3'
+    
+    async def main():
+        r = wait do_something1('0')
+        print("after do_something1 "+r)
+        r = wait do_something1(r)
+        print("after do_something1 "+r)
+        r = wait do_something1(r)
+        print("after do_something1 "+r)
+        
+    asyncio.run(main())
+
 asyncronous in C++
 ==================
 
 thread
 --------
 
+.. code-block:: c++
+
+    #include <iostream>
+    #include <thread>
+    #include <chrono>
+
+    auto async_fn() -> std::thread {
+        std::thread t([]() {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(100ms);
+            std::cout << "Hello";
+        });
+        return t;
+    }
+
+    int main(int argc, char *argv[]) {
+        std::cout << "Hello";
+        auto t = async_fn();
+        std::cout << " C++ ";
+        t.join();
+        return 0;
+    }
+
 future, promise
 ---------------
 
+.. code-block:: c++
+
+    #include <iostream>
+    #include <thread>
+    #include <chrono>
+    #include <future>
+
+    auto async_fn(std::promise<std::string> &promise) -> std::thread {
+        std::thread t([&promise]() {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(100ms);
+            promise.set_value("World");
+        });
+        return t;
+    }
+
+    int main(int argc, char *argv[]) {
+        std::cout << "Hello";
+        std::promise<std::string> promise;
+        auto future = promise.get_future();
+        auto t = async_fn(promise);
+        std::cout << " C++ ";
+        future.wait();
+        auto val = future.get();
+        std::cout << val;
+        t.join();
+        return 0;
+    }
+
 async, await
 ------------
+
+.. code-block:: c++
+
+    #include <iostream>
+    #include <thread>
+    #include <chrono>
+    #include <future>
+
+    auto async_fn() -> std::future<std::string> {
+        return std::async(std::launch::async, []() -> std::string {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(100ms);
+            return "World";
+        });
+    }
+
+    int main(int argc, char *argv[]) {
+        std::cout << "Hello";
+        auto future = async_fn();
+        std::cout << " C++ ";
+        auto val = future.get();
+        std::cout << val;
+        return 0;
+    }
 
 demo
 ^^^^^
